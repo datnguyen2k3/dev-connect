@@ -1,0 +1,100 @@
+- command line to start project:
+	+ "virtualenv venv"
+	+ "venv\scripts\activate"
+	+ "pip install mysqlclient"
+	+ "pip install django"
+	+ "pip install Ipython"
+	+ "django-admin startproject project_name" - create django project	
+	+ "python manage.py startapp app_name" - create new django app
+
+
+
+VIEWS AND URLS:
+	- view: function(request)
+		+ HttpResponse
+		+ Http404
+		+ HttpResponsePredict
+	- url: domain
+	- path(domain, view function, name path)
+	- include
+	- set base direction of template in setting
+	- request.POST is a dictionary of data
+	- request.FILES
+	- lesson 13: end part
+
+
+TEMPLATES:
+	- render(requestHtml, html file, context) - context is dict
+	- variable template: a dicttionary to push variable in template
+		+ filter: modify variable in template: {{ variable }}
+		+ method of object in template just use if that method have no argument
+		+ tags: perform specific actions into template: {% actions %}
+			+ for loop
+			+ if else
+		+ url in template: {% url 'my_app:variable' %} 
+		-> First add namespace for app: app_name = 'nameOfApp'
+		-> search path have name 'variable' in app 'my_app'
+	- template inheritance:
+		+ set template base in setting: os.path.join(BASE_DIR, 'templates')
+		+ block, extends
+	- custom 404 page: add 404.html file in main templates
+
+
+
+
+STATIC:
+	- static: put img, css in template
+	- STATIC_URL: load every 'static' folder
+	- STATICFILES_DIRS:  directories where look for static files that are not tied to a specific app.
+	- imgField:
+		+ "pip install Pillow" to process img	
+		+ upload_to
+		+ default=
+	- MEDIA_ROOT: đường dẫn các file media trong project
+	- MEDIA_URL: tạo ra các đường dẫn URL cho file media.
+	- urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) - add các URL của file media vào urlpatterns
+	- when the form contains files or non-ASCII data: using (enctype='multipart/form-data')
+	
+
+
+
+MODELS:
+	- model is table, field is column
+	- "python manage.py makemigrations app_name" - save changes of models
+	- "python manage.py migrate" - connect to database
+	- "python manage.py shell" - open evironment excute project like access database(insert, delete, ...)
+	- objectName.:
+		+ save() - save changes of object in database
+		+ delete() - delete this object in database
+	- modelName.objects:
+		+ .create() - insert data
+		+ .objects.bulk_create(list) - insert many data
+		+ .objects.all() - return a querySet of all objects
+		+ .get() - return just 1 object
+		+ .filter() 
+		+ .filter(Q() & Q())
+		+ .filter(columnName__lockupName...) - more complex query
+		+ .order_by('columnName1', 'columnName2')
+
+	- validators=[] - list of function, class validates the input data before it's processed or saved.
+
+
+
+DJANGO-ADMIN:
+	+ domain.com/admin
+	+ 'python manage.py createsuperuser' - create admin account
+	+ admin.site.register(nameModelClass) - add 
+	+ ModelAdmin - add some frontend of admin page
+
+
+
+
+DJANGO-FORM:
+	+ GET: request to get data
+	+ POST: request to send data
+	+ CSRF_token
+	+ create a forms.py in app
+	+ form is class inherite forms.Form
+	+ attribute is information in form
+
+	
