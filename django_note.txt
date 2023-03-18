@@ -6,6 +6,7 @@
 	+ "pip install Ipython"
 	+ "django-admin startproject project_name" - create django project	
 	+ "python manage.py startapp app_name" - create new django app
+	+ "pip freeze > requirements.txt" - add requirements
 
 
 
@@ -75,8 +76,11 @@ MODELS:
 		+ .filter(Q() & Q())
 		+ .filter(columnName__lockupName...) - more complex query
 		+ .order_by('columnName1', 'columnName2')
+	- lookup:
+		__exact: "ABC" vs "AbC" is different
 
 	- validators=[] - list of function, class validates the input data before it's processed or saved.
+	- signals: like trigger in mysql
 
 
 
@@ -98,3 +102,11 @@ DJANGO-FORM:
 	+ attribute is information in form
 
 	
+
+
+AUTHENTICATION:
+	+ authenticate(request, username=..., password=...) - authenticate User in django.contrib.auth
+	+ logout(request)
+	+ request.user.is_authenticated
+	+ messages
+	+ django decorator: @login_required(login_url='app_name:path_name') - if not authenticated, move to login_url

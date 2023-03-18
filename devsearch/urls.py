@@ -18,6 +18,7 @@ from django.shortcuts import render
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from users import views
 
 def main_view(request):
     return render(request, 'main.html')
@@ -26,6 +27,7 @@ urlpatterns = [
     path('', main_view, name='main'),
     path('admin/', admin.site.urls),
     path('project/', include('projects.urls')),
+    path('user/', include('users.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,14 +1,7 @@
-{% extends 'main.html' %}
+{% extends 'delete-form.html' %}
 
-{% block content %}
+{% block confirm_content %}
 
-<form action='' method='POST'>
-    {% csrf_token %}
-    <p> Are you sure to delete? </p>
-    <a href="{% url 'projects:projects' %}">Go back</a>
-    <button type="submit">Confirm</button>
-</form>
-{% endblock content %}
+<p>Are you sure you want to delete '{{project.title}}' project?</p>
 
-
-
+{% endblock confirm_content %}
