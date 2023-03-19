@@ -5,8 +5,8 @@ app_name = 'projects'
 
 urlpatterns = [
     path('', views.projects_view, name='projects'),
+    path('create-project/', views.create_project_view, name="create-project"),
     path('<uuid:project_id>/', views.single_project_view, name='single-project'),
-    path('create-project/', views.createProject, name="create-project"),
-    path('<uuid:project_id>/edit/', views.editProject, name='edit-project'),
-    path('<uuid:project_id>/delete/', views.deleteProject, name='delete-project'),
+    path('<uuid:project_id>/edit/', views.edit_project_view, name='edit-project'),
+    path('<uuid:project_id>/delete/', views.delete_project_view, name='delete-project'),
 ]

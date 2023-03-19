@@ -38,10 +38,6 @@ class Profile(models.Model):
     def get_other_skills(self):
         return self.skill_set.filter(description="")
 
-    def get_projects(self):
-        return projects.models.Project.objects.filter(owner=self.id)
-
-
 
 class Skill(models.Model):
     id = models.UUIDField(

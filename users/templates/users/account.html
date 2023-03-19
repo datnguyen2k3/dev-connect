@@ -39,12 +39,7 @@
           <div class="devInfo">
             <h3 class="devInfo__title">About Me</h3>
             <p class="devInfo__about">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex illum ipsum iusto consequatur. Totam,
-              dolorum fugiat, debitis facere illo nostrum nesciunt maxime, deserunt enim voluptatibus modi natus velit
-              voluptatum. Dicta eritatis exercitationem ut quos a placeat obcaecati? Architecto illum!
-              <br />
-              Amet consectetur adipisicing elit. Veritatis exercitationem ut quos a placeat obcaecati? Architecto
-              illum, atque delectus nemo dolorem inventore ab facilis? Dolor placeat vel delectus ipsam ullam.
+                {{profile.bio}}
             </p>
           </div>
           <div class="settings">
@@ -54,7 +49,7 @@
 
           <table class="settings__table">
 
-            {% for skill in profile.get_top_skills %}
+            {% for skill in profile.skill_set.all %}
 
             <tr>
               <td class="settings__tableInfo">
@@ -82,7 +77,7 @@
           </div>
 
           <table class="settings__table">
-            {% for project in profile.get_projects %}
+            {% for project in profile.project_set.all %}
               <tr>
                 <td class="settings__thumbnail">
                   <a href="{% url 'projects:single-project' project.id %}"><img src="{{project.featured_img.url}}" alt="Project Thumbnail" /></a>
