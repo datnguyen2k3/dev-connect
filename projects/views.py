@@ -64,6 +64,7 @@ def editProject(request, project_id):
     editForm = ProjectForm(instance=currentProject)
 
     if request.method == "POST":
+        print(request.FILES)
         editForm = ProjectForm(request.POST, request.FILES, instance=currentProject)
         if editForm.is_valid():
             editForm.save()

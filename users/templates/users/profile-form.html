@@ -9,7 +9,7 @@
                 <a class="backButton" href="{{ request.META.HTTP_REFERER }}"><i class="im im-angle-left"></i></a>
                 <br>
 
-                <form class="form" method="POST">
+                <form class="form" method="POST" enctype='multipart/form-data'>
                     {% csrf_token %}
                     {% for field in form %}
                     

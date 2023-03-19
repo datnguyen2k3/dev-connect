@@ -8,7 +8,11 @@ class Project(models.Model):
     id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    featured_img = models.ImageField(null=True, blank = True, default='default.jpg')
+    featured_img = models.ImageField(
+        null=True, 
+        blank = True, 
+        default='projects/default.jpg', 
+        upload_to='projects/')
     demo_link = models.CharField(max_length=2000, null=True, blank=True)
     source_link = models.CharField(max_length=2000, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
