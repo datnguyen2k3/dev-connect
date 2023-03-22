@@ -1,20 +1,30 @@
 from django.contrib.auth.decorators import login_required
-from django.http import Http404
 from django.shortcuts import redirect, render
-
-from users.models import Profile
+from devsearch.utils import CustomPaginator
+from .utils import check_profile_is_project_owner, search_projects, add_review
 from .forms import ProjectForm
-from .models import Project
+from .models import Project, Review
 
 
 # Create your views here.
 def projects_view(request):
-    projects = Project.objects.all()
-    context = {"projects": projects, }
+    search_query, searched_projects = search_projects(request)
+    searched_page, page_range = CustomPaginator.paginate_query_set(request, searched_projects)
+    
+    context = {
+        'search_query': search_query,
+        'searched_page': searched_page,
+        'page_range': page_range,
+    }
+    
     return render(request, "projects/projects.html", context=context)
 
 
 def single_project_view(request, project_id):
+    if request.method == "POST":
+        add_review(request, project_id)
+        return redirect("projects:single-project", project_id=project_id)
+    
     project = Project.objects.get(pk=project_id)
     context = {"project": project, }
     return render(request, "projects/single_project.html", context=context)
@@ -62,11 +72,4 @@ def delete_project_view(request, project_id):
         return redirect("users:account")
 
     return render(request, "projects/delete_project.html")
-
-
-# Other functions
-def check_profile_is_project_owner(profile, project_id):
-    owner = Project.objects.get(id=project_id).owner
-    if profile != owner:
-        raise Http404("You don't have permission to edit this profile")
-
+    

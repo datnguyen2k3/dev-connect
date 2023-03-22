@@ -23,6 +23,10 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        ordering = ['-created']
+        
 
 
 
@@ -34,13 +38,17 @@ class Review(models.Model):
     )
 
     id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+    owner = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     body = models.TextField(null=True, blank=True)
     value = models.CharField(max_length=200, choices=VOTE_TYPE)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.value
+        return self.value + " " + self.project.title
+    
+    class Meta:
+        ordering = ['-created']
 
 
 class Tag(models.Model):
