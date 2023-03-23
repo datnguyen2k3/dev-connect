@@ -55,6 +55,7 @@ STATIC:
 	- MEDIA_URL: tạo ra các đường dẫn URL cho file media.
 	- urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) - add các URL của file media vào urlpatterns
 	- when the form contains files or non-ASCII data: using (enctype='multipart/form-data')
+	- update staticfiles: "python manage.py collectstatic" 
 	
 
 

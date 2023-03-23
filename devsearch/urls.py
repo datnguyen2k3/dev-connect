@@ -18,13 +18,14 @@ from django.conf.urls import handler404
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from .views import main_view
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('', main_view, name='main'),
     path('admin/', admin.site.urls),
-    path('projects/', include('projects.urls')),
-    path('developers/', include('users.urls')),
+    path('projects/', include('app.projects.urls')),
+    path('', include('app.users.urls')),
+    path('', include('app.devsearch_auth.urls')),
+    
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
