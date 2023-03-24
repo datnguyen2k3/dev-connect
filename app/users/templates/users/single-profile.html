@@ -19,22 +19,38 @@
               <h2 class="dev__name">{{profile.name}}</h2>
               <p class="dev__title">{{profile.short_intro}}</p>
               <p class="dev__location">Based in Florida, USA</p>
+             
               <ul class="dev__social">
+                {% if profile.social_github %}
                 <li>
-                  <a title="Github" href="{{profile.social_github}}" target="_blank"><i class="im im-github"></i></a>
+                    <a title="Github" href="{{profile.social_github}}" target="_blank" style="font-size: 30px;"><i class="fa fa-github" aria-hidden="true"></i></a>
                 </li>
+                {% endif %}
+
+
+                {% if profile.social_twitter %}
                 <li>
-                  <a title="Youtube" href="{{profile.social_youtube}}" target="_blank"><i class="im im-stackoverflow"></i></a>
+                    <a title="Twitter" href="{{profile.social_twitter}}" target="_blank" style="font-size: 30px;"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                 </li>
+                {% endif %}
+
+                {% if profile.social_linkedin %}
                 <li>
-                  <a title="Twitter" href="{{profile.social_twitter}}" target="_blank"><i class="im im-twitter"></i></a>
+                    <a title="LinkedIn" href="{{profile.social_linkedin}}" target="_blank" style="font-size: 30px;"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                 </li>
+                {% endif %}
+
+                {% if profile.social_youtube %}
                 <li>
-                  <a title="LinkedIn" href="{{profile.social_linkedin}}" target="_blank"><i class="im im-linkedin"></i></a>
+                  <a title="Youtube" href="{{profile.social_youtube}}" target="_blank" style="font-size: 30px;"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
                 </li>
+                {% endif %}
+
+                {% if profile.social_website %} 
                 <li>
-                  <a title="Personal Website" href="{{profile.social_website}}" target="_blank"><i class="im im-globe"></i></a>
+                    <a title="Personal Website" href="{{profile.social_website}}" target="_blank"style="font-size: 30px;"><i class="fa fa-globe" aria-hidden="true"></i></a>
                 </li>
+                {% endif %}
               </ul>
               <a href="#" class="btn btn--sub btn--lg">Send Message </a>
             </div>
