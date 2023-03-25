@@ -22,6 +22,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),
     path('projects/', include('app.projects.urls')),
     path('', include('app.users.urls')),
     path('', include('app.devsearch_auth.urls')),
