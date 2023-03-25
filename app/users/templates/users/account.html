@@ -3,20 +3,20 @@
 
 {% block content %}
 
-<main class="settingsPage profile my-md">
+<main class="settingsPage profile my-md" >
     <div class="container">
       <div class="layout">
         <div class="column column--1of3">
           <div class="card text-center">
-            <div class="card__body dev">
+            <div class="card__body dev" style="background-color: #ccc5b9;" >
               <a class="tag tag--pill tag--main settings__btn" href="{% url 'users:edit-profile' %}"><i class="im im-edit"></i> Edit</a>
               <img class="avatar avatar--xl dev__avatar" src="{{profile.profile_img.url}}" />
               <h2 class="dev__name">{{profile.name}}</h2>
               <p class="dev__title">{{profile.short_intro}}</p>
               <p class="dev__location">{{profile.location}}</p>
-              <ul class="dev__social">
+              <ul class="dev__social" >
                 <li>
-                  <a title="Github" href="{{profile.social_github}}" target="_blank"><i class="im im-github"></i></a>
+                  <a title="Github" href="{{profile.social_github}}" target="_blank" style="font-size: 30px;"><i class="fa fa-github" aria-hidden="true"></i></a>
                 </li>
                 <li>
                   <a title="Youtube" href="{{profile.social_youtube}}" target="_blank"><i class="im im-stackoverflow"></i></a>
