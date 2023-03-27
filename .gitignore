@@ -1,2 +1,5 @@
 venv
-.idea
+.idea/
+staticfiles/
+/_pycache_/
+staticfiles
