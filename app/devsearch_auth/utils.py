@@ -12,6 +12,9 @@ from app.devsearch_auth.forms import RegisterForm
 
 
 def get_user_by_email_request(request) -> User:
+    if request.method != "POST":
+        return None
+    
     email = request.POST.get("email")
     try:
         user = User.objects.get(email=email)

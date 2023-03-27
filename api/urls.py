@@ -8,7 +8,7 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
     path("", views.get_routes_view, name="get_routes"),
-    # users
+    # auth
     path("users/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("users/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     # projects
@@ -18,9 +18,15 @@ urlpatterns = [
         views.get_single_project_view,
         name="get_single_project",
     ),
+    path("projects/<str:project_id>/edit/", views.edit_project_view, name="edit_project"),
     # reviews
     path(
         "projects/<str:project_id>/reviews/", views.get_reviews_view, name="get_reviews"
+    ),
+    path(
+        "projects/<str:project_id>/reviews/<str:review_id>/",
+        views.get_single_review_view,
+        name="get_single_review",
     ),
     path(
         "projects/<str:project_id>/reviews/add/",
@@ -33,8 +39,8 @@ urlpatterns = [
         name="delete_review",
     ),
     path(
-        "projects/<str:project_id>/reviews/<str:review_id>/",
-        views.get_single_review_view,
-        name="get_single_review",
+        "projects/<str:project_id>/reviews/<str:review_id>/edit/",
+        views.edit_review_view,
+        name="edit_review",
     ),
 ]
