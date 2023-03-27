@@ -1,5 +1,5 @@
 venv
 .idea/
 staticfiles/
-/_pycache_/
+_pycache_/
 staticfiles
