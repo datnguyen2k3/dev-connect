@@ -111,3 +111,12 @@ AUTHENTICATION:
 	+ request.user.is_authenticated
 	+ messages
 	+ django decorator: @login_required(login_url='app_name:path_name') - if not authenticated, move to login_url
+
+
+REST:
+	+ client-server 
+	+ stateless: server doesn't store request data
+	+ cacheable: client can cache response data
+	+ uniform interface: client and server have same interface
+	+ layer system: client and server can be separated
+	+ code on demand (optional): server can send code to client

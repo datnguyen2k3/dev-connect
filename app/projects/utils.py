@@ -29,11 +29,7 @@ def search_projects(request):
     return (search_query, searched_projects)
 
 
-@login_required(login_url="devsearch_auth:login")
-def add_review(request, project_id):
-    if request.method != "POST":
-        return
-    
+def add_review(request, project_id):    
     comment = request.POST.get("comment")
     
     review = Review.objects.create(
@@ -42,6 +38,7 @@ def add_review(request, project_id):
         owner=request.user.profile,
     )
     
-    review.save()    
+    review.save() 
+    return review   
     
 

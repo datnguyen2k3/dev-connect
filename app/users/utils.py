@@ -9,7 +9,11 @@ def check_profile_is_owner_skill(profile, skill_id):
         raise Http404("You don't have permission to edit this profile")
 
 
-def search_profiles(request) -> list[Profile]:
+def search_profiles(request):
+    '''
+        Search profiles by name, short_intro and skills
+        Return search_query and searched_profiles
+    '''
     search_query = ""
 
     if request.GET.get("search_query"):
