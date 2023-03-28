@@ -9,16 +9,7 @@ def check_profile_is_owner_skill(profile, skill_id):
         raise Http404("You don't have permission to edit this profile")
 
 
-def search_profiles(request):
-    '''
-        Search profiles by name, short_intro and skills
-        Return search_query and searched_profiles
-    '''
-    search_query = ""
-
-    if request.GET.get("search_query"):
-        search_query = request.GET.get("search_query")
-
+def search_profiles(search_query=""):
     skills = Skill.objects.filter(name__icontains=search_query)
 
     searched_profiles = Profile.objects.distinct().filter(
@@ -27,5 +18,5 @@ def search_profiles(request):
         | Q(skill__in=skills)
     )
 
-    return (search_query, searched_profiles)
+    return searched_profiles
 
