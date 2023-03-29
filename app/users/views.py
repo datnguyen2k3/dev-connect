@@ -9,6 +9,8 @@ from app.users.utils import check_profile_is_owner_skill, search_profiles
 from devsearch.utils import CustomPaginator
 
 
+
+
 # Create your views here.
 def profiles_view(request):
     search_query, searched_profiles = search_profiles(request)

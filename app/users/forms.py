@@ -10,7 +10,6 @@ class ProfileForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ProfileForm, self).__init__(*args, **kwargs)
-
         for fieldname, field in self.fields.items():
             field.widget.attrs.update({'class': 'input', 'placeholder': f'Enter {field.label}'})
 
