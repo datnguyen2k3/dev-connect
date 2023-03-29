@@ -102,6 +102,13 @@ DJANGO-FORM:
 	+ form is class inherite forms.Form
 	+ attribute is information in form
 
+
+
+	
+
+CLASS-BASED-VIEWS:
+	+ TemplateView
+
 	
 
 

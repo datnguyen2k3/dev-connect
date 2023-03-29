@@ -1,12 +1,6 @@
 from rest_framework import serializers
 from app.projects.models import Project, Review, Tag
-from app.users.models import Profile
-
-
-class ProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Profile
-        fields = "__all__"
+from api.app.users.serializers import ProfileSerializer
 
 
 class TagSerializer(serializers.ModelSerializer):
