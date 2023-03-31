@@ -9,14 +9,16 @@ from .models import Project, Review
 # Create your views here.
 def projects_view(request):
     search_query, searched_projects = search_projects(request)
-    searched_page, page_range = CustomPaginator.paginate_query_set(request, searched_projects)
-    
+    searched_page, page_range = CustomPaginator.paginate_query_set(
+        request, searched_projects
+    )
+
     context = {
-        'search_query': search_query,
-        'searched_page': searched_page,
-        'page_range': page_range,
+        "search_query": search_query,
+        "searched_page": searched_page,
+        "page_range": page_range,
     }
-    
+
     return render(request, "projects/projects.html", context=context)
 
 
@@ -24,16 +26,20 @@ def single_project_view(request, project_id):
     if request.method == "POST":
         add_review(request, project_id)
         return redirect("projects:single-project", project_id=project_id)
-    
+
     project = Project.objects.get(pk=project_id)
-    context = {"project": project, }
+    context = {
+        "project": project,
+    }
     return render(request, "projects/single_project.html", context=context)
 
 
 @login_required(login_url="devsearch_auth:login")
 def create_project_view(request):
     project_form = ProjectForm()
-    context = {"form": project_form, }
+    context = {
+        "form": project_form,
+    }
 
     if request.method == "POST":
         project_form = ProjectForm(request.POST, request.FILES)
@@ -72,4 +78,3 @@ def delete_project_view(request, project_id):
         return redirect("users:account")
 
     return render(request, "projects/delete_project.html")
-    

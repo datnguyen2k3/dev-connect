@@ -28,6 +28,7 @@ def create_profile_after_create_user(sender, instance, created, **kwargs):
         )
         
         
+        
 def update_user_after_update_profile(sender, instance, created, **kwargs):
     if not instance.user:
         return
