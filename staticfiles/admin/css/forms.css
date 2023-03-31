@@ -81,7 +81,9 @@ form ul.inline li {
     vertical-align: middle;
     height: 26px;
 }
-
+.form__field {
+    display: none;
+  }
 .aligned label + p, .aligned label + div.help, .aligned label + div.readonly {
     padding: 6px 0;
     margin-top: 0;
