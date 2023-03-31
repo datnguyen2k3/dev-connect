@@ -331,9 +331,7 @@ img {
   display: block;
   margin: auto;
 }
-.form__field{
-  display:none;
-}
+
 .dev__name {
   color: var(--color-sub);
   font-size: 2.8rem;
