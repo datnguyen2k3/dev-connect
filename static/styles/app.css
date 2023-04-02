@@ -499,17 +499,18 @@ body{
 /*=======================
   Projects Page
 ========================*/
+.projects{
+  background-color: #e5e5e5;
+}
+
 .projects > .hero-section {
   background: var(--color-sub-lighter);
   height: 30vh;
 }
-
 .projects .hero-section__box {
   margin-bottom: 2.5rem;
 }
-.text-center{
-  background-color: #8d99ae;
-}
+
 .projects .hero-section__box > h2 {
   color: var(--color-sub);
 }
@@ -521,6 +522,7 @@ body{
 
 .projectsList {
   margin-top: 8rem;
+  background-color: #e5e5e5;
 }
 
 /*========== Projects ==========*/
