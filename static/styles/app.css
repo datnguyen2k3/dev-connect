@@ -3,8 +3,8 @@
 }
 
 .btn--sub {
-  background-color: var(--color-sub-light);
-
+  background-color: #1d3557
+  
 }
 
 .card {
@@ -174,7 +174,7 @@ img {
   height: 40vh;
   display: flex;
   align-items: center;
-  background-color: var(--color-sub);
+  background-color: #8d99ae;
 }
 
 .hero-section__box {
@@ -726,7 +726,9 @@ body{
 .auth .auth__actions a {
   text-decoration: underline;
 }
-
+.text-center{
+  background-color: #8d99ae;
+}
 .auth .auth__alternative a {
   font-size: 2rem;
   font-weight: 500;
