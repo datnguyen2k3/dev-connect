@@ -64,9 +64,7 @@
   </section>
 </main>
 
-{% if current_page %}
 {% include 'pagination.html' with current_page=searched_page page_range=page_range %}
-{% endif %}
 
 {% endblock content %}
 

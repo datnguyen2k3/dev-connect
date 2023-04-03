@@ -86,12 +86,13 @@ def edit_project_view(request, project_id):
 @permission_classes([IsAuthenticated])
 def delete_project_view(request, project_id):
     project = Project.objects.get(pk=project_id)
-    
+
     if project.owner != request.user.profile:
         return Response("You don't have permission to delete this project")
-    
+
     project.delete()
     return Response("Project deleted")
+
 
 @api_view(["GET"])
 def get_reviews_view(request, project_id):

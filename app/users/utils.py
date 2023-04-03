@@ -16,7 +16,13 @@ def search_profiles(search_query=""):
         Q(name__icontains=search_query)
         | Q(short_intro__icontains=search_query)
         | Q(skill__in=skills)
+        | Q(bio__icontains=search_query)
+        | Q(location__icontains=search_query)
+        | Q(social_github__icontains=search_query)
+        | Q(social_twitter__icontains=search_query)
+        | Q(social_linkedin__icontains=search_query)
+        | Q(social_youtube__icontains=search_query)
+        | Q(social_website__icontains=search_query)
     )
 
     return searched_profiles
-
