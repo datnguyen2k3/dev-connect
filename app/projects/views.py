@@ -1,4 +1,4 @@
-from devsearch.utils import CustomPaginator
+from src.utils import CustomPaginator
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
@@ -52,12 +52,14 @@ def single_project_view(request, project_id):
     return render(request, "projects/single_project.html", context=context)
 
 
-@login_required(login_url="devsearch_auth:login")
+@login_required(login_url="user_auth:login")
 def create_project_view(request):
     project_form = ProjectForm()
-    
+
     if request.method == "POST":
-        project_form = ProjectForm(request.POST, request.FILES, owner=request.user.profile)
+        project_form = ProjectForm(
+            request.POST, request.FILES, owner=request.user.profile
+        )
         if project_form.is_valid():
             project_form.save()
             return redirect("users:account")
@@ -66,7 +68,7 @@ def create_project_view(request):
     return render(request, "projects/project_form.html", context=context)
 
 
-@login_required(login_url="devsearch_auth:login")
+@login_required(login_url="user_auth:login")
 def edit_project_view(request, project_id):
     edited_project = Project.objects.get(id=project_id)
     project_form = ProjectForm(instance=edited_project)
@@ -83,7 +85,7 @@ def edit_project_view(request, project_id):
     return render(request, "projects/project_form.html", context=context)
 
 
-@login_required(login_url="devsearch_auth:login")
+@login_required(login_url="user_auth:login")
 def delete_project_view(request, project_id):
     deleted_project = Project.objects.get(id=project_id)
 
@@ -95,5 +97,3 @@ def delete_project_view(request, project_id):
         return redirect("users:account")
 
     return render(request, "projects/delete_project.html")
-
-    

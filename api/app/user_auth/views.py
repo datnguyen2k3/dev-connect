@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from app.devsearch_auth.forms import RegisterForm
+from app.user_auth.forms import RegisterForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 

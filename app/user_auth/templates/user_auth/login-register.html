@@ -21,7 +21,7 @@
           <p>Create a new developer account</p>
         </div>
 
-        <form action="{% url 'devsearch_auth:register' %}" method='POST' class="form auth__form">
+        <form action="{% url 'user_auth:register' %}" method='POST' class="form auth__form">
 
           {% csrf_token %}
           {% for field in form %}
@@ -46,7 +46,7 @@
         </form>
         <div class="auth__alternative">
           <p>Already have an Account?</p>
-          <a href="{% url 'devsearch_auth:login' %}">Log In</a>
+          <a href="{% url 'user_auth:login' %}">Log In</a>
         </div>
       </div>
     </div>
@@ -96,7 +96,7 @@
         </form>
         <div class="auth__alternative">
           <p>Don’t have an Account?</p>
-          <a href="{% url 'devsearch_auth:register' %}">Sign Up</a>
+          <a href="{% url 'user_auth:register' %}">Sign Up</a>
         </div>
       </div>
     </div>

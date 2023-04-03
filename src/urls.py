@@ -25,7 +25,7 @@ urlpatterns = [
     path('api/', include('api.urls')),
     path('projects/', include('app.projects.urls')),
     path('', include('app.users.urls')),
-    path('', include('app.devsearch_auth.urls')),
+    path('', include('app.user_auth.urls')),
     
 ]
 
@@ -33,4 +33,4 @@ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
-handler404 = 'devsearch.views.handler404'
+handler404 = 'src.views.handler404'

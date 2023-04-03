@@ -19,11 +19,11 @@
           
           {% if request.user.is_authenticated %}
             <li class="header__menuItem">
-              <a href="{% url 'devsearch_auth:logout' %}" class="btn btn--sub">Logout</a>
+              <a href="{% url 'user_auth:logout' %}" class="btn btn--sub">Logout</a>
             </li>
           {% else %}
             <li class="header__menuItem">
-              <a href="{% url 'devsearch_auth:login' %}" class="btn btn--sub">Login/Sign Up</a>
+              <a href="{% url 'user_auth:login' %}" class="btn btn--sub">Login/Sign Up</a>
             </li>
           {% endif %}
 

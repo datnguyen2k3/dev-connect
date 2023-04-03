@@ -1,7 +1,7 @@
 from django.urls import path
-from app.devsearch_auth import views
+from app.user_auth import views
 
-app_name = "devsearch_auth"
+app_name = "user_auth"
 
 urlpatterns = [
         

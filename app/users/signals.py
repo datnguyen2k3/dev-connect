@@ -2,7 +2,7 @@ import os
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.db.models.signals import post_save, post_delete, pre_save
-from devsearch.settings import EMAIL_HOST_USER
+from src.settings import EMAIL_HOST_USER
 from .models import Profile
 
 

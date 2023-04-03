@@ -42,7 +42,7 @@
 
           {% if request.user.is_authenticated == False %}
             
-          <a href="{% url 'devsearch_auth:login' %}?next={{request.path}}">Login to comment</a>
+          <a href="{% url 'user_auth:login' %}?next={{request.path}}">Login to comment</a>
           
           {% else %}
           

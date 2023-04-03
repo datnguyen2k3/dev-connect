@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "app.projects.apps.ProjectsConfig",
     "app.users.apps.UsersConfig",
-    "app.devsearch_auth.apps.DevsearchAuthConfig",
+    "app.user_auth.apps.UserAuthConfig",
     "api.apps.ApiConfig",
 ]
 
@@ -110,10 +110,10 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    "devsearch.timing_middleware.TimingMiddleware",
+    "src.timing_middleware.TimingMiddleware",
 ]
 
-ROOT_URLCONF = "devsearch.urls"
+ROOT_URLCONF = "src.urls"
 
 TEMPLATES = [
     {
@@ -131,7 +131,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "devsearch.wsgi.application"
+WSGI_APPLICATION = "src.wsgi.application"
 
 
 # Database
