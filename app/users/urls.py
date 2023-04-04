@@ -1,6 +1,5 @@
 from django.urls import path
 from app.users import views
-from django.contrib.auth import views as auth_views
 
 app_name = "users"
 
@@ -10,8 +9,8 @@ urlpatterns = [
     path("developers/<uuid:profile_id>/", views.single_profile_view, name="single-profile"),
     
     path("account/", views.account_view, name="account"),
-    path("account/skills/add/", views.add_skill_view, name='add-skill'),
-    path("account/skills/<uuid:skill_id>/edit", views.edit_skill_view, name='edit-skill'),
-    path("account/skills/<uuid:skill_id>/delete", views.delete_skill_view, name='delete-skill'),
+    path("account/work-experience/add/", views.add_work_experience_view, name='add-skill'),
+    path("account/work-experience/<uuid:skill_id>/edit", views.edit_work_experience_view, name='edit-work-experience'),
+    path("account/work-experience/<uuid:skill_id>/delete", views.delete_work_experience_view, name='delete-work-experience'),
     path('account/edit/', views.edit_profile_view, name='edit-profile'),
 ]

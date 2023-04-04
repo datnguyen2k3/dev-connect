@@ -5,15 +5,16 @@ from app.user_auth.forms import RegisterForm
 from django.http import Http404
 from django.contrib.auth import logout
 
+
 # Create your views here.
 def reset_password_email_view(request):
     if request.method == "POST":
         user = utils.get_user_by_email_request(request)
-        
+
         if user is not None:
             utils.send_forget_password_email(request, user, user.email)
             return redirect("user_auth:reset_password_sent")
-    
+
     return render(request, "user_auth/reset_password_email.html", {})
 
 
@@ -25,12 +26,11 @@ def reset_password_view(request, uidb64, token):
     user = utils.get_user_from_reset_password_link(uidb64, token)
     if user is None:
         return Http404("Page not found")
-    
-    
+
     if request.method == "POST":
         new_password = str(request.POST.get("new_password"))
         confirm_password = str(request.POST.get("comfirm_password"))
-        
+
         if new_password != confirm_password:
             messages.error(request, "Passwords do not match.")
             return redirect("user_auth:reset_password_confirm", uidb64, token)
@@ -38,7 +38,7 @@ def reset_password_view(request, uidb64, token):
             user.set_password(new_password)
             user.save()
             return redirect("user_auth:reset_password_complete")
-    
+
     return render(request, "user_auth/reset_password.html", {})
 
 

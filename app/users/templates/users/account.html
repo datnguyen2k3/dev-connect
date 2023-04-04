@@ -49,18 +49,18 @@
 
           <table class="settings__table">
 
-            {% for skill in profile.skill_set.all %}
+            {% for workexperience in profile.workexperience_set.all %}
 
             <tr>
               <td class="settings__tableInfo">
-                <h4>{{skill.name}}</h4>
+                <h4>{{workexperience.job_title}}</h4>
                 <p>
-                  {{skill.description}}
+                  {{workexperience.description}}
                 </p>
               </td>
               <td class="settings__tableActions">
-                <a class="tag tag--pill tag--main settings__btn" href="{% url 'users:edit-skill' skill.id %}"><i class="im im-edit"></i> Edit</a>
-                <a class="tag tag--pill tag--main settings__btn" href="{% url 'users:delete-skill' skill.id %}"><i class="im im-x-mark-circle-o"></i>
+                <a class="tag tag--pill tag--main settings__btn" href="{% url 'users:edit-work-experience' workexperience.id %}"><i class="im im-edit"></i> Edit</a>
+                <a class="tag tag--pill tag--main settings__btn" href="{% url 'users:delete-work-experience' workexperience.id %}"><i class="im im-x-mark-circle-o"></i>
                   Delete</a>
               </td>
             </tr>

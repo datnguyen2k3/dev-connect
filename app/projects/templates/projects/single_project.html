@@ -48,9 +48,6 @@
           
           <div class="comments">
             <h3 class="singleProject__subtitle">Comments</h3>
-            <h5 class="project--rating">
-              {{project.vote_ratio}}% Postitive Feedback ({{project.vote_total}} Vote{{project.vote_total|pluralize:'s'}})
-            </h5>
             
             <form class="form" action="{% url 'projects:single-project' project.id %}" method="POST">
               {% csrf_token %}
@@ -64,17 +61,17 @@
             </form>
             <div class="commentList">
               
-              {% for review in project.review_set.all %}
+              {% for comment in project.projectcomment_set.all %}
               
               <div class="comment">
-                <a href="profile.html">
+                <a href="{% url 'users:single-profile' comment.owner.id  %}">
                   <img class="avatar avatar--md"
-                  src="{{review.owner.profile_img.url}}" alt="user" />
+                  src="{{comment.owner.profile_img.url}}" alt="user" />
                 </a>
                 <div class="comment__details">
-                  <a href="" class="comment__author">{{review.owner.name}}</a>
+                  <a href="" class="comment__author">{{comment.owner.name}}</a>
                   <p class="comment__info">
-                    {{review.body}}
+                    {{comment.body}}
                   </p>
                 </div>
               </div>

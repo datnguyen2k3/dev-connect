@@ -1,9 +1,9 @@
 import uuid
 from django.db import models
 from django.contrib.auth.models import User
+from app.projects.models.SkillTag import SkillTag
 
 
-# Create your models here.
 class Profile(models.Model):
     id = models.UUIDField(
         primary_key=True, unique=True, editable=True, default=uuid.uuid4
@@ -27,25 +27,7 @@ class Profile(models.Model):
     social_youtube = models.CharField(max_length=200, blank=True, null=True)
     social_website = models.CharField(max_length=200, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
+    skills = models.ManyToManyField(SkillTag, blank=True)
 
     def __str__(self):
         return str(self.user.username)
-
-    def get_top_skills(self):
-        return self.skill_set.exclude(description__exact="")
-
-    def get_other_skills(self):
-        return self.skill_set.filter(description="")
-
-
-class Skill(models.Model):
-    id = models.UUIDField(
-        primary_key=True, unique=True, editable=True, default=uuid.uuid4
-    )
-    owner = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=True)
-    name = models.CharField(max_length=200, blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-    created = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return str(self.name)

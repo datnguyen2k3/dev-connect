@@ -5,7 +5,8 @@ from django.http import Http404
 from django.shortcuts import redirect, render
 from . import utils
 from .forms import ProjectForm
-from .models import Project, Review
+from .models.Project import Project
+from .models.ProjectComment import ProjectComment
 
 
 # Create your views here.
@@ -36,19 +37,21 @@ def projects_view(request):
 def single_project_view(request, project_id):
     if request.method == "POST":
         if request.POST.get("comment"):
-            comment = request.POST.get("comment")
-            review = Review.objects.create(
-                body=comment,
+            body = request.POST.get("comment")
+            comment = ProjectComment.objects.create(
+                body=body,
                 project_id=project_id,
                 owner=request.user.profile,
             )
-            review.save()
+            comment.save()
             return redirect("projects:single-project", project_id=project_id)
         else:
             messages.error(request, "You can't submit an empty comment")
 
     project = Project.objects.get(pk=project_id)
-    context = {"project": project}
+    context = {
+        "project": project
+    }
     return render(request, "projects/single_project.html", context=context)
 
 
@@ -58,10 +61,12 @@ def create_project_view(request):
 
     if request.method == "POST":
         project_form = ProjectForm(
-            request.POST, request.FILES, owner=request.user.profile
+            request.POST, request.FILES
         )
         if project_form.is_valid():
-            project_form.save()
+            project = project_form.save(commit=False)
+            project.owner = request.user.profile
+            project.save()
             return redirect("users:account")
 
     context = {"form": project_form}
@@ -76,7 +81,9 @@ def edit_project_view(request, project_id):
     if edited_project.owner != request.user.profile:
         return Http404("You don't have permission to edit this project")
 
-    project_form = ProjectForm(request.POST, request.FILES, instance=edited_project)
+    if request.method == "POST":
+        project_form = ProjectForm(request.POST, request.FILES, instance=edited_project)
+
     if project_form.is_valid():
         project_form.save()
         return redirect("users:account")

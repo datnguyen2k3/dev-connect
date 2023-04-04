@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from src.utils import CustomPaginator
 from api.app.projects.serializers import ProjectSerializer, ReviewSerializer
 from app.projects.utils import search_projects
-from app.projects.models import Project, Review
+from app.projects.models import Project, ProjectComment
 from app.projects.forms import ProjectForm
 
 
@@ -96,14 +96,14 @@ def delete_project_view(request, project_id):
 
 @api_view(["GET"])
 def get_reviews_view(request, project_id):
-    reviews = Review.objects.filter(project=project_id)
+    reviews = ProjectComment.objects.filter(project=project_id)
     serializer = ReviewSerializer(reviews, many=True)
     return Response(serializer.data)
 
 
 @api_view(["GET"])
 def get_single_review_view(request, project_id, review_id):
-    review = Review.objects.get(pk=review_id)
+    review = ProjectComment.objects.get(pk=review_id)
     serializer = ReviewSerializer(review, many=False)
     return Response(serializer.data)
 
@@ -115,7 +115,7 @@ def put_review_view(request, project_id):
         return Response("Body is required")
 
     body = request.data.get("body")
-    new_review = Review.objects.create(
+    new_review = ProjectComment.objects.create(
         project_id=project_id,
         body=body,
         owner=request.user.profile,
@@ -128,7 +128,7 @@ def put_review_view(request, project_id):
 @api_view(["DELETE"])
 @permission_classes([IsAuthenticated])
 def delete_review_view(request, project_id, review_id):
-    review = Review.objects.get(pk=review_id)
+    review = ProjectComment.objects.get(pk=review_id)
 
     if review.owner != request.user.profile:
         return Response("You are not the owner of this review")
@@ -140,7 +140,7 @@ def delete_review_view(request, project_id, review_id):
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
 def edit_review_view(request, project_id, review_id):
-    review = Review.objects.get(pk=review_id)
+    review = ProjectComment.objects.get(pk=review_id)
 
     if review.owner != request.user.profile:
         return Response("You are not the owner of this review")

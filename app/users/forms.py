@@ -1,4 +1,5 @@
-from app.users.models import Profile, Skill
+from app.users.models.Profile import Profile
+from app.users.models.WorkExperience import WorkExperience
 from django import forms
 
 
@@ -15,13 +16,13 @@ class ProfileForm(forms.ModelForm):
             field.widget.attrs.update({'class': 'input', 'placeholder': f'Enter {field.label}'})
 
 
-class SkillForm(forms.ModelForm):
+class WorkExperienceForm(forms.ModelForm):
     class Meta:
-        model = Skill
-        fields = ['name', 'description']
+        model = WorkExperience
+        fields = ['job_title', 'start_date', 'end_date', 'description']
 
     def __init__(self, *args, **kwargs):
-        super(SkillForm, self).__init__(*args, **kwargs)
+        super(WorkExperienceForm, self).__init__(*args, **kwargs)
 
         for fieldname, field in self.fields.items():
             field.widget.attrs.update({'class': 'input', 'placeholder': f'Enter {field.label}'})

@@ -1,10 +1,9 @@
-from django.db.models import Q
-from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from app.users.forms import ProfileForm, SkillForm
-from app.users.models import Profile, Skill
+from app.users.forms import ProfileForm, WorkExperienceForm
+from app.users.models.Profile import Profile
+from app.users.models.WorkExperience import WorkExperience
 from app.users.utils import check_profile_is_owner_skill, search_profiles
 from src.utils import CustomPaginator
 
@@ -66,10 +65,10 @@ def edit_profile_view(request):
 
 
 @login_required(login_url="user_auth:login")
-def add_skill_view(request):
-    skill_form = SkillForm()
+def add_work_experience_view(request):
+    skill_form = WorkExperienceForm()
     if request.method == "POST":
-        skill_form = SkillForm(request.POST)
+        skill_form = WorkExperienceForm(request.POST)
         if skill_form.is_valid():
             skill = skill_form.save(commit=False)
             skill.owner = request.user.profile
@@ -79,31 +78,31 @@ def add_skill_view(request):
 
         return redirect("users:account")
 
-    return render(request, "users/skill-form.html", {"form": skill_form})
+    return render(request, "users/work-experience-form.html", {"form": skill_form})
 
 
 @login_required(login_url="user_auth:login")
-def edit_skill_view(request, skill_id):
+def edit_work_experience_view(request, skill_id):
     check_profile_is_owner_skill(request.user.profile, skill_id)
-    skill = Skill.objects.get(id=skill_id)
-    skill_form = SkillForm(instance=skill)
+    skill = WorkExperience.objects.get(id=skill_id)
+    skill_form = WorkExperienceForm(instance=skill)
 
     if request.method == "POST":
-        skill_form = SkillForm(request.POST, instance=skill)
+        skill_form = WorkExperienceForm(request.POST, instance=skill)
         if skill_form.is_valid:
             skill_form.save()
             return redirect("users:account")
 
-    return render(request, "users/skill-form.html", {"form": skill_form})
+    return render(request, "users/work-experience-form.html", {"form": skill_form})
 
 
 @login_required(login_url="user_auth:login")
-def delete_skill_view(request, skill_id):
+def delete_work_experience_view(request, skill_id):
     check_profile_is_owner_skill(request.user.profile, skill_id)
-    skill = Skill.objects.get(id=skill_id)
+    work_experience = WorkExperience.objects.get(id=skill_id)
 
     if request.method == "POST":
-        skill.delete()
+        work_experience.delete()
         return redirect("users:account")
 
-    return render(request, "users/delete-skill.html", {"skill": skill})
+    return render(request, "users/delete-work-experience.html", {"work_experience": work_experience})

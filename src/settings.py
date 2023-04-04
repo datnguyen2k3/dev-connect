@@ -31,7 +31,6 @@ ALLOWED_HOSTS = ["127.0.0.1"]
 
 
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -39,13 +38,18 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # third party
     "django_cleanup.apps.CleanupConfig",
     "rest_framework",
+    # app
+    "app.companies.apps.CompaniesConfig",
     "app.projects.apps.ProjectsConfig",
     "app.users.apps.UsersConfig",
     "app.user_auth.apps.UserAuthConfig",
+    # api
     "api.apps.ApiConfig",
 ]
+
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -181,7 +185,7 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "devsearch23@gmail.com"
-EMAIL_HOST_PASSWORD = "qadrlmqvmmtjmlgu"
+EMAIL_HOST_PASSWORD = "ooiguiwamnoaobrq"
 
 
 # Static files (CSS, JavaScript, Images)

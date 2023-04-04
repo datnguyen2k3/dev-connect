@@ -1,9 +1,8 @@
-import os
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
-from django.db.models.signals import post_save, post_delete, pre_save
+from django.db.models.signals import post_save, post_delete
 from src.settings import EMAIL_HOST_USER
-from .models import Profile
+from .models.Profile import Profile
 
 
 def create_profile_after_create_user(sender, instance, created, **kwargs):

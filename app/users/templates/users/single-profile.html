@@ -64,39 +64,36 @@
             </p>
           </div>
           <div class="devInfo">
-            <h3 class="devInfo__title">Skills</h3>
+            <h3 class="devInfo__title">Work Experience</h3>
             <div class="devInfo__skills">
 
-              {% for skill in profile.get_top_skills %}
+              {% for work_experience in profile.workexperience_set.all %}
 
                   <div class="devSkill">
-                    <h4 class="devSkill__title">{{skill.name}}</h4>
+                    <h4 class="devSkill__title">{{work_experience.job_title}}</h4>
                     <p class="devSkill__info">
-                      {{skill.description}}
+                      {{work_experience.description}}
                     </p>
                   </div>
-                  
+
               {% endfor %}
 
 
               
               
 
-              <h3 class="devInfo__subtitle">Other Skills</h3>
+              <h3 class="devInfo__subtitle">Skills</h3>
               <div class="devInfo__otherSkills">
 
-                {% for skill in profile.get_other_skills %}
+                {% for skill in profile.skills.all %}
 
                     <span class="tag tag--pill tag--sub tag--lg">
                       <small>{{skill.name}}</small>
                     </span>
-                  
+
                 {% endfor %}
 
 
-
-
-                
               </div>
             </div>
           </div>
