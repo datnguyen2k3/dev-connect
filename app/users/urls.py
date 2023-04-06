@@ -24,4 +24,6 @@ urlpatterns = [
     ),
     path("account/edit/", views.edit_profile_view, name="edit-profile"),
     path("inbox/", views.inbox, name="inbox"),
+    path("message/<str:pk>/", views.viewMessage, name="message"),
+    path('create-message/<str:pk>/', views.createMessage, name="create-message"),
 ]

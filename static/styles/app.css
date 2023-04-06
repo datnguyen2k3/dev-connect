@@ -3,7 +3,7 @@
 }
 
 .btn--sub {
-    background-color: orange;
+    background-color: var(--color-sub);
 }
 
 .card {

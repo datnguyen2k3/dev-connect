@@ -1,4 +1,4 @@
-from app.users.models import Profile, Skill
+from app.users.models import Profile, Skill, Message
 from django import forms
 
 class ProfileForm(forms.ModelForm):
@@ -38,3 +38,14 @@ class SkillForm(forms.ModelForm):
             field.widget.attrs.update(
                 {"class": "input", "placeholder": f"Enter {field.label}"}
             )
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ['name', 'email', 'subject', 'body']
+
+    def __init__(self, *args, **kwargs):
+        super(MessageForm, self).__init__(*args, **kwargs)
+
+        for name, field in self.fields.items():
+            field.widget.attrs.update({'class': 'input'})

@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from app.users.forms import ProfileForm, SkillForm
+from app.users.forms import ProfileForm, SkillForm, MessageForm
 from app.users.models import Profile, Skill, Message
 from app.users.utils import check_profile_is_owner_skill, search_profiles
 from devsearch.utils import CustomPaginator
@@ -99,10 +99,53 @@ def delete_skill_view(request, skill_id):
 
     return render(request, "users/delete-skill.html", {"skill": skill})
 
+
 @login_required(login_url="devsearch_auth:login")
 def inbox(request):
     profile = request.user.profile
     messageRequests = profile.messages.all()
     unreadCount = messageRequests.filter(is_read=False).count()
-    context = {'messageRequests': messageRequests, 'unreadCount': unreadCount}
-    return render(request, "users/inbox.html", context=context) 
+    context = {"messageRequests": messageRequests, "unreadCount": unreadCount}
+    return render(request, "users/inbox.html", context=context)
+
+
+@login_required(login_url="devsearch_auth:login")
+def viewMessage(request, pk):
+    profile = request.user.profile
+    message = profile.messages.get(id=pk)
+
+    if message.is_read == False:
+        message.is_read = True
+        message.save()
+
+    context = {"message": message}
+    return render(request, "users/message.html", context=context)
+
+
+@login_required(login_url="devsearch_auth:login")
+def createMessage(request, pk):
+    recipient = Profile.objects.get(id=pk)
+    form = MessageForm()
+
+    try:
+        sender = request.user.profile
+    except:
+        sender = None
+
+    if request.method == "POST":
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.sender = sender
+            message.recipient = recipient
+
+            if sender:
+                message.name = sender.name
+                message.email = sender.email
+            message.save()
+
+            messages.success(request, "Your message was successfully sent!")
+            return redirect("users:single-profile", profile_id=recipient.id)
+
+    context = {"recipient": recipient, "form": form}
+    return render(request, "users/message-form.html", context)
