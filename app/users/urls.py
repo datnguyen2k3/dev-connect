@@ -23,4 +23,5 @@ urlpatterns = [
         name="delete-skill",
     ),
     path("account/edit/", views.edit_profile_view, name="edit-profile"),
+    path("inbox/", views.inbox, name="inbox"),
 ]

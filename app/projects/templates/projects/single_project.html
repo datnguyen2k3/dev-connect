@@ -60,12 +60,12 @@
                 <textarea class="input input--textarea" name="comment" id="formInput#textarea"
                 placeholder="Write your comments here..."></textarea>
               </div>
-              <input class="btn btn--sub btn--lg" type="submit" value="Comment" />
+              <input class="btn btn--sub btn--lg" type="submit" value="Add review" />
             </form>
             <div class="commentList">
               
               {% for review in project.review_set.all %}
-              
+
               <div class="comment">
                 <a href="profile.html">
                   <img class="avatar avatar--md"

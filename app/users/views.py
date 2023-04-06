@@ -4,11 +4,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from app.users.forms import ProfileForm, SkillForm
-from app.users.models import Profile, Skill
+from app.users.models import Profile, Skill, Message
 from app.users.utils import check_profile_is_owner_skill, search_profiles
 from devsearch.utils import CustomPaginator
-
-
 
 
 # Create your views here.
@@ -35,14 +33,14 @@ def single_profile_view(request, profile_id):
     return render(request, "users/single-profile.html", context=context)
 
 
-@login_required(login_url='devsearch_auth:login')
+@login_required(login_url="devsearch_auth:login")
 def account_view(request):
     profile = request.user.profile
     context = {"profile": profile}
     return render(request, "users/account.html", context=context)
 
 
-@login_required(login_url='devsearch_auth:login')
+@login_required(login_url="devsearch_auth:login")
 def edit_profile_view(request):
     profile = Profile.objects.get(user=request.user)
     profile_form = ProfileForm(instance=profile)
@@ -58,7 +56,7 @@ def edit_profile_view(request):
     return render(request, "users/profile-form.html", {"form": profile_form})
 
 
-@login_required(login_url='devsearch_auth:login')
+@login_required(login_url="devsearch_auth:login")
 def add_skill_view(request):
     skill_form = SkillForm()
     if request.method == "POST":
@@ -75,7 +73,7 @@ def add_skill_view(request):
     return render(request, "users/skill-form.html", {"form": skill_form})
 
 
-@login_required(login_url='devsearch_auth:login')
+@login_required(login_url="devsearch_auth:login")
 def edit_skill_view(request, skill_id):
     check_profile_is_owner_skill(request.user.profile, skill_id)
     skill = Skill.objects.get(id=skill_id)
@@ -90,7 +88,7 @@ def edit_skill_view(request, skill_id):
     return render(request, "users/skill-form.html", {"form": skill_form})
 
 
-@login_required(login_url='devsearch_auth:login')
+@login_required(login_url="devsearch_auth:login")
 def delete_skill_view(request, skill_id):
     check_profile_is_owner_skill(request.user.profile, skill_id)
     skill = Skill.objects.get(id=skill_id)
@@ -101,4 +99,10 @@ def delete_skill_view(request, skill_id):
 
     return render(request, "users/delete-skill.html", {"skill": skill})
 
-
+@login_required(login_url="devsearch_auth:login")
+def inbox(request):
+    profile = request.user.profile
+    messageRequests = profile.messages.all()
+    unreadCount = messageRequests.filter(is_read=False).count()
+    context = {'messageRequests': messageRequests, 'unreadCount': unreadCount}
+    return render(request, "users/inbox.html", context=context) 

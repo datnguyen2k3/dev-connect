@@ -1,7 +1,6 @@
 from app.users.models import Profile, Skill
 from django import forms
 
-
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
