@@ -4,7 +4,8 @@ from rest_framework.permissions import IsAuthenticated
 from src.utils import CustomPaginator
 from api.app.projects.serializers import ProjectSerializer, ReviewSerializer
 from app.projects.utils import search_projects
-from app.projects.models import Project, ProjectComment
+from app.projects.models.Project import Project
+from app.projects.models.ProjectComment import ProjectComment
 from app.projects.forms import ProjectForm
 
 

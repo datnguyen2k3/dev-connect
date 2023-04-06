@@ -8,6 +8,9 @@ from .models.Profile import Profile
 def create_profile_after_create_user(sender, instance, created, **kwargs):
     if created:
         user = instance
+        if user.is_superuser:
+            return
+        
         profile = Profile.objects.create(
             user=user,
             username=user.username,

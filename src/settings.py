@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "app.projects.apps.ProjectsConfig",
     "app.users.apps.UsersConfig",
     "app.user_auth.apps.UserAuthConfig",
+    "app.jobs.apps.JobsConfig",
     # api
     "api.apps.ApiConfig",
 ]
@@ -139,7 +140,8 @@ WSGI_APPLICATION = "src.wsgi.application"
 
 
 # Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+# https://docs.djangoproject.com/en/4.
+# 1/ref/settings/#databases
 
 DATABASES = {
     "default": {
@@ -147,6 +149,20 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "dev_connect",
+#         "USER": "thanhdatmu2003",
+#         "PASSWORD": "thanhdat2003",
+#         "HOST": "DatNguyen2k3",
+#         "PORT": "3306",
+#     }
+# }
+
+
 
 
 # Password validation

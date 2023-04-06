@@ -2,7 +2,7 @@ import uuid
 from django.db import models
 from app.companies.models.Company import Company
 from app.projects.models.SkillTag import SkillTag
-from app.companies.models.JobLevel import JobLevel
+from .JobLevel import JobLevel
 
 
 class Job(models.Model):
@@ -15,6 +15,7 @@ class Job(models.Model):
     TIME_WORKS = (
         ("full_time", "Full Time"),
         ("part_time", "Part Time"),
+        ("full_time_part_time", "Full Time or Part Time")
     )
 
     id = models.UUIDField(
@@ -35,12 +36,23 @@ class Job(models.Model):
         max_length=200, choices=WORKING_MODELS, blank=True, null=True
     )
     title = models.CharField(max_length=200, blank=True, null=True)
+    benefit = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     qualification = models.TextField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
 
+    job_img1 = models.ImageField(
+        upload_to="jobs/", default="jobs/default.jpg", blank=True, null=True
+    )
+    job_img2 = models.ImageField(
+        upload_to="jobs/", default="jobs/default.jpg", blank=True, null=True
+    )
+    job_img3 = models.ImageField(
+        upload_to="jobs/", default="jobs/default.jpg", blank=True, null=True
+    )
+
     def __str__(self):
-        return self.company.name + " " + self.title
+        return self.company.name + " - " + self.title
 
     class Meta:
         ordering = ["-created"]
