@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 from datetime import timedelta
+import ssl
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     # third party
     "django_cleanup.apps.CleanupConfig",
     "rest_framework",
+    "django_elasticsearch_dsl",
     # app
     "app.companies.apps.CompaniesConfig",
     "app.projects.apps.ProjectsConfig",
@@ -98,12 +100,25 @@ CACHES = {
         "LOCATION": "redis://127.0.0.1:6379/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
+        },
     }
 }
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
+
+ELASTICSEARCH_DSL = {
+    "default": {
+        "hosts": "localhost:9200",
+        "http_auth": ("elastic", "i+xMpJfDp_ZW4wHvsApE"),
+    },
+}
+
+
+from elasticsearch import Elasticsearch
+from elasticsearch_dsl import connections
+
+connections.create_connection(hosts=['localhost'])
 
 
 MIDDLEWARE = [
@@ -161,8 +176,6 @@ DATABASES = {
 #         "PORT": "3306",
 #     }
 # }
-
-
 
 
 # Password validation
