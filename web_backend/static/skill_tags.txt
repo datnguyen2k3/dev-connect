@@ -1,0 +1,77 @@
+Agile
+Android
+Angular
+AngularJS
+ASP.NET
+Automation Test
+AWS
+Azure
+Blockchain
+Bridge Engineer
+Business Analyst
+C#
+C++
+C language
+Cloud
+COBOL
+Cocos
+CSS
+Data Analyst
+Database
+Designer
+DevOps
+Drupal
+Embedded
+English
+ERP
+Flutter
+Games
+Golang
+HTML5
+iOS
+IT Support
+J2EE
+Japanese
+Java
+JQuery
+JSON
+Kotlin
+Laravel
+Linux
+Magento
+Manager
+MVC
+MySQL
+.NET
+Networking
+NodeJS
+NoSQL
+Objective C
+OOP
+Oracle
+PHP
+PostgreSql
+Product Manager
+Project Manager
+QA QC
+React Native
+Ruby
+Ruby on Rails
+Salesforce
+SAP
+SAS
+Scala
+Scrum
+Software Architect
+Spring
+SQL
+Swift
+System Admin
+System Engineer
+Team Leader
+Tester
+TypeScript
+UI-UX
+Unity
+VueJS
+Wordpress

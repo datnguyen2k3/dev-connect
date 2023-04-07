@@ -1,0 +1,41 @@
+{% if current_page.has_other_pages %}
+
+  <div class="pagination">
+    <ul class="container">
+        {% if current_page.has_previous %}
+          <li><a href="?page_number={{ current_page.previous_page_number }}" class="btn page-link">&#10094; Prev</a></li>
+        {% endif %}
+        
+        {% for page_number in page_range %}
+        
+          {% if page_number != current_page.number %}
+          <li><a href="?page_number={{page_number}}" class="btn page-link">{{page_number}}</a></li>
+          {% else %}
+          <li><a href="?page_number={{page_number}}" class="btn btn--sub page-link" >{{page_number}}</a></li>
+          {% endif %}
+        
+        {% endfor %}
+        {% if current_page.has_next %}
+          <li><a href="?page_number={{ current_page.next_page_number }}" class="btn page-link">Next &#10095;</a></li>
+        {% endif %}
+
+      </ul>
+    </div>
+
+    <script type="text/javascript">
+        let search_form = document.querySelector('.search-form');
+        let page_links = document.querySelectorAll('.page-link');
+        let search_query = search_form.querySelector('input[name="search_query"]');
+
+        if (search_query) {
+            for (let i = 0; i < page_links.length; i++) {
+                page_links[i].addEventListener('click', function (e) {
+                    page_links[i].href += '&search_query=' + search_query.value;
+                });
+            }
+        }
+    </script>
+
+    
+
+{% endif %}
