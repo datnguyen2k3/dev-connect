@@ -15,7 +15,7 @@ class Job(models.Model):
     TIME_WORKS = (
         ("full_time", "Full Time"),
         ("part_time", "Part Time"),
-        ("full_time_part_time", "Full Time or Part Time")
+        ("full_time_part_time", "Full Time or Part Time"),
     )
 
     id = models.UUIDField(
@@ -36,7 +36,7 @@ class Job(models.Model):
         max_length=200, choices=WORKING_MODELS, blank=True, null=True
     )
     title = models.CharField(max_length=200, blank=True, null=True)
-    
+
     advantage = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     qualification = models.TextField(blank=True, null=True)
@@ -58,3 +58,6 @@ class Job(models.Model):
 
     class Meta:
         ordering = ["-created"]
+        indexes = [
+            models.Index(fields=["id"]),
+        ]

@@ -6,7 +6,13 @@ def single_company_view(request):
     pass
 
 def companies_view(request):
-    pass
+    
+    
+    context = {
+        
+    }
+    
+    return render(request, 'companies/companies.html')
 
 def company_jobs_view(request):
     pass

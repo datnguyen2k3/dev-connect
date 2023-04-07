@@ -10,7 +10,9 @@ job_index = Index('job_index')
 class JobDocument(Document):
     
     company = fields.ObjectField(properties={
+        'id': fields.TextField(),
         'name': fields.TextField(),
+        'type': fields.TextField(),
     })
     
     skills = fields.ObjectField(properties={

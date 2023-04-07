@@ -192,6 +192,7 @@
 <main class="main">
 
   {% comment %} Search {% endcomment %}
+  <form method="GET">
       <section class="hero-section text-center">
       <div class="container container--narrow">
         <div class="hero-section__box">
@@ -199,15 +200,15 @@
         </div>
 
         <div class="hero-section__search">
-          <form class="form search-form" action="{% url 'projects:projects' %}" method="GET">
+          <div class="form search-form">
             <div class="form__field">
               <label for="formInput#search">Search By Projects </label>
               <input class="input input--text" id="formInput#search" type="text" name="search_query"
                 value="{{search_query}}" placeholder="Search" />
             </div>
 
-            <input class="btn btn--sub btn--lg" type="submit" value="Search" />
-          </form>
+            {% comment %} <input class="btn btn--sub btn--lg" type="submit" value="Search" /> {% endcomment %}
+          </div>
         </div>
       </div>
     </section>
@@ -216,15 +217,7 @@
     {% comment %} Job {% endcomment %}
 <div class="filter-jobs-form">
   <div class="filter-form">
-    <div class="form-group">
-      <label for="job-industry">Industry</label>
-      <select class="form-control" id="job-industry" name="job_industry">
-        <option value="">All industries</option>
-        <option value="internet-service">Internet Service</option>
-        <option value="software">Software</option>
-        <option value="ecommerce">E-Commerce</option>
-      </select>
-    </div>
+
     <div class="form-group">
       <label for="job-level">Level</label>
       <select class="form-control" id="job-level" name="job_level">
@@ -234,15 +227,7 @@
         <option value="senior">Senior</option>
       </select>
     </div>
-    <div class="form-group">
-      <label for="job-salary">Salary</label>
-      <select class="form-control" id="job-salary" name="job_salary">
-        <option value="">All salaries</option>
-        <option value="200-400">200 - 400 USD</option>
-        <option value="400-600">400 - 600 USD</option>
-        <option value="600-800">600 - 800 USD</option>
-      </select>
-    </div>
+
     <div class="form-group">
         <label for="company-type">Company Type</label>
         <select class="form-control" id="company-type" name="company_type">
@@ -251,9 +236,23 @@
           <option value="product">Product</option>
         </select>
     </div>
-    <button type="submit" class="btn btn-primary btn-search btn-form">SEARCH</button>
+
+    <div class="form-group">
+        <label for="working-model">Working Model</label>
+        <select class="form-control" id="company-type" name="working-model">
+          <option value="">Working Model</option>
+          <option value="at_office">At office</option>
+          <option value="remote">Remote</option>
+          <option value="hybrid">Hybrid</option>
+        </select>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary btn-search btn-form">APPLY</button>
   </div>
 </div>
+</form>
     <section class="devlist">
       <div class="container">
         <div class="search search-jobs search-page__main-content">

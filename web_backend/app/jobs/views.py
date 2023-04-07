@@ -9,10 +9,15 @@ def single_job_view(request, job_id):
     return render(request, 'jobs/single-job.html', {'job': job})
 
 def jobs_view(request):
+    
+    
     jobs = Job.objects.all()
     context = {
         'jobs': jobs
     }
+    
+    if request.GET:
+        print(request.GET)
     
     return render(request, 'jobs/jobs.html', context=context)
 
