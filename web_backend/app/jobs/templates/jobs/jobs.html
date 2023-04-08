@@ -238,10 +238,10 @@
     </div>
 
     <div class="form-group">
-        <label for="working-model">Working Model</label>
-        <select class="form-control" id="company-type" name="working-model">
+        <label for="working_model">Working Model</label>
+        <select class="form-control" id="company-type" name="working_model">
           <option value="">Working Model</option>
-          <option value="at_office">At office</option>
+          <option value="office">At office</option>
           <option value="remote">Remote</option>
           <option value="hybrid">Hybrid</option>
         </select>
@@ -257,7 +257,7 @@
       <div class="container">
         <div class="search search-jobs search-page__main-content">
           <div class="search-page">
-            <div class="search-result">1,203 IT jobs in Vietnam</div>
+            <div class="search-result">Found {{number_jobs}} IT jobs</div>
 
             {% for job in jobs %}
             <div class="column job-card">
@@ -267,17 +267,18 @@
                     <img class="avatar avatar--md" src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNnBjSnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--9a72afb934c2fa7cb5587f07c444353e432aec32/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--89a7283b6fdfb4208cdc2b440a36613a6fae974c/avt.jpg" alt="image" />
                     <div class="dev__meta">
                       <h3>{{job.title}}</h3>
-                        <h5>{{job.lower_salary}} - {{job.upper_salary}}</h5>
+                        {% comment %} <h5>{{job.lower_salary}} - {{job.upper_salary}}</h5> {% endcomment %}
+                        <h5>{{job.company.name}}</h5>
                     </div>
                     </div>
                       <p class="dev__info">
-                        {{job.benefit}}
+                        {{job.advantage}}
                       </p>
 
                     <div class="dev__skills">
-                    {% for skill in job.skills.all %}
+                    {% for skill in job.skills %}
                       <span class="tag tag--pill tag--main">
-                        <small>{{skill}}</small>
+                        <small>{{skill.name}}</small>
                       </span>
                     {% endfor %}
                   </div>

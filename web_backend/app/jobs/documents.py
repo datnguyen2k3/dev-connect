@@ -12,6 +12,7 @@ class JobDocument(Document):
     company = fields.ObjectField(properties={
         'id': fields.TextField(),
         'name': fields.TextField(),
+        'full_name': fields.TextField(),
         'type': fields.TextField(),
     })
     
