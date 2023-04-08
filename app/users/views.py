@@ -33,7 +33,7 @@ def single_profile_view(request, profile_id):
     return render(request, "users/single-profile.html", context=context)
 
 
-@login_required(login_url="devsearch_auth:login")
+
 def account_view(request):
     profile = request.user.profile
     context = {"profile": profile}
