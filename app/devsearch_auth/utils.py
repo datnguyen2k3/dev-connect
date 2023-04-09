@@ -16,7 +16,7 @@ def get_user_by_email_request(request) -> User:
     try:
         user = User.objects.get(email=email)
     except User.DoesNotExist:
-        messages.error("No user with that email address exists.")
+        messages.error(request, "No user with that email address exists.")
         return None
 
     return user
@@ -25,17 +25,16 @@ def get_user_by_email_request(request) -> User:
 def send_forget_password_email(request, user, email) -> bool:
     token_generator = PasswordResetTokenGenerator()
     token = token_generator.make_token(user)
-    
+
     uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
 
-    
     subject = "Reset your password"
     reset_password_link = f"http://127.0.0.1:8000/reset_password/{uidb64}/{token}"
-    
+
     message = f"Hi {user.username}, you can reset your password by clicking on the link below:{reset_password_link}"
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
-    
+
     send_mail(subject, message, email_from, recipient_list)
     return True
 
@@ -46,7 +45,7 @@ def get_user_from_reset_password_link(uidb64, token) -> User:
         user = User.objects.get(pk=uid)
     except (TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
-    
+
     if user is not None and PasswordResetTokenGenerator().check_token(user, token):
         return user
     else:
@@ -55,7 +54,7 @@ def get_user_from_reset_password_link(uidb64, token) -> User:
 
 def login_web(request) -> bool:
     user = get_user_from_request(request)
-    
+
     if user is None:
         messages.error(request, "Username or email is not exists")
         return False
@@ -105,5 +104,5 @@ def get_user_from_request(request) -> User:
             user = User.objects.get(email=username)
         except User.DoesNotExist:
             return None
-        
+
     return user

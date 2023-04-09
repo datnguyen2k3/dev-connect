@@ -4,16 +4,10 @@ from app.devsearch_auth import views
 app_name = "devsearch_auth"
 
 urlpatterns = [
-        
     path("login/", views.login_view, name="login"),
     path("logout/", views.logout_view, name="logout"),
     path("register/", views.register_view, name="register"),
-    
-    path(
-        "reset_password/", 
-        views.reset_password_email_view, 
-        name="reset_password"
-    ),
+    path("reset_password/", views.reset_password_email_view, name="reset_password"),
     path(
         "reset_password_sent/",
         views.reset_password_sent_view,
