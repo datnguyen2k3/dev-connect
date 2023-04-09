@@ -37,7 +37,9 @@ class Company(models.Model):
     overview = models.TextField(blank=True, null=True)
     skills = models.ManyToManyField(SkillTag, blank=True, null=True)
     advantage = models.TextField(blank=True, null=True)
-
+    company_img = models.ImageField(
+        null=True, blank=True, default="companies/default.jpg", upload_to="companies/"
+    )
     # base_country = models.ForeignKey(Country, on_delete=models.CASCADE)
     # cities = models.ManyToManyField(City, blank=True)
 
