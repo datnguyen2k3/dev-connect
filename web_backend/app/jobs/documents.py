@@ -1,7 +1,8 @@
-from django_elasticsearch_dsl import Document, Index
+from django_elasticsearch_dsl import Document, Index, Keyword
 from .models.Job import Job
 from django_elasticsearch_dsl import fields
 from app.companies.models.Company import Company
+
 
 job_index = Index('job_index')
 
@@ -14,7 +15,11 @@ class JobDocument(Document):
         'name': fields.TextField(),
         'full_name': fields.TextField(),
         'type': fields.TextField(),
+        'company_img': fields.TextField(attr='company_img.url'),
     })
+    
+    # def company_img(self, instance):
+    #     return instance.company.company_img.url if instance.image else ''
     
     skills = fields.ObjectField(properties={
         'name': fields.TextField(),
@@ -45,7 +50,7 @@ class JobDocument(Document):
             'advantage',
             'description',
             'qualification',
-            'benefit'
+            'benefit',
         ]
         
 

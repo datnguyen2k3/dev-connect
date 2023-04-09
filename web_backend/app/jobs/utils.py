@@ -1,5 +1,6 @@
 from elasticsearch_dsl import Q, Search
 from src.utils import get_elasticsearch_client
+from app.projects.models.SkillTag import SkillTag
 
 
 def search_jobs(query=None):
@@ -7,6 +8,7 @@ def search_jobs(query=None):
         es = get_elasticsearch_client()
         resp = es.search(index='job_index', query={"match_all": {}}, size = 10000)
         return [result['_source'] for result in resp['hits']['hits']]
+        
         
     
     search_query = query.get("search_query", "")
@@ -16,13 +18,16 @@ def search_jobs(query=None):
     
     
     words = search_query.split(" ")
+    words = [word.lower() for word in words]
+    words = [word.capitalize() for word in words]
+    
     
     def get_fuzzy(field_name: str, value: str):
         return {
             "fuzzy": {
                 field_name: {
                     "value": value,
-                    "fuzziness":"AUTO"
+                    "fuzziness":"2"
                 } 
             }
         }
@@ -61,17 +66,7 @@ def search_jobs(query=None):
     
     search_query = [match_job_title, match_company_name]
     
-    match_each_word = [
-        {
-            "multi_match": {
-                "query": word,
-                "fields": [ "skills.name", "company.type", "advantage", "benefit", "description", "qualification"],
-                "fuzziness": "AUTO" 
-            }
-        } for word in words
-    ]
-    
-    search_query += match_each_word
+
     
     
     filter_query = []
@@ -98,6 +93,21 @@ def search_jobs(query=None):
         })
     
     
+    match_skill_level = [
+        {
+            "multi_match": {
+                'query': word,
+                'fuzziness': '2',
+                "slop": 1,
+                "fields": ["skills.name", "levels.level"],
+                
+            }
+        } for word in words
+    ]
+    
+
+    search_query += match_skill_level
+    
     
     payload = {
         "bool": {
@@ -108,5 +118,39 @@ def search_jobs(query=None):
 
     es = get_elasticsearch_client()
     resp = es.search(index='job_index', query=payload, size = 10000)
+    
+    first_resp = [result['_source'] for result in resp['hits']['hits']]
+    
+    
+    
+    match_each_word = [
+        {
+            "multi_match": {
+                'query': word,
+                'fuzziness': '2',
+                "slop": 1,
+                "fields": ["description", "qualification", "title", "company.name", "skills.name", "levels.level"],
+                
+            }
+        } for word in words
+    ]
+    
+    search_query += match_each_word
+    
+    payload = {
+        "bool": {
+            "should": search_query,
+            "must": filter_query
+        }
+    }
+    
+    resp = es.search(index='job_index', query=payload, size = 10000) 
+    second_resp = [result['_source'] for result in resp['hits']['hits']]
+    
+    for job in second_resp:
+        if job not in first_resp:
+            first_resp.append(job)
+    
+    
 
-    return [result['_source'] for result in resp['hits']['hits']]
+    return first_resp
