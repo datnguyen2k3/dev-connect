@@ -972,26 +972,21 @@
         </div>
         <div class="headers__info">
           <h1 class="headers__info__name">
-            Toshiba Software Development (Viet Nam) Co, Ltd
+            {{company.name}}
           </h1>
           <div class="headers__info__item">
-            <div class="svg-icon svg-icon--grey headers__info__item-location">
-              <svg class="svg-icon__icon">
-                <use class="fa-sharp fa-solid fa-location-dot"></use>
-              </svg>
-              <div class="svg-icon__text">Ba Dinh, Ha Noi</div>
-            </div>
+
             <div class="svg-icon">
               <svg class="svg-icon__icon">
                 <use xlink:href="#setting_icon"></use>
               </svg>
-              <div class="svg-icon__text">Product</div>
+              <div class="svg-icon__text">{{company.type}}</div>
             </div>
             <div class="svg-icon">
               <svg class="svg-icon__icon">
                 <use xlink:href="#people_icon"></use>
               </svg>
-              <div class="svg-icon__text">301-500</div>
+              <div class="svg-icon__text">{{company.number_employees}}</div>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
               <symbol id="jp-flag" viewBox="0 0 512 512">
@@ -999,24 +994,15 @@
                 <circle style="fill:#D80027;" cx="256" cy="256" r="111.304"></circle>
               </symbol>
             </svg>
-            <div class="svg-icon">
-              <svg class="svg-icon__icon">
-                <use xlink:href="#jp-flag"></use>
-              </svg>
-              <div class="svg-icon__text">Japan</div>
-            </div>
+
             <div class="svg-icon">
               <svg class="svg-icon__icon">
                 <use xlink:href="#calendar_icon"></use>
               </svg>
-              <div class="svg-icon__text">Monday - Friday</div>
+              <div class="svg-icon__text">{{company.working_time}}</div>
             </div>
-            <div class="svg-icon headers__info__item-ot">
-              <svg class="svg-icon__icon">
-                <use xlink:href="#time_icon"></use>
-              </svg>
-              <div class="svg-icon__text">No OT</div>
-            </div>
+
+
           </div>
         </div>
         <div class="headers__actions">
@@ -1039,11 +1025,14 @@
         <div class="search search-jobs search-page__main-content">
             <div class="search-page__job-preview">
               <div class="job-details__header">
-                  <div class="job-details__title">Toshiba Software Development (Viet Nam) Co, Ltd Jobs</div>
+                  <div class="job-details__title">{{company.name}} Jobs</div>
 
               </div>
 
               <div class="job-details__body">
+
+                  {% for job in company.jobs_ %}{% endfor %}
+
                   <div class="job-details__overview">
                     <div class="logo">
                       <div class="logo-wrapper job-details-link-wrapper" data-action="mouseover->tooltip#showTooltip click->tooltip#disposeTooltip" data-controller="tooltip" title="" data-bs-original-title="A social infrastructure and digital products software company">
