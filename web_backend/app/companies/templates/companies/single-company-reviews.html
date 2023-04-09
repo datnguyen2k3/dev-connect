@@ -1,0 +1,2105 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block style %}
+
+
+  <style>
+
+    /* Headers-div */
+    .headers {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        /* Chỗ cần fix */
+        width: calc(87% + 10px);
+        margin-left: 11rem;
+
+        min-height: 186px;
+        background-color: #fff;
+        border: 3px solid var(--color-light);
+        border-radius: 0 0 3px 3px;
+    }
+
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    .text-break {
+        word-wrap: break-word !important;
+        word-break: break-word !important;
+    }
+
+    .headers__logo {
+        margin-top: -5px;
+        width: 205px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .headers__logo__img {
+        width: 168px;
+        height: 160px;
+        background-color: #fff;
+        border: 1px solid #d2d2d2;
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+    }
+
+    img.lazyloaded[data-controller~=lazyload] {
+        opacity: 1;
+        transition: opacity 200ms;
+    }
+
+    .headers__logo__img img {
+        max-width: 100%;
+        object-fit: contain;
+    }
+
+    img[data-controller~=lazyload], img.lazyloading[data-controller~=lazyload] {
+        opacity: 0;
+    }
+
+    img, svg {
+        vertical-align: middle;
+    }
+
+    canvas {
+        height: 152px;
+        aspect-ratio: auto 170 / 152;
+        width: 170px;
+    }
+
+    canvas {
+        overflow-clip-margin: content-box;
+        overflow: clip;
+    }
+
+    .headers__info {
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        flex: 1;
+    }
+
+    .headers__info__name {
+        color: #353535;
+        line-height: 35.2px;
+        font-size: 32px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+        /* margin-top: 0;
+        margin-bottom: .5rem; */
+        font-weight: normal;
+        /* line-height: 1.2; */
+    }
+
+    h1 {
+        display: block;
+        /* font-size: 2em; */
+        margin-block-start: 0.67em;
+        margin-block-end: 0.67em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        /* font-weight: bold; */
+    }
+
+    .headers__info__item {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-row-gap: 5px;
+    }
+
+    .headers__info__item-location {
+        grid-column: 1/-1;
+    }
+
+    .svg-icon {
+        display: flex;
+        align-items: center;
+    }
+
+    .svg-icon__icon, .svg-icon__icon a {
+        fill: currentColor;
+        width: 14px;
+        height: 14px;
+        color: #7a7a7a;
+        flex-shrink: 0;
+    }
+
+    .city_and_posted_date {
+        font-size: 13px;
+        display: inline-block;
+        margin-right: 20px;
+        margin-left: 10px;
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 100px;
+    }
+
+    /* svg:not(:root) {
+        overflow-clip-margin: content-box;
+        overflow: hidden;
+    }
+
+    :not(svg) {
+        transform-origin: 0px 0px;
+    } */
+
+    .svg-icon__text {
+        margin-left: 10px;
+    }
+
+    .d-none {
+        display: none !important;
+    }
+
+    symbol {
+        overflow: hidden;
+    }
+
+    .headers__info__item-ot {
+        grid-column: 2/-1;
+    }
+
+    .headers__actions {
+        padding: 30px 20px;
+        flex: 0 0 220px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .headers__actions>.ibutton:first-child {
+        margin-bottom: 10px;
+        text-decoration: none;
+    }
+
+    .full-width.ibutton {
+        width: 100%;
+    }
+
+    button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled) {
+        cursor: pointer;
+    }
+
+    .ibutton-red {
+        color: #fff;
+        border: 0;
+        background-color: var(--color-sub-light);
+    }
+
+    .ibutton {
+        position: relative;
+        font-family: "Roboto",sans-serif;
+        font-weight: 400 !important;
+        /* padding: 0 20px; */
+        height: 45px;
+        line-height: 45px;
+        border-radius: 4px;
+        font-size: 19px;
+        white-space: nowrap;
+        -webkit-font-smoothing: antialiased;
+        /* outline: 0; */
+        display: inline-block;
+        text-align: center;
+        /* color: #fff; */
+    }
+
+    .ibutton-follow {
+        border: 1px solid var(--color-sub-light);
+        color: var(--color-sub-light);
+        background-color: #fff;
+        /* width: 150px; */
+        height: 43px;
+        line-height: 45px;
+        padding: 0;
+        outline: 0;
+        text-decoration: none;
+    }
+
+    button, select {
+        text-transform: none;
+    }
+
+    input, button, select, optgroup, textarea {
+        margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+    }
+
+    input[type="hidden" i] {
+        appearance: none;
+        background-color: initial;
+        cursor: default;
+        display: none !important;
+        padding: initial;
+        border: initial;
+        border-color: initial;
+        border-radius: initial;
+    }
+
+    a:-webkit-any-link {
+        /* color: -webkit-link; */
+        cursor: pointer;
+        /* text-decoration: underline; */
+    }
+
+    form {
+        display: block;
+        margin-top: 0em;
+    }
+
+    /* navbar */
+    .bg-white {
+        --bs-white-rgb: 255, 255, 255;
+        --bs-bg-opacity: 1;
+        background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
+    }
+
+    .pt-1 {
+        padding-top: 1rem !important;
+    }
+
+    .mt-3 {
+        /* cần fix */
+        width: calc(87% + 10px);
+        margin: 2rem 0 0 11rem !important;
+    }
+
+    .p-md-0 {
+        padding: 0 !important;
+    }
+
+    .m-0 {
+        margin: 0 !important;
+    }
+
+    li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+    }
+
+    .nav {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        border: 3px solid var(--color-light);
+        border-radius: 3px;
+    }
+
+    .nav li .nav-link.active {
+        color: var(--color-sub-light);
+        border-bottom: 3px solid var(--color-sub-light);
+    }
+
+    .nav li .nav-link {
+        border-radius: 0;
+        text-align: center;
+        width: 160px;
+        border-width: 0;
+        font-size: 17px;
+        cursor: pointer;
+        color: #5c5a5b;
+        font-weight: 500;
+        border-bottom: 3px solid transparent;
+    }
+
+    .nav-link {
+        line-height: 1.25rem;
+        padding: 10px;
+        /* font-size: 15px; */
+    }
+
+    .me-3 {
+        margin-right: 1rem !important;
+    }
+
+    .nav-link {
+        display: block;
+        /* padding: .5rem 1rem;
+        color: var(--color-sub-light); */
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    }
+
+    /* Container */
+    ul {
+        /* display: block;
+        list-style-type: disc; */
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 40px;
+        color: #353535;
+    }
+
+    .filter-jobs-form {
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .filter-jobs-form .search-form {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .filter-jobs-form .filter-form {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .filter-jobs-form .form-group {
+      flex-basis: calc(20.00% - 10px);
+      margin-bottom: 10px;
+    }
+
+    .filter-jobs-form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .filter-jobs-form select {
+      width: 100%;
+      height: 40px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .filter-jobs-form .btn-search {
+      width: 100px;
+      height: 40px;
+      border-radius: 5px;
+      font-size: 16px;
+      background-color: #337ab7;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .filter-jobs-form .btn-search:hover {
+      background-color: #286090;
+    }
+
+    .search-page__main-content {
+        display: grid;
+        margin: 10px 0 0 -100px;
+        grid-template-columns: 900px 400px;
+        max-width: 1350px;
+        column-gap: 30px;
+        row-gap: 30px;
+    }
+
+    .red-btn {
+        background-color: #fff;
+        color: var(--color-sub-light);
+        width: 100%;
+        border: 1px solid var(--color-sub-light);
+        margin: 20px 0;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .red-btn:hover {
+        color: #fff;
+        background-color: var(--color-sub-light);
+    }
+
+    .search-page__job-preview {
+        padding: 0 30px;
+        /* position: sticky;
+        overflow: scroll; */
+        height: calc(100% - 16px);
+        border: 3px solid var(--color-light);
+        background-color: #fff;
+        border-radius: 3px;
+    }
+
+    .job-details__paragraph {
+        font-size: 16px;
+        color: #353535;
+        margin: 20px 0;
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .search-page__job-preview::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .search-page__job-preview {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .job-details__header {
+        margin-bottom: 20px;
+        padding-top: 20px;
+        position: sticky;
+        top: -10px;
+        z-index: 1;
+        background-color: #fff;
+    }
+
+    .job-details__title {
+        font-size: 29px;
+        font-weight: 500;
+        color: #1b1b1b;
+    }
+
+    .job-details__overview {
+        border-top: 2px solid rgba(255,192,121,.5);
+        background: #fff1e1 !important;
+        display: flex;
+        z-index: 3;
+        position: relative;
+        /* border-top: 1px solid #e7e7e7; */
+        overflow: hidden;
+        font-weight: 400;
+        padding: 27px 0;
+        transition: all .25s ease;
+    }
+
+    .job-details__overview .logo {
+      margin: 22px 30px 0 25px;
+    }
+
+    .job-details__overview .logo img {
+        border: 1px solid #ccc;
+        background-color: #fff;
+        padding: 10px;
+        width: 70px;
+        height: 70px;
+        display: inline-block;
+        overflow: hidden;
+    }
+
+    .job-details__overview__description {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      overflow: hidden;
+    }
+
+    .job-details__overview__description a {
+      color: #231f20;
+      font-size: 20px;
+      padding-left: 18px;
+    }
+
+    .svg-icon, .svg-icon__text {
+        display: flex;
+        align-items: center;
+        margin-left: 0;
+    }
+
+    .svg-icon__text a {
+        fill: currentColor;
+        color: #7a7a7a;
+        flex-shrink: 0;
+    }
+
+    .city_and_posted_date {
+        display: flex;
+        font-size: 13px;
+        margin-right: 20px;
+        margin-left: 10px;
+        text-align: right;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 100px;
+    }
+    
+    .city_and_posted_date .feature {
+        background: var(--color-sub-light);
+        font-family: "Roboto Condensed",sans-serif;
+        display: inline-block;
+    }
+
+    .city_and_posted_date .new {
+        padding: 2px 10px;
+        min-width: 45px;
+        color: #fff;
+        background: var(--color-sub-light);
+        text-align: center;
+        display: inline-block;
+        align-self: flex-end;
+    }
+
+   .distance-time-job-posted {
+        font-size: 13px;
+    }
+
+    .swiper-pointer-events {
+        touch-action: pan-y;
+    }
+
+    .swiper {
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        overflow: hidden;
+        list-style: none;
+        padding: 0;
+        z-index: 1;
+    }
+
+    .swiper {
+        height: 450px;
+        width: 600px;
+    }
+
+    .swiper-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        box-sizing: content-box;
+    }
+
+    .swiper-slide {
+        flex-shrink: 0;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .swiper-slide-inner {
+        width: 100%;
+    }
+
+    img.lazyloaded[data-controller~=lazyload] {
+        opacity: 1;
+        transition: opacity 200ms;
+    }
+
+    .swiper-slide img {
+        max-width: 100%;
+    }
+
+    img[data-controller~=lazyload], img.lazyloading[data-controller~=lazyload] {
+        opacity: 0;
+    }
+
+    .job-details__divider {
+        border-bottom: 1px solid var(--color-light);
+    }
+
+    .job-details__second-title {
+        font-size: 23px;
+        color: #353535;
+        font-weight: 400;
+        margin: 30px 0 0;
+    }
+
+    .jd-page__employer-overview {
+        border: 3px solid var(--color-light);
+        height: 570px;
+        padding: 20px;
+        background-color: #fff;
+    }
+
+    .employer-long-overview__top {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .employer-long-overview__top-left {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .employer-long-overview__name {
+        font-size: 30px;
+        font-weight: 500;
+        color: #1b1b1b;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .employer-long-overview__short-desc {
+        font-size: 16px;
+        color: #353535;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .employer-long-overview__basic-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-row-gap: 5px;
+        font-size: 14px;
+    }
+
+    .panel {
+      margin-bottom: 15px;
+      background-color: #fff;
+      border: 3px solid var(--color-light);
+      border-radius: 4px;
+      box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  }
+
+    .panel-default>.panel-heading {
+        background: #fff;
+        border: 0;
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
+    }
+
+    h3, .h3 {
+      margin: 1em 0;
+      color: #231F30;
+    }
+
+    .reasons-to-join {
+        list-style-type: none;
+        margin-top: 0;
+    }
+
+    ol, ul, dl {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+
+    ol, ul {
+        padding-left: 2rem;
+    }
+
+    ol, ul {
+        padding: 0 0 0 40px;
+        margin: 1em 0;
+    }
+
+    .reasons-to-join>.item {
+        margin-bottom: 15px;
+        display: flex;
+    }
+
+    .reasons-to-join>.item>.number {
+        color: #333;
+        border: 2px solid #333;
+        border-radius: 50%;
+        display: inline-block;
+        padding: 1px 7px;
+        margin-right: 10px;
+        font-weight: bold;
+        align-self: flex-start;
+    }
+
+    .panel-paragraph {
+        font-size: 16px;
+        line-height: 1.7em;
+    }
+
+    .swiper-pointer-events {
+        touch-action: pan-y;
+    }
+
+    .swiper {
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        overflow: hidden;
+        list-style: none;
+        padding: 0;
+        z-index: 1;
+    }
+
+    .swiper {
+        height: 450px;
+        width: 600px;
+    }
+
+    .panel-paragraph>p {
+        margin-top: 0;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        margin: 0 0.5em;
+    }
+
+    .panel-heading {
+        padding: 10px 20px;
+    }
+
+    /* Overall Rating */
+    .align-items-center {
+        align-items: center !important;
+    }
+
+    .panel-body {
+        padding: 20px;
+    }
+
+    .panel-body-review {
+        padding-top: 36px;
+        padding-bottom: 36px !important;
+    }
+
+    .summary-ratings {
+        padding-top: 10px;
+    }
+
+    .justify-content-center {
+        justify-content: center !important;
+    }
+
+    .col-md-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+
+    .d-md-block {
+        display: block !important;
+    }
+
+    .row>* {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+        /* flex-shrink: 0;
+        width: 100%; */
+        max-width: 100%;
+        padding-right: calc(var(--bs-gutter-x)*.5);
+        padding-left: calc(var(--bs-gutter-x)*.5);
+        margin-top: var(--bs-gutter-y);
+    }
+
+    .row {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: calc(-1*var(--bs-gutter-y));
+        margin-right: calc(-0.5*var(--bs-gutter-x));
+        margin-left: calc(-0.5*var(--bs-gutter-x));
+    }
+
+    .rating-stars-box img.big {
+        width: 40px;
+    }
+
+    .summary-ratings .start-point {
+        font-size: 28px;
+        font-weight: 500;
+        color: var(--color-sub-light);
+        padding-right: 5px;
+    }
+
+    .summary-ratings .view-more-statistic {
+        width: 30px;
+        height: 16px;
+    }
+
+    .clearfix:before, .clearfix:after {
+        content: " ";
+        display: table;
+    }
+
+    .collapse:not(.show) {
+        display: none;
+    }
+
+    .company-page-review-stats {
+        position: relative;
+    }
+
+    .company-page-review-stats .stats-item:hover, .company-page-review-stats .stats-item.active {
+        background-color: #fff1e1;
+    }
+
+    .company-page-review-stats .stats-item {
+        display: flex;
+        padding: 10px;
+    }
+
+    .filter-box {
+        font-weight: var(--font-bold);
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .filter-box button.btn-filter {
+        margin-left: 10px;
+        padding: 4px 8px;
+        border-radius: 25px;
+        background-color: #fff;
+        border-color: #d3d3d3;
+        color: #5e5e5e;
+        min-width: 60px;
+    }    
+
+    .btn {
+        display: inline-block;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        user-select: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    .filter-box button.btn-filter span.filtered-mark {
+        /* display: inline-block; */
+        position: relative;
+        vertical-align: middle;
+        right: 7px;
+        bottom: 1px;
+        padding: 0 3px;
+        font-size: 9px;
+        border: 1px solid;
+        border-radius: 50%;
+        line-height: 11px;
+    }
+
+    .total-reviews-headline {
+        border-bottom: 1px solid #d3d3d3;
+    }
+
+    .total-reviews-headline h3, .total-reviews-headline .h3 {
+        font-size: 24px;
+        margin: 10px 0;
+    }
+
+    .content-of-review:not(:last-child) {
+        border-bottom: 1px solid #d3d3d3;
+    }
+
+    .content-of-review {
+        position: relative;
+        padding-top: 20px;
+    }
+
+    .col-md-12 {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
+    .content-of-review .short-title {
+        font-size: 30px;
+        margin-top: 7px;
+        color: #333;
+        line-height: 1.5em;
+        word-wrap: break-word;
+    }
+
+    .content-of-review h3, .content-of-review .h3 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: var(--font-bold);
+        /* color: rgba(58,58,58,.88); */
+        font-family: "Roboto",sans-serif;
+    }
+
+    .content-of-review .stars-and-recommend {
+        display: flex;
+        align-items: center;
+        margin-left: 0;
+    }
+
+    .content-of-review .stars-and-recommend .stars {
+        display: flex;
+    }
+
+    .rating-stars-box img.small {
+        width: 20px;
+        padding: 4px;
+    }
+
+    small, .small {
+        font-size: 0.875em;
+    }
+
+    .content-of-review .stars-and-recommend .rating-dropdown {
+        color: #999;
+    }
+
+    .d-sm-block {
+        display: block !important;
+    }
+
+    .content-of-review .stars-and-recommend .arrow-up {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 16px solid #d9d9d9;
+        position: absolute;
+        left: 134px;
+        bottom: 27px;
+        display: none;
+    }
+
+    .content-of-review .stars-and-recommend .detail-rating-tooltip {
+        display: none;
+        position: absolute;
+        margin-top: 30px;
+        font-size: 13px;
+        width: 190px;
+        padding-left: 10px;
+        padding-bottom: 10px;
+        left: 15px;
+        background-color: #fff;
+        border: 1px solid #d9d9d9;
+        border-radius: 4px;
+        z-index: 2;
+    }
+
+    /* .content-of-review .detail-rating-tooltip, .content-of-review .rating-dropdown {
+        display: none;
+    } */
+
+    .content-of-review .stars-and-recommend .detail-rating-tooltip li {
+        list-style-type: none;
+        margin-top: -5px;
+    }
+
+    .content-of-review .stars-and-recommend .detail-rating-tooltip p {
+        margin-bottom: -4px;
+        color: gray;
+    }
+
+    .content-of-review .recommend {
+        margin-left: 15px;
+    }
+
+    .content-of-review .recommend .yes {
+        color: #7cb228;
+        font-size: 16px;
+    }
+
+    .content-of-review .date {
+        color: gray;
+        padding: 10px 0;
+        font-size: 13px;
+    }
+
+    .content-of-review .feedback {
+        margin-top: -20px;
+    }
+
+    .text-center {
+        text-align: center !important;
+    }
+
+    .pagination {
+        margin: 20px 0;
+    }
+
+    .pagination {
+        display: flex;
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .pagination .active>a {
+        background-color: var(--color-sub-light);
+        border-color: var(--color-sub-light);
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .pagination .disabled>a {
+        border: none;
+    }
+
+    a:not([href]):not([class]), a:not([href]):not([class]):hover {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .pagination>li>a {
+        margin: 0 5px;
+        border-radius: 4px;
+        color: #333;
+        border: 1px solid var(--color-sub-light);
+        padding: 7px 13px;
+        font-size: .9em;
+    }
+
+    .mt-1 {
+        margin-top: .25rem !important;
+    }
+
+    .panel-title {
+        font-size: 25px;
+        font-weight: 500;
+        margin-top: 10px;
+        color: #3d3d3d;
+        font-family: "Roboto Condensed",sans-serif;
+    }
+
+    .mb-20 {
+        margin-bottom: 20px !important;
+    }
+
+    .pb-15 {
+        padding-bottom: 15px !important;
+    }
+
+    .job-item-short:first-child {
+        padding-top: 0px;
+    }
+
+    .job-item-short {
+        border-bottom: 1px solid #ddd;
+        padding-top: 10px;
+    }
+
+    .job-item-short .name {
+        font-size: 20px;
+        font-weight: 500;
+        margin: 5px 0;
+        line-height: 25px;
+    }
+
+    .job-item-short .name a {
+        color: #231f20;
+        word-wrap: break-word;
+    }
+
+    .job-item-short__salary {
+        font-size: 13px;
+    }
+
+    .svg-icon--green .svg-icon__icon, .svg-icon--green .svg-icon__text {
+        color: var(--green);
+    }
+
+    .svg-icon--rounded .svg-icon__icon {
+        border: 1px solid currentColor;
+        border-radius: 50%;
+        padding: 1px;
+    }
+
+    .job-item-short__address {
+        margin-top: 5px;
+        font-size: 13px;
+    }
+
+    .job-item-short .tag-list {
+        padding: 10px 0 3px;
+    }
+
+    .job-item-short .tag-list a {
+        margin-bottom: 7px;
+    }
+
+    .ilabel {
+        transition: all .2s ease;
+        margin: 0 10px 0 0;
+        padding: 4px 5px;
+        background: transparent;
+        border: 1px solid #d2d3d3;
+        color: #575656;
+        font-size: 12px;
+        font-weight: normal;
+        text-decoration: none;
+        line-height: 100%;
+        display: inline-block;
+    }
+
+    .disable-user-select {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .d-flex {
+        display: flex !important;
+    }
+
+    .rating-stars-box {
+        font-size: 0;
+        position: relative;
+        white-space: nowrap;
+        display: inline-block;
+    }
+
+    .rating-stars-box img {
+        margin: 0 2px;
+        padding: 8px;
+        background-color: var(--color-sub-light);
+        border-radius: 2px;
+    }
+
+    .size {
+        width: 40px;
+        aspect-ratio: auto 40 / 38;
+        height: 38px;
+    }
+
+    .rating-stars-box .two-colors-star img {
+        --blue-width: 50.0%;
+        --grey-width: 50.0%;
+        background: linear-gradient(to right, var(--color-sub-light), var(--color-sub-light) var(--blue-width), #E9E9E9 var(--blue-width), #E9E9E9 var(--grey-width));
+    }
+
+    .rating-stars-box .grey-stars img {
+        background-color: #e9e9e9;
+    }
+
+    .company-ratings__star-point {
+        font-size: 30px;
+        margin-left: 40px;
+    }
+
+    hr:not([size]) {
+        height: 1px;
+    }
+
+    hr {
+        margin: 1rem 0;
+        color: inherit;
+        background-color: currentColor;
+        border: 0;
+        opacity: .25;
+    }
+
+    tbody {
+        display: table-row-group;
+        vertical-align: middle;
+        /* border-color: inherit; */
+    }
+
+    tr {
+        display: table-row;
+        vertical-align: inherit;
+        /* border-color: inherit; */
+    }
+
+    td {
+        display: table-cell;
+        vertical-align: inherit;
+    }
+
+    table {
+        caption-side: bottom;
+        border-collapse: collapse;
+    }
+
+    table {
+        display: table;
+        /* border-collapse: separate;
+        box-sizing: border-box; */
+        text-indent: initial;
+        border-spacing: 2px;
+        border-color: gray;
+    }
+
+    thead, tbody, tfoot, tr, td, th {
+        border-color: inherit;
+        border-style: solid;
+        border-width: 0;
+    }
+
+    #company-rating__rate {
+        position: relative;
+    }
+
+    #company-rating__rate strong {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        line-height: 44px;
+        font-size: 20px;
+        color: var(--color-sub-light);
+    }
+
+    b, strong {
+        font-weight: var(--font-bold);
+    }
+
+    .pl-10 {
+        padding-left: 10px !important;
+    }
+
+    .company-details-ratings {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
+    .company-details-ratings__item {
+        display: flex;
+        align-items: flex-start;
+        column-gap: 10px;
+    }
+
+    .company-details-ratings__item-text {
+        flex-grow: 1;
+        color: var(--color-sub-light);
+    }
+
+    canvas {
+        aspect-ratio: auto 100 / 100;
+    }
+
+    canvas {
+        overflow-clip-margin: content-box;
+        overflow: clip;
+    }
+
+    .disable-user-select {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .rating-bar-box {
+        position: relative;
+        white-space: nowrap;
+        display: inline-block;
+        margin: 0 auto;
+        bottom: 2px;
+    }
+
+    .rating-bar-box span {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    .company-details-ratings__item-rate {
+        font-weight: 500;
+        color: var(--color-sub-light);
+    }
+
+    .text-nowrap {
+        white-space: nowrap !important;
+    }
+
+    .mt-20 {
+        margin-top: 20px !important;
+    }
+
+  </style>
+{% endblock style %}
+
+
+{% block content %}
+  <!-- Main Section -->
+    <main class="main">
+        <section class="devlist">
+            <div class="headers">
+                <div class="headers__logo">
+                <div class="headers__logo__img">
+                    <picture>
+                   
+                    <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Big Logo" data-controller="lazyload" height="152" width="170" class=" lazyloaded" src="{{company.company_img.url}}">
+                    </picture>
+                </div>
+                </div>
+                <div class="headers__info">
+                <h1 class="headers__info__name">
+                    {{company.name}}
+                </h1>
+                <div class="headers__info__item">
+
+                    <div class="svg-icon">
+                    <svg class="svg-icon__icon">
+                        <use xlink:href="#setting_icon"></use>
+                    </svg>
+                    <div class="svg-icon__text">{{company.type}}</div>
+                    </div>
+                    <div class="svg-icon">
+                    <svg class="svg-icon__icon">
+                        <use xlink:href="#people_icon"></use>
+                    </svg>
+                    <div class="svg-icon__text">{{company.number_employees}}</div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+                    <symbol id="jp-flag" viewBox="0 0 512 512">
+                        <circle style="fill:#F0F0F0;" cx="256" cy="256" r="256"></circle>
+                        <circle style="fill:#D80027;" cx="256" cy="256" r="111.304"></circle>
+                    </symbol>
+                    </svg>
+
+                    <div class="svg-icon">
+                    <svg class="svg-icon__icon">
+                        <use xlink:href="#calendar_icon"></use>
+                    </svg>
+                    <div class="svg-icon__text">{{company.working_time}}</div>
+                    </div>
+
+                </div>
+                </div>
+                <div class="headers__actions">
+                <a class="button ibutton full-width ibutton-red" rel="nofollow" href="{% url 'companies:review-form' company.id %}">Write review</a>
+                <form id="follow-form" data-controller="employers--follow" data-employers--follow-yeah-robby-url-value="https://itviec.com/assets/roby-jrjdyeah-f2374e5dc33afdf35884e55c8e6ac807048f9b5e4e37b365f5558dde5cc9f116.png" data-employers--follow-sad-robby-url-value="https://itviec.com/assets/robby-sad-a1fb55a6e3945a12eff5fb75d5bbf4e34784cea4ae905ac0a90a7c2b76507983.png" data-action="ajax:success->employers--follow#success ajax:error->employers--follow#error" data-confirm-email-for-jr="true" class="button_to" method="post" action="/companies/toshiba-software-development-viet-nam-co-ltd/followings?locale=en" data-remote="true">
+                    {% comment %} <button id="follow-button" class="loadable ibutton ibutton-follow full-width" data-disable="true" type="submit">Follow</button> {% endcomment %}
+                    <input type="hidden" name="authenticity_token" value="FWMbto_gfe-6gZJNkYUfz_LWS7mGKGtR5oSUOPtLWt6KG15-aheyXO4Nks5L4byQZ4SaL5GyR-tl4r-EN4uVCA" autocomplete="off">
+                </form>
+                </div>
+            </div>
+            <ul class="nav bg-white pt-1 mt-3">
+                <li class="nav-item m-0 py-0 px-3 p-md-0">
+                <a data-controller="utm-tracking" class="nav-link me-3" href="{% url 'companies:company-jobs' company.id %}"> {{number_jobs}} Jobs</a>
+                </li>
+                <li class="nav-item m-0 py-0 px-3 p-md-0">
+                <a data-controller="utm-tracking" class="nav-link ma-3 active" href="{% url 'companies:company-reviews' company.id %}">{{number_reviews}} Reviews</a>
+                </li>
+            </ul>
+            <div class="container">
+                <div class="search search-jobs search-page__main-content">
+                    <div class="search-page__job-preview">
+                    
+                    
+                    <div class="panel panel-default">
+                            <div class="panel-body panel-body-review disable-user-select">
+                                <div class="row summary-ratings d-flex align-items-center">
+                                    <div class="col-md-6 col-12 list-stars d-flex align-items-center justify-content-center">
+                                        {% if number_reviews > 0 %}
+                                        
+                                        <span class="start-point"> {{company.average_stars}} stars </span>
+                                        {% endif %}
+                                        <span class="rating-stars-box">
+
+
+                                            <span class="grey-stars"></span>
+                                        </span>
+                                    <div class="view-more-statistic" data-controller="reviews--statistic">
+                                        <div class="svg-icon svg-icon--blue svg-icon--inline svg-icon--16 d-none" data-action="click->reviews--statistic#hideDetails" data-reviews--statistic-target="iconOpen">
+                                            <svg class="svg-icon__icon">
+                                                <use xlink:href="#caret-down-fill-icon"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="svg-icon svg-icon--blue svg-icon--inline svg-icon--16" data-action="click->reviews--statistic#showDetails" data-reviews--statistic-target="iconClose">
+                                            <svg class="svg-icon__icon">
+                                                <use xlink:href="#caret-right-fill-icon"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="collapse" id="statistic-details-rating">
+                                <div class="company-page-review-stats" data-controller="reviews--rating">
+                                    <div class="stats-item stats-item--head active">
+                                        <div class="stats-item__label">
+                                            <div class="stats-item__label-text">Overall</div>
+                                            <div class="stats-item__label-stars">
+                                                <span class="rating-stars-box">
+                                                    <span class="blue-stars">
+                                                        <img class="small" src="https://itviec.com/assets/rating-star-white-7e936fe21658ee9a7bf982b9ec56935cc7e20ffb6565217982c371d50c919653.svg" width="20" height="19">
+                                                        <img class="small" src="https://itviec.com/assets/rating-star-white-7e936fe21658ee9a7bf982b9ec56935cc7e20ffb6565217982c371d50c919653.svg" width="20" height="19">
+                                                        <img class="small" src="https://itviec.com/assets/rating-star-white-7e936fe21658ee9a7bf982b9ec56935cc7e20ffb6565217982c371d50c919653.svg" width="20" height="19">
+                                                        <img class="small" src="https://itviec.com/assets/rating-star-white-7e936fe21658ee9a7bf982b9ec56935cc7e20ffb6565217982c371d50c919653.svg" width="20" height="19">
+                                                    </span>
+                                                    <span class="two-colors-star" style="--blue-width: 80.0%; --grey-width: 19.999999999999996%">
+                                                        <img class="small" src="https://itviec.com/assets/rating-star-white-7e936fe21658ee9a7bf982b9ec56935cc7e20ffb6565217982c371d50c919653.svg" width="20" height="19">
+                                                    </span>
+                                                    <span class="grey-stars">
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div class="stats-item__label-rate">4.8</div>
+                                        <div class="visible-xs">
+                                            <div class="svg-icon svg-icon--blue svg-icon--inline">
+                                                <svg class="svg-icon__icon">
+                                                    <use xlink:href="#caret-down-fill-icon"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="stats-item__desc">
+                                        <div class="move">
+                                            <div class="chart-trending-rating">
+                                                <div class="title-chart">Distribution - Overall</div>
+                                                <a class="container-star active" title="5 star represent 87% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=5_overall_rate">
+                                                    <div class="item-text">5 star</div>
+                                                    <div class="item-line">
+                                                        <div class="line" style="width: 87% !important;"></div>
+                                                    </div>
+                                                    <div class="item-text text-right">87 %</div>
+                                                </a>
+                                                <a class="container-star active" title="4 star represent 11% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=4_overall_rate">
+                                                    <div class="item-text">4 star</div>
+                                                    <div class="item-line">
+                                                        <div class="line" style="width: 11% !important;"></div>
+                                                    </div>
+                                                    <div class="item-text text-right">11 %</div>
+                                                </a>
+                                                <a class="container-star active" title="3 star represent 1% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=3_overall_rate">
+                                                    <div class="item-text">3 star</div>
+                                                    <div class="item-line">
+                                                        <div class="line" style="width: 5% !important;"></div>
+                                                    </div>
+                                                    <div class="item-text text-right">1 %</div>
+                                                </a>
+                                                <a class="container-star active" title="2 star represent 1% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=2_overall_rate">
+                                                    <div class="item-text">2 star</div>
+                                                    <div class="item-line">
+                                                        <div class="line" style="width: 5% !important;"></div>
+                                                    </div>
+                                                    <div class="item-text text-right">1 %</div>
+                                                </a>
+                                                <a class="container-star inactive" title="1 star represent 0% of rating" data-controller="utm-tracking" href="#">
+                                                    <div class="item-text">1 star</div>
+                                                    <div class="item-line">
+                                                        <div class="line" style="width: 0% !important;"></div>
+                                                    </div>
+                                                    <div class="item-text text-right">0 %</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stats-item">
+                                    <div class="stats-item__label">
+                                        <div class="stats-item__label-text">Salary &amp; benefits</div>
+                                    <div class="stats-item__label-stars">
+                                        <span class="rating-bar-box">
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                            </svg>
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                            </svg>
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                            </svg>
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                            </svg>
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                            </svg>
+                                            <span style="width: 92.0%;">
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                                </svg>
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                                </svg>
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                                </svg>
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                                </svg>
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="stats-item__label-rate">4.6</div>
+                                    <div class="visible-xs">
+                                        <div class="svg-icon svg-icon--blue svg-icon--inline">
+                                            <svg class="svg-icon__icon">
+                                                <use xlink:href="#caret-down-fill-icon"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stats-item__desc">
+                                    <div class="move">
+                                        <div class="chart-trending-rating">
+                                            <div class="title-chart">Distribution - Salary &amp; benefits</div>
+                                            <a class="container-star active" title="5 star represent 62% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=5_salary_benefit_rate">
+                                                <div class="item-text">5 star</div>
+                                                <div class="item-line">
+                                                    <div class="line" style="width: 62% !important;"></div>
+                                                </div>
+                                                <div class="item-text text-right">62 %</div>
+                                            </a>
+                                            <a class="container-star active" title="4 star represent 36% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=4_salary_benefit_rate">
+                                                <div class="item-text">4 star</div>
+                                                <div class="item-line">
+                                                    <div class="line" style="width: 36% !important;"></div>
+                                                </div>
+                                                <div class="item-text text-right">36 %</div>
+                                            </a>
+                                            <a class="container-star active" title="3 star represent 2% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=3_salary_benefit_rate">
+                                                <div class="item-text">3 star</div>
+                                                <div class="item-line">
+                                                    <div class="line" style="width: 5% !important;"></div>
+                                                </div>
+                                                <div class="item-text text-right">2 %</div>
+                                            </a>
+                                            <a class="container-star inactive" title="2 star represent 0% of rating" data-controller="utm-tracking" href="#">
+                                                <div class="item-text">2 star</div>
+                                                <div class="item-line">
+                                                    <div class="line" style="width: 0% !important;"></div>
+                                                </div>
+                                                <div class="item-text text-right">0 %</div>
+                                            </a>
+                                            <a class="container-star inactive" title="1 star represent 0% of rating" data-controller="utm-tracking" href="#">
+                                                <div class="item-text">1 star</div>
+                                                <div class="item-line">
+                                                    <div class="line" style="width: 0% !important;"></div>
+                                                </div>
+                                                <div class="item-text text-right">0 %</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="stats-item">
+                                <div class="stats-item__label">
+                                    <div class="stats-item__label-text">Training &amp; learning</div>
+                                    <div class="stats-item__label-stars">
+                                        <span class="rating-bar-box">
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                            </svg>
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                            </svg>
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                            </svg>
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                            </svg>
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                            </svg>
+                                            <span style="width: 92.0%;">
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                                </svg>
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                                </svg>
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                                </svg>
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                                </svg>
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="stats-item__label-rate">4.6</div>
+                                    <div class="visible-xs">
+                                        <div class="svg-icon svg-icon--blue svg-icon--inline">
+                                            <svg class="svg-icon__icon">
+                                                <use xlink:href="#caret-down-fill-icon"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stats-item__desc">
+                                    <div class="move">
+                                        <div class="chart-trending-rating">
+                                            <div class="title-chart">Distribution - Training &amp; learning</div>
+                                            <a class="container-star active" title="5 star represent 66% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=5_training_learning_rate">
+                                                <div class="item-text">5 star</div>
+                                                <div class="item-line">
+                                                    <div class="line" style="width: 66% !important;"></div>
+                                                </div>
+                                                <div class="item-text text-right">66 %</div>
+                                            </a>
+                                            <a class="container-star active" title="4 star represent 32% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=4_training_learning_rate">
+                                                <div class="item-text">4 star</div>
+                                                <div class="item-line">
+                                                    <div class="line" style="width: 32% !important;"></div>
+                                                </div>
+                                                <div class="item-text text-right">32 %
+                                                </div>
+                                            </a>
+                                            <a class="container-star active" title="3 star represent 1% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=3_training_learning_rate">
+                                                <div class="item-text">3 star</div>
+                                                <div class="item-line">
+                                                    <div class="line" style="width: 5% !important;"></div>
+                                                </div>
+                                                <div class="item-text text-right">1 %</div>
+                                            </a>
+                                            <a class="container-star active" title="2 star represent 1% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=2_training_learning_rate">
+                                                <div class="item-text">2 star</div>
+                                                <div class="item-line">
+                                                    <div class="line" style="width: 5% !important;"></div>
+                                                </div>
+                                                <div class="item-text text-right">1 %</div>
+                                            </a>
+                                            <a class="container-star inactive" title="1 star represent 0% of rating" data-controller="utm-tracking" href="#">
+                                                <div class="item-text">1 star</div>
+                                                <div class="item-line">
+                                                    <div class="line" style="width: 0% !important;"></div>
+                                                </div>
+                                                <div class="item-text text-right">0 %</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stats-item">
+                                    <div class="stats-item__label">
+                                        <div class="stats-item__label-text">Management cares about me</div>
+                                        <div class="stats-item__label-stars">
+                                            <span class="rating-bar-box">
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                                </svg>
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                                </svg>
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                                </svg>
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                                </svg>
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                                </svg>
+                                                <span style="width: 94.0%;">
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                                </svg>
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                                </svg>
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                                </svg>
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                                </svg>
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="stats-item__label-rate">4.7</div>
+                                    <div class="visible-xs">
+                                        <div class="svg-icon svg-icon--blue svg-icon--inline">
+                                            <svg class="svg-icon__icon">
+                                                <use xlink:href="#caret-down-fill-icon"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stats-item__desc">
+                                    <div class="move">
+                                        <div class="chart-trending-rating">
+                                            <div class="title-chart">Distribution - Management cares about me</div>
+                                            <a class="container-star active" title="5 star represent 77% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=5_management_care_rate">
+                                                <div class="item-text">5 star</div>
+                                                <div class="item-line">
+                                                    <div class="line" style="width: 77% !important;"></div>
+                                                </div>
+                                                <div class="item-text text-right">77 %</div>
+                                            </a>
+                                            <a class="container-star active" title="4 star represent 19% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=4_management_care_rate">
+                                                <div class="item-text">4 star</div>
+                                                <div class="item-line">
+                                                    <div class="line" style="width: 19% !important;"></div>
+                                                </div>
+                                                <div class="item-text text-right">19 %</div>
+                                            </a>
+                                            <a class="container-star active" title="3 star represent 3% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=3_management_care_rate">
+                                                <div class="item-text">3 star</div>
+                                                <div class="item-line">
+                                                    <div class="line" style="width: 5% !important;"></div>
+                                                </div>
+                                                <div class="item-text text-right">3 %</div>
+                                            </a>
+                                            <a class="container-star active" title="2 star represent 1% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=2_management_care_rate">
+                                                <div class="item-text">2 star</div>
+                                                <div class="item-line">
+                                                    <div class="line" style="width: 5% !important;"></div>
+                                                </div>
+                                                <div class="item-text text-right">1 %</div>
+                                            </a>
+                                            <a class="container-star inactive" title="1 star represent 0% of rating" data-controller="utm-tracking" href="#">
+                                                <div class="item-text">1 star</div>
+                                                <div class="item-line">
+                                                    <div class="line" style="width: 0% !important;"></div>
+                                                </div>
+                                                <div class="item-text text-right">0 %</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="stats-item">
+                                <div class="stats-item__label">
+                                    <div class="stats-item__label-text">Culture &amp; fun</div>
+                                    <div class="stats-item__label-stars">
+                                        <span class="rating-bar-box">
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                            </svg>
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                            </svg>
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                            </svg>
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                            </svg>
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                            </svg>
+                                            <span style="width: 92.0%;">
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                            </svg>
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                            </svg>
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                            </svg>
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                            </svg>
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                            </svg>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="stats-item__label-rate">4.6</div>
+                                <div class="visible-xs">
+                                    <div class="svg-icon svg-icon--blue svg-icon--inline">
+                                        <svg class="svg-icon__icon">
+                                            <use xlink:href="#caret-down-fill-icon"></use>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stats-item__desc">
+                                <div class="move">
+                                    <div class="chart-trending-rating">
+                                        <div class="title-chart">Distribution - Culture &amp; fun</div>
+                                        <a class="container-star active" title="5 star represent 69% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=5_culture_fun_rate">
+                                            <div class="item-text">5 star</div>
+                                            <div class="item-line">
+                                                <div class="line" style="width: 69% !important;"></div>
+                                            </div>
+                                            <div class="item-text text-right">69 %</div>
+                                        </a>
+                                        <a class="container-star active" title="4 star represent 27% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=4_culture_fun_rate">
+                                            <div class="item-text">4 star</div>
+                                            <div class="item-line">
+                                                <div class="line" style="width: 27% !important;"></div>
+                                            </div>
+                                            <div class="item-text text-right">27 %</div>
+                                        </a>
+                                        <a class="container-star active" title="3 star represent 3% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=3_culture_fun_rate">
+                                            <div class="item-text">3 star</div>
+                                            <div class="item-line">
+                                                <div class="line" style="width: 5% !important;"></div>
+                                            </div>
+                                            <div class="item-text text-right">3 %</div>
+                                        </a>
+                                        <a class="container-star active" title="2 star represent 1% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=2_culture_fun_rate">
+                                            <div class="item-text">2 star</div>
+                                            <div class="item-line">
+                                                <div class="line" style="width: 5% !important;"></div>
+                                            </div>
+                                            <div class="item-text text-right">1 %</div>
+                                        </a>
+                                        <a class="container-star inactive" title="1 star represent 0% of rating" data-controller="utm-tracking" href="#">
+                                            <div class="item-text">1 star</div>
+                                            <div class="item-line">
+                                                <div class="line" style="width: 0% !important;"></div>
+                                            </div>
+                                            <div class="item-text text-right">0 %</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                                </div>
+                                <div class="stats-item">
+                            <div class="stats-item__label">
+                                <div class="stats-item__label-text">Office &amp; workspace</div>
+                                <div class="stats-item__label-stars">
+                                    <span class="rating-bar-box">
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                        </svg>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                        </svg>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                        </svg>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                        </svg>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
+                                        </svg>
+                                        <span style="width: 88.0%;">
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                        </svg>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                        </svg>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                        </svg>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                        </svg>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#4287F5"></path>
+                                        </svg>
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="stats-item__label-rate">4.4</div>
+                                <div class="visible-xs">
+                                    <div class="svg-icon svg-icon--blue svg-icon--inline">
+                                        <svg class="svg-icon__icon">
+                                            <use xlink:href="#caret-down-fill-icon"></use>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stats-item__desc">
+                                <div class="move">
+                                    <div class="chart-trending-rating">
+                                        <div class="title-chart">Distribution - Office &amp; workspace</div>
+                                        <a class="container-star active" title="5 star represent 48% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=5_office_workspace_rate">
+                                            <div class="item-text">5 star</div>
+                                            <div class="item-line">
+                                                <div class="line" style="width: 48% !important;"></div>
+                                            </div>
+                                            <div class="item-text text-right">48 %</div>
+                                        </a>
+                                        <a class="container-star active" title="4 star represent 44% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=4_office_workspace_rate">
+                                            <div class="item-text">4 star</div>
+                                            <div class="item-line">
+                                                <div class="line" style="width: 44% !important;"></div>
+                                            </div>
+                                            <div class="item-text text-right">44 %</div>
+                                        </a>
+                                        <a class="container-star active" title="3 star represent 7% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=3_office_workspace_rate">
+                                            <div class="item-text">3 star</div>
+                                            <div class="item-line">
+                                                <div class="line" style="width: 7% !important;"></div>
+                                            </div>
+                                            <div class="item-text text-right">7 %</div>
+                                        </a>
+                                        <a class="container-star active" title="2 star represent 1% of rating" data-controller="utm-tracking" href="/companies/tyme/review?category=2_office_workspace_rate">
+                                            <div class="item-text">2 star</div>
+                                            <div class="item-line">
+                                                <div class="line" style="width: 5% !important;"></div>
+                                            </div>
+                                            <div class="item-text text-right">1 %</div>
+                                        </a>
+                                        <a class="container-star inactive" title="1 star represent 0% of rating" data-controller="utm-tracking" href="#">
+                                            <div class="item-text">1 star</div>
+                                            <div class="item-line">
+                                                <div class="line" style="width: 0% !important;"></div>
+                                            </div>
+                                            <div class="item-text text-right">0 %</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                
+                    </div>            
+                
+                    <!-- <div class="d-md-none">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Let your voice be heard.</h2>
+                            </div>
+                            <div class="panel-body">
+                                <div class="panel-paragraph mb-20">Review Tyme now</div>
+                                <a class="button ibutton full-width big ibutton-red" rel="nofollow" href="/companies/tyme/review/new?utm_campaign=button_lyvbh&amp;utm_medium=new_review&amp;utm_source=emp_page">
+                                    Write review
+                                </a>
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                        <div class="panel panel-default">
+                            <div class="panel-body content-review disable-user-select">
+                                <div class="filter-box" data-controller="reviews--filter" data-reviews--filter-target="box">
+                                    Filter by
+                                    <span>
+                                        <button class="btn btn-filter" data-action="click->reviews--filter#filterOT">
+                                            <span class="hidden d-none filtered-mark">x</span>
+                                            <span class="text">OT</span>
+                                        </button>
+                                    </span>
+                                </div>
+                                <div class="total-reviews-headline">
+                                    <h3>{{number_reviews}} Employee Reviews</h3>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                {% for review in company.companyreview_set.all %}
+
+                                <div class="content-of-review">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h3 class="short-title">
+                                                {{review.title}}
+                                            </h3>
+                                        <div class="stars-and-recommend">
+                                            <div class="stars">
+                                                <span class="rating-stars-box">
+
+                                                    <span class="grey-stars"></span>
+                                                </span>
+                                                <i class="rating-dropdown small svg-icon d-none d-sm-block">
+                                                    <svg height="16" width="16">
+                                                        <use xlink:href="#caret-down-fill-icon"></use>
+                                                    </svg>
+                                                </i>
+                                                <div class="arrow-up"></div>
+
+                                            </div>
+                                            <div class="recommend">
+                                                <span class="yes">
+                                                    <div class="svg-icon svg-icon--inline svg-icon--green">
+                                                        <svg class="svg-icon__icon">
+                                                            <use xlink:href="#thumbs-up-icon"></use>
+                                                        </svg>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="details-review" data-controller="reviews--highlight-ot">
+                                    <div class="what-you-liked">
+                                        <h3>What I liked</h3>
+                                        <div class="panel-paragraph pb-15 text-break">
+                                            {{review.advantage}}
+                                        </div>
+                                    </div>
+                                    <div class="feedback">
+                                        <h3>Suggestions for improvement</h3>
+                                        <div class="panel-paragraph pb-15 text-break">
+                                            {{review.defect}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+
+                                {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+          
+
+
+        <div class="company-review-page__right mt-1">
+            <div class="d-none d-md-block">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Let your voice be heard.</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-paragraph mb-20">Review {{company.name}} now</div>
+                        <a class="button ibutton full-width big ibutton-red" rel="nofollow" href="{% url 'companies:review-form' company.id %}">Write review</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        </div>
+      
+      </div>
+    </section>
+</main>
+{% endblock content %}

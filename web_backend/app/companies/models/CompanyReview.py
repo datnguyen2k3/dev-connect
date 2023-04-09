@@ -61,10 +61,11 @@ class CompanyReview(models.Model):
                 + self.employee_attention_stars
                 + self.culture_stars
                 + self.office_starts
-        ) / 5
+        ) // 5
 
     def __str__(self):
         return self.company.name + " " + self.title
 
     class Meta:
         ordering = ["-created"]
+        unique_together = ["company", "user"]

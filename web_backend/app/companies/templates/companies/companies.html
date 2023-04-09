@@ -152,37 +152,36 @@
 {% block content %}
 
   {% comment %} Search {% endcomment %}
-    <section class="hero-section text-center">
+    <form action="" method="GET">
+      <section class="hero-section text-center">
       <div class="container container--narrow">
         <div class="hero-section__box">
           <h2>Search for <span>Companies</span></h2>
         </div>
 
         <div class="hero-section__search">
-          <form class="form search-form" action="{% url 'projects:projects' %}" method="GET">
+          <div class="form search-form">
             <div class="form__field">
-              <label for="formInput#search">Search By Companies </label>
+              <label for="formInput#search">Search By Company </label>
               <input class="input input--text" id="formInput#search" type="text" name="search_query"
                 value="{{search_query}}" placeholder="Search" />
             </div>
 
-            <input class="btn btn--sub btn--lg" type="submit" value="Search" />
-          </form>
+            {% comment %} <input class="btn btn--sub btn--lg" type="submit" value="Search" /> {% endcomment %}
+          </div>
         </div>
       </div>
     </section>
 
 
   <!-- Main Section -->
-<main class="main">
 
-    <form action="" method="GET">
     <div class="filter-jobs-form">
   <div class="filter-form">
 
     <div class="form-group">
         <label for="company-type">Company Type</label>
-        <select class="form-control" id="company-type" name="company_type">
+        <select class="form-control" id="company_type" name="company_type">
           <option value="">Company Type</option>
           <option value="outsourcing">Outsourcing</option>
           <option value="product">Product</option>
@@ -190,7 +189,7 @@
 
     </div>
 
-      <button type="submit" class="btn btn-primary btn-search btn-form">SEARCH</button>
+      <button type="submit" class="btn btn-primary btn-search btn-form">Search</button>
   </div>
   
 </div>
@@ -199,7 +198,7 @@
       <div class="container">
         <div class="search search-jobs search-page__main-content">
           <div class="search-page">
-              <div class="search-result">We found: 213 Companies</div>
+              <div class="search-result">Found {{number_companies}} companies</div>
 
               {% for company in companies %}
               
@@ -208,7 +207,7 @@
                     <div class="dev">
                         <a href="{% url 'companies:company-jobs' company.id %}" class="card__body">
                             <div class="dev__profile">
-                                <img class="avatar avatar--md" src="{{company.company_img.url}}" alt="image" />
+                                <img class="avatar avatar--md" src="{{company.company_img}}" alt="image" />
                                 <div class="dev__meta">
                                     <h3>{{company.name}}</h3>
                                     <ul class="company-overview">
@@ -218,16 +217,17 @@
                             </div>
                         </a>
                         <div class="company-footer">
-                            <div class="rating">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
+                          <div class="dev__skills">
+                          {% for skill in company.skills %}
+                            <span class="tag tag--pill tag--main">
+                              <small>{{skill.name}}</small>
+                            </span>
+                          {% endfor %}
+                          </div>
                         </div>
+
                         <p class="text-end">
-                            <span class="action-link"><a href="#">Đánh giá</a></span> | <span class="action-link"><a href="#">Tuyển dụng</a></span>
+                            <span class="action-link"><a href="{% url 'companies:review-form' company.id %}">Đánh giá</a></span> | <span class="action-link"><a href="{% url 'companies:company-jobs' company.id %}">Tuyển dụng</a></span>
                         </p>
                     </div>
 
@@ -242,24 +242,5 @@
         </div>
       </div>
     </section>
-
-
-    <div class="pagination">
-      <ul class="container">
-        <li><a href="#" class="btn btn--disabled">&#10094; Prev</a></li>
-        <li><a href="#" class="btn btn--sub">01</a></li>
-        <li><a href="#" class="btn">02</a></li>
-        <li><a href="#" class="btn">03</a></li>
-        <li><a href="#" class="btn">04</a></li>
-        <li><a href="#" class="btn">05</a></li>
-        <li><a href="#" class="btn">06</a></li>
-        <li><a href="#" class="btn">07</a></li>
-        <li><a href="#" class="btn">08</a></li>
-        <li><a href="#" class="btn">09</a></li>
-        <li><a href="#" class="btn">10</a></li>
-        <li><a href="#" class="btn">Next &#10095;</a></li>
-      </ul>
-    </div>
-  </main>
 
   {% endblock content %}

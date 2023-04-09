@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
 
-{% block style %}
 
+{% block style %}
 
   <style>
 
@@ -10,11 +10,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        /* Chỗ cần fix */
         width: calc(87% + 10px);
         margin-left: 11rem;
-
         min-height: 186px;
         background-color: #fff;
         border: 3px solid var(--color-light);
@@ -157,6 +154,41 @@
     .svg-icon__text {
         margin-left: 10px;
     }
+    
+    .svg-icon, .svg-icon__text {
+        display: flex;
+        align-items: center;
+        margin-left: 0;
+    }
+
+    .svg-icon__text a {
+        fill: currentColor;
+        color: #7a7a7a;
+        flex-shrink: 0;
+    }
+
+    .ilink, .ilink:visited {
+        text-decoration: none;
+        outline: none;
+        color: var(--link-color);
+    }
+
+    .ilink--dotted {
+        border-bottom: 1px dotted;
+    }
+
+    .ilink--grey {
+        --link-color: #57595b;
+    }
+
+    .ilink--direction::after {
+        content: "";
+        display: inline-block;
+        position: relative;
+        border-left: solid 5px var(--link-color);
+        border-top: solid 5px transparent;
+        border-bottom: solid 5px transparent;
+    }
 
     .d-none {
         display: none !important;
@@ -202,10 +234,10 @@
         font-family: "Roboto",sans-serif;
         font-weight: 400 !important;
         /* padding: 0 20px; */
-        height: 40px;
-        line-height: 40px;
+        height: 45px;
+        line-height: 45px;
         border-radius: 4px;
-        font-size: 17px;
+        font-size: 19px;
         white-space: nowrap;
         -webkit-font-smoothing: antialiased;
         /* outline: 0; */
@@ -219,8 +251,8 @@
         color: var(--color-sub-light);
         background-color: #fff;
         /* width: 150px; */
-        height: 40px;
-        line-height: 36px;
+        height: 43px;
+        line-height: 45px;
         padding: 0;
         outline: 0;
         text-decoration: none;
@@ -259,7 +291,7 @@
         margin-top: 0em;
     }
 
-    /* navbar */
+    /* nav bg-white */
     .bg-white {
         --bs-white-rgb: 255, 255, 255;
         --bs-bg-opacity: 1;
@@ -271,7 +303,6 @@
     }
 
     .mt-3 {
-        /* cần fix */
         width: calc(87% + 10px);
         margin: 2rem 0 0 11rem !important;
     }
@@ -471,12 +502,11 @@
     }
 
     .job-details__overview {
-        border-top: 2px solid rgba(255,192,121,.5);
-        background: #fff1e1 !important;
+        border-top: 3px solid var(--color-light);
+        /* background: #fff1e1 !important; */
         display: flex;
         z-index: 3;
         position: relative;
-        /* border-top: 1px solid #e7e7e7; */
         overflow: hidden;
         font-weight: 400;
         padding: 27px 0;
@@ -484,7 +514,7 @@
     }
 
     .job-details__overview .logo {
-      margin: 22px 30px 0 25px;
+      margin: 38px 30px 0 25px;
     }
 
     .job-details__overview .logo img {
@@ -507,19 +537,7 @@
     .job-details__overview__description a {
       color: #231f20;
       font-size: 20px;
-      padding-left: 18px;
-    }
-
-    .svg-icon, .svg-icon__text {
-        display: flex;
-        align-items: center;
-        margin-left: 0;
-    }
-
-    .svg-icon__text a {
-        fill: currentColor;
-        color: #7a7a7a;
-        flex-shrink: 0;
+      padding-left: 0;;
     }
 
     .city_and_posted_date {
@@ -679,7 +697,7 @@
     }
 
     h3, .h3 {
-      margin: 1em 0;
+      margin: 0.5em 0;
       color: #231F30;
     }
 
@@ -693,12 +711,12 @@
         margin-bottom: 1rem;
     }
 
-    ol, ul {
+    /* ol, ul {
         padding-left: 2rem;
-    }
+    } */
 
     ol, ul {
-        padding: 0 0 0 40px;
+        padding: 0 0 0 20px;
         margin: 1em 0;
     }
 
@@ -742,17 +760,8 @@
         width: 600px;
     }
 
-    .panel-paragraph>p {
-        margin-top: 0;
-    }
-
     p {
-        margin-top: 0;
-        margin-bottom: 1rem;
-    }
-
-    p {
-        margin: 1em 2em;
+        margin: 1em 0.5em;
     }
 
     .panel-heading {
@@ -873,7 +882,7 @@
         left: 0;
         width: 100%;
         text-align: center;
-        line-height: 40px;
+        line-height: 44px;
         font-size: 20px;
         color: var(--color-sub-light);
     }
@@ -957,16 +966,16 @@
 {% block content %}
 
 
-
   <!-- Main Section -->
-<main class="main">
+
     <section class="devlist">
+      <!-- Header company -->
       <div class="headers">
         <div class="headers__logo">
           <div class="headers__logo__img">
             <picture>
-              <source data-srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oSnlaWE5wZW1WZmRHOWZabWwwV3dkcEFhb3ciLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--bb0ebae071595ab1791dc0ad640ef70a76504047/toshiba-software-development-viet-nam-co-ltd-logo.png" srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oSnlaWE5wZW1WZmRHOWZabWwwV3dkcEFhb3ciLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--bb0ebae071595ab1791dc0ad640ef70a76504047/toshiba-software-development-viet-nam-co-ltd-logo.png">
-              <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Big Logo" data-controller="lazyload" data-src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--79eee5883893a012786006950460867831e6f661/toshiba-software-development-viet-nam-co-ltd-logo.png" height="152" width="170" class=" lazyloaded" src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--79eee5883893a012786006950460867831e6f661/toshiba-software-development-viet-nam-co-ltd-logo.png">
+              
+              <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Big Logo" data-controller="lazyload"  height="152" width="170" class=" lazyloaded" src="{{company.company_img.url}}">
             </picture>
           </div>
         </div>
@@ -1001,796 +1010,130 @@
               </svg>
               <div class="svg-icon__text">{{company.working_time}}</div>
             </div>
-
-
           </div>
         </div>
         <div class="headers__actions">
-          <a class="button ibutton full-width ibutton-red" rel="nofollow" href="/companies/toshiba-software-development-viet-nam-co-ltd/review/new?utm_campaign=button_feature_review&amp;utm_medium=new_review&amp;utm_source=emp_page">Write review</a>
+          <a class="button ibutton full-width ibutton-red" rel="nofollow" href="{% url 'companies:review-form' company.id %}">Write review</a>
           <form id="follow-form" data-controller="employers--follow" data-employers--follow-yeah-robby-url-value="https://itviec.com/assets/roby-jrjdyeah-f2374e5dc33afdf35884e55c8e6ac807048f9b5e4e37b365f5558dde5cc9f116.png" data-employers--follow-sad-robby-url-value="https://itviec.com/assets/robby-sad-a1fb55a6e3945a12eff5fb75d5bbf4e34784cea4ae905ac0a90a7c2b76507983.png" data-action="ajax:success->employers--follow#success ajax:error->employers--follow#error" data-confirm-email-for-jr="true" class="button_to" method="post" action="/companies/toshiba-software-development-viet-nam-co-ltd/followings?locale=en" data-remote="true">
-            <button id="follow-button" class="loadable ibutton ibutton-follow full-width" data-disable="true" type="submit">Follow</button>
+            {% comment %} <button id="follow-button" class="loadable ibutton ibutton-follow full-width" data-disable="true" type="submit">Follow</button> {% endcomment %}
             <input type="hidden" name="authenticity_token" value="FWMbto_gfe-6gZJNkYUfz_LWS7mGKGtR5oSUOPtLWt6KG15-aheyXO4Nks5L4byQZ4SaL5GyR-tl4r-EN4uVCA" autocomplete="off">
           </form>
         </div>
       </div>
+
+      <!-- navbar: Jobs and 44 reviews -->
       <ul class="nav bg-white pt-1 mt-3">
         <li class="nav-item m-0 py-0 px-3 p-md-0">
-          <a data-controller="utm-tracking" class="nav-link me-3 active" href="/companies/toshiba-software-development-viet-nam-co-ltd">Jobs</a>
+          <a data-controller="utm-tracking" class="nav-link me-3 active" href="{% url 'companies:company-jobs' company.id %}"> {{number_jobs}} Jobs</a>
         </li>
         <li class="nav-item m-0 py-0 px-3 p-md-0">
-          <a data-controller="utm-tracking" class="nav-link ma-3 review-tab" href="/companies/toshiba-software-development-viet-nam-co-ltd/review">44 Reviews</a>
+          <a data-controller="utm-tracking" class="nav-link ma-3 review-tab" href="{% url 'companies:company-reviews' company.id %}">{{number_reviews}} Reviews</a>
         </li>
       </ul>
       <div class="container">
         <div class="search search-jobs search-page__main-content">
             <div class="search-page__job-preview">
+              
               <div class="job-details__header">
-                  <div class="job-details__title">{{company.name}} Jobs</div>
+                  <div class="job-details__title">{{company.name}}</div>
 
               </div>
-
+              
+              {% for job in company.job_set.all %}
               <div class="job-details__body">
-
-                  {% for job in company.jobs_ %}{% endfor %}
-
                   <div class="job-details__overview">
                     <div class="logo">
                       <div class="logo-wrapper job-details-link-wrapper" data-action="mouseover->tooltip#showTooltip click->tooltip#disposeTooltip" data-controller="tooltip" title="" data-bs-original-title="A social infrastructure and digital products software company">
-                        <a target="_blank" data-controller="utm-tracking" href="/companies/toshiba-software-development-viet-nam-co-ltd?lab_feature=employer_job">
+                        <a target="_blank" data-controller="utm-tracking" href="{% url 'jobs:single-job' job.id %}">
                           <picture>
-                            <source data-srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--869b7c60a82e5139be9920420fe05da8a838e38c/toshiba-software-development-viet-nam-co-ltd-logo.png" srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--869b7c60a82e5139be9920420fe05da8a838e38c/toshiba-software-development-viet-nam-co-ltd-logo.png">
-                            <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo" data-controller="lazyload" data-src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--a9d835d302ad9f096170a85b9d142ff095a42b9d/toshiba-software-development-viet-nam-co-ltd-logo.png" size="65x65" class=" lazyloaded" src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--a9d835d302ad9f096170a85b9d142ff095a42b9d/toshiba-software-development-viet-nam-co-ltd-logo.png">
+                           
+                            <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo" data-controller="lazyload" size="65x65" class=" lazyloaded" src="{{company.company_img.url}}">
                         </picture>
                         </a>
                       </div>
                     </div>
-                    <div class="job-details__overview__description">
-                      <h3 class="job-details__overviewp__description-title">
-                        <a target="_blank" data-controller="utm-tracking" href="/it-jobs/team-leader-senior-java-engineer-toshiba-software-development-viet-nam-co-ltd-4138?lab_feature=employer_job">
-                          Team Leader/ Senior Java Engineer
-                        </a>
-                      </h3>
-                      <div class="svg-icon">
-                        <div class="svg-icon__text">
-                          <a>Sign in to view</a>
-                        </div>
-                      </div>
-                      <ul>
-                          <li>Lộ trình phát triển sự nghiệp đa chiều</li>
-                          <li>Cơ hội đào tạo, công tác tại Nhật Bản, Singapore..</li>
-                          <li>Mức lương hấp dẫn, chế độ hưởng dựa trên năng lực</li>
-                      </ul>
-                      <div class="dev__skills">
-                        <span class="tag tag--pill tag--main">
-                          <small>Java</small>
-                        </span>
-                        <span class="tag tag--pill tag--main">
-                          <small>Spring</small>
-                        </span>
-                        <span class="tag tag--pill tag--main">
-                          <small>J2EE</small>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="city_and_posted_date">
-                      <div class="feature new text">Hot</div>
-                      <div class="city">
-                        <div class="address">
-                          <div class="text">Ha Noi</div>
-                        </div>
-                      </div>
-                      <div class="distance-time-job-posted">
-                        <span class="distance-time">2d</span>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div class="job-details__overview">
-                    <div class="logo">
-                      <div class="logo-wrapper job-details-link-wrapper" data-action="mouseover->tooltip#showTooltip click->tooltip#disposeTooltip" data-controller="tooltip" title="" data-bs-original-title="A social infrastructure and digital products software company">
-                        <a target="_blank" data-controller="utm-tracking" href="/companies/toshiba-software-development-viet-nam-co-ltd?lab_feature=employer_job">
-                          <picture>
-                            <source data-srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--869b7c60a82e5139be9920420fe05da8a838e38c/toshiba-software-development-viet-nam-co-ltd-logo.png" srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--869b7c60a82e5139be9920420fe05da8a838e38c/toshiba-software-development-viet-nam-co-ltd-logo.png">
-                            <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo" data-controller="lazyload" data-src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--a9d835d302ad9f096170a85b9d142ff095a42b9d/toshiba-software-development-viet-nam-co-ltd-logo.png" size="65x65" class=" lazyloaded" src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--a9d835d302ad9f096170a85b9d142ff095a42b9d/toshiba-software-development-viet-nam-co-ltd-logo.png">
-                        </picture>
-                        </a>
-                      </div>
-                    </div>
                     <div class="job-details__overview__description">
                       <h3 class="job-details__overviewp__description-title">
-                        <a target="_blank" data-controller="utm-tracking" href="/it-jobs/team-leader-senior-java-engineer-toshiba-software-development-viet-nam-co-ltd-4138?lab_feature=employer_job">
-                          Angular Developer (Middle/Senior (HTML/CSS)
+                        <a target="_blank" data-controller="utm-tracking" href="{% url 'jobs:single-job' job.id %}">
+                          {{job.title}}
                         </a>
                       </h3>
                       <div class="svg-icon">
                         <div class="svg-icon__text">
-                          <a>Sign in to view</a>
+                            {{job.lower_salary}} - {{job.upper_salary}} USD
                         </div>
                       </div>
-                      <ul>
-                          <li>Lộ trình phát triển sự nghiệp đa chiều</li>
-                          <li>Cơ hội đào tạo, công tác tại Nhật Bản, Singapore..</li>
-                          <li>Mức lương hấp dẫn, chế độ hưởng dựa trên năng lực</li>
-                      </ul>
-                      <div class="dev__skills">
-                        <span class="tag tag--pill tag--main">
-                          <small>Angular</small>
-                        </span>
-                        <span class="tag tag--pill tag--main">
-                          <small>CSS</small>
-                        </span>
-                        <span class="tag tag--pill tag--main">
-                          <small>HTML5</small>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="city_and_posted_date">
-                      <div class="feature new text">Hot</div>
-                      <div class="city">
-                        <div class="address">
-                          <div class="text">Ha Noi</div>
-                        </div>
-                      </div>
-                      <div class="distance-time-job-posted">
-                        <span class="distance-time">2d</span>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div class="job-details__overview">
-                    <div class="logo">
-                      <div class="logo-wrapper job-details-link-wrapper" data-action="mouseover->tooltip#showTooltip click->tooltip#disposeTooltip" data-controller="tooltip" title="" data-bs-original-title="A social infrastructure and digital products software company">
-                        <a target="_blank" data-controller="utm-tracking" href="/companies/toshiba-software-development-viet-nam-co-ltd?lab_feature=employer_job">
-                          <picture>
-                            <source data-srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--869b7c60a82e5139be9920420fe05da8a838e38c/toshiba-software-development-viet-nam-co-ltd-logo.png" srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--869b7c60a82e5139be9920420fe05da8a838e38c/toshiba-software-development-viet-nam-co-ltd-logo.png">
-                            <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo" data-controller="lazyload" data-src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--a9d835d302ad9f096170a85b9d142ff095a42b9d/toshiba-software-development-viet-nam-co-ltd-logo.png" size="65x65" class=" lazyloaded" src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--a9d835d302ad9f096170a85b9d142ff095a42b9d/toshiba-software-development-viet-nam-co-ltd-logo.png">
-                        </picture>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="job-details__overview__description">
-                      <h3 class="job-details__overviewp__description-title">
-                        <a target="_blank" data-controller="utm-tracking" href="/it-jobs/team-leader-senior-java-engineer-toshiba-software-development-viet-nam-co-ltd-4138?lab_feature=employer_job">
-                          Middleware Developer (C/C++/Linux)
-                        </a>
-                      </h3>
-                      <div class="svg-icon">
-                        <div class="svg-icon__text">
-                          <a>Sign in to view</a>
-                        </div>
-                      </div>
                       <ul>
-                          <li>Lộ trình phát triển sự nghiệp đa chiều</li>
-                          <li>Cơ hội đào tạo, công tác tại Nhật Bản, Singapore..</li>
-                          <li>Mức lương hấp dẫn, chế độ hưởng dựa trên năng lực</li>
+                          {{job.advantage}}
                       </ul>
                       <div class="dev__skills">
+                        {% for skill in job.skills.all %}
                         <span class="tag tag--pill tag--main">
-                          <small>C++</small>
+                          <small>{{skill.name}}</small>
                         </span>
-                        <span class="tag tag--pill tag--main">
-                          <small>Linux</small>
-                        </span>
-                        <span class="tag tag--pill tag--main">
-                          <small>C language</small>
-                        </span>
-                        <span class="tag tag--pill tag--main">
-                          <small>Fresher Accepted</small>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="city_and_posted_date">
-                      <div class="feature new text">Hot</div>
-                      <div class="city">
-                        <div class="address">
-                          <div class="text">Ha Noi</div>
-                        </div>
-                      </div>
-                      <div class="distance-time-job-posted">
-                        <span class="distance-time">2d</span>
-                      </div>
-                    </div>
-                  </div>
+                        {% endfor %}
 
-                  <div class="job-details__overview">
-                    <div class="logo">
-                      <div class="logo-wrapper job-details-link-wrapper" data-action="mouseover->tooltip#showTooltip click->tooltip#disposeTooltip" data-controller="tooltip" title="" data-bs-original-title="A social infrastructure and digital products software company">
-                        <a target="_blank" data-controller="utm-tracking" href="/companies/toshiba-software-development-viet-nam-co-ltd?lab_feature=employer_job">
-                          <picture>
-                            <source data-srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--869b7c60a82e5139be9920420fe05da8a838e38c/toshiba-software-development-viet-nam-co-ltd-logo.png" srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZllXNWtYM0JoWkZzSGFVWnBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--869b7c60a82e5139be9920420fe05da8a838e38c/toshiba-software-development-viet-nam-co-ltd-logo.png">
-                            <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo" data-controller="lazyload" data-src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--a9d835d302ad9f096170a85b9d142ff095a42b9d/toshiba-software-development-viet-nam-co-ltd-logo.png" size="65x65" class=" lazyloaded" src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekpjRUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2798d9d93595456ade8b33c28a0fb1cab04029a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--a9d835d302ad9f096170a85b9d142ff095a42b9d/toshiba-software-development-viet-nam-co-ltd-logo.png">
-                        </picture>
-                        </a>
+
                       </div>
                     </div>
-                    <div class="job-details__overview__description">
-                      <h3 class="job-details__overviewp__description-title">
-                        <a target="_blank" data-controller="utm-tracking" href="/it-jobs/team-leader-senior-java-engineer-toshiba-software-development-viet-nam-co-ltd-4138?lab_feature=employer_job">
-                          Project Manager
-                        </a>
-                      </h3>
-                      <div class="svg-icon">
-                        <div class="svg-icon__text">
-                          <a>Sign in to view</a>
-                        </div>
-                      </div>
-                      <ul>
-                          <li>Lộ trình phát triển sự nghiệp đa chiều</li>
-                          <li>Cơ hội đào tạo, công tác tại Nhật Bản, Singapore..</li>
-                          <li>Mức lương hấp dẫn, chế độ hưởng dựa trên năng lực</li>
-                      </ul>
-                      <div class="dev__skills">
-                        <span class="tag tag--pill tag--main">
-                          <small>Project Manager</small>
-                        </span>
-                        <span class="tag tag--pill tag--main">
-                          <small>AWS</small>
-                        </span>
-                        <span class="tag tag--pill tag--main">
-                          <small>Java</small>
-                        </span>
-                      </div>
-                    </div>
+
                     <div class="city_and_posted_date">
-                      <div class="feature new text">Hot</div>
+                      {% comment %} <div class="feature new text">Hot</div> {% endcomment %}
                       <div class="city">
                         <div class="address">
-                          <div class="text">Ha Noi</div>
+                          {% comment %} <div class="text">Ha Noi</div> {% endcomment %}
                         </div>
                       </div>
                       <div class="distance-time-job-posted">
-                        <span class="distance-time">2d</span>
+                        {% comment %} <span class="distance-time">2d</span> {% endcomment %}
                       </div>
                     </div>
                   </div>
+                    {% endfor %}
+
+
                   <!-- Overview -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                    <h3 class="panel-title">Overview</h3>
+                  </div>
+                  <div class="panel-body">
+                      {{company.overview}}
+                  </div>
+
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                    <h3 class="panel-title">Skills</h3>
+                  </div>
+                  <div class="panel-body">
+
+                        {% for skill in company.skills.all %}
+                        <span class="tag tag--pill tag--main">
+                          <small>{{skill.name}}</small>
+                        </span>
+                        {% endfor %}
+                  </div>
+
+
                   <div class="panel panel-default">
                     <div class="panel-heading">
                     <h3 class="panel-title">Why You'll Love Working Here</h3>
                   </div>
                   <div class="panel-body">
-                    <ul class="reasons-to-join">
-                      <li class="item">
-                        <span class="number">1</span>
-                        <span class="panel-paragraph">Lộ trình phát triển sự nghiệp đa chiều </span>
-                      </li>
-                      <li class="item">
-                        <span class="number">2</span>
-                        <span class="panel-paragraph">Cơ hội đào tạo, công tác tại Nhật Bản, Singapore..</span>
-                      </li>
-                      <li class="item">
-                        <span class="number">3</span>
-                        <span class="panel-paragraph">Mức lương hấp dẫn, chế độ thưởng dựa trên năng lực</span>
-                      </li>
-                    </ul>
-                    <div class="environment">
-                    <div class="swiper swiper-initialized swiper-horizontal swiper-pointer-events" data-controller="photo-slider">
-                      <div class="swiper-wrapper" style="transform: translate3d(-600px, 0px, 0px); transition-duration: 0ms;">
-                        <div class="swiper-slide swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="4" style="width: 600px;">
-                          <div class="swiper-slide-inner">
-                            <picture>
-                              <source data-srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBeDd1R2c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--282249f36d983b45ff0b1c1778b7a40d97b1933c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZmRHOWZabWxzYkZzSGFRSitBbWtDd2dFPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--21feff8f4e30afa72363cc6a64a1496fd38b34b8/12.JPG" srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBeDd1R2c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--282249f36d983b45ff0b1c1778b7a40d97b1933c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZmRHOWZabWxzYkZzSGFRSitBbWtDd2dFPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--21feff8f4e30afa72363cc6a64a1496fd38b34b8/12.JPG">
-                              <img data-controller="lazyload" data-src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBeDd1R2c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--282249f36d983b45ff0b1c1778b7a40d97b1933c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJU2xCSEJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQW40Q2FRTENBUT09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--5d13e9a1a84a110ea50d2e9a05cea95c0c842b91/12.JPG" class=" lazyloaded" src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBeDd1R2c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--282249f36d983b45ff0b1c1778b7a40d97b1933c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJU2xCSEJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQW40Q2FRTENBUT09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--5d13e9a1a84a110ea50d2e9a05cea95c0c842b91/12.JPG">
-                            </picture>
-                          </div>
-                        </div>
-                        <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="0" style="width: 600px;">
-                          <div class="swiper-slide-inner">
-                            <picture>
-                              <source data-srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNXliREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2aa03ec5afa5ce84d4072909728c050aa032b262/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MWm05eWJXRjBPZ2wzWldKdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3d60752ba3493d46360bdec171abf26eab331ca7/IMG_0544.jpg" srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNXliREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2aa03ec5afa5ce84d4072909728c050aa032b262/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MWm05eWJXRjBPZ2wzWldKdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3d60752ba3493d46360bdec171abf26eab331ca7/IMG_0544.jpg">
-                              <img data-controller="lazyload" data-src="https://itviec.com/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNXliREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2aa03ec5afa5ce84d4072909728c050aa032b262/IMG_0544.jpg" class=" lazyloaded" src="https://itviec.com/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNXliREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2aa03ec5afa5ce84d4072909728c050aa032b262/IMG_0544.jpg">
-                            </picture>
-                          </div>
-                        </div>
-                        <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="1" style="width: 600px;">
-                          <div class="swiper-slide-inner">
-                            <picture>
-                              <source data-srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBODdNREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--6bd1c3b2aa9dd37d24d52bd3860e7f4c8f4e9e64/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZmRHOWZabWxzYkZzSGFRSitBbWtDd2dFPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--21feff8f4e30afa72363cc6a64a1496fd38b34b8/IMG_0731.jpg" srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBODdNREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--6bd1c3b2aa9dd37d24d52bd3860e7f4c8f4e9e64/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZmRHOWZabWxzYkZzSGFRSitBbWtDd2dFPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--21feff8f4e30afa72363cc6a64a1496fd38b34b8/IMG_0731.jpg">
-                              <img data-controller="lazyload" data-src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBODdNREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--6bd1c3b2aa9dd37d24d52bd3860e7f4c8f4e9e64/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQW40Q2FRTENBUT09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--d2f49c48bed249cccffdad6fb8c42b2cf3f09e38/IMG_0731.jpg" class=" lazyloaded" src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBODdNREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--6bd1c3b2aa9dd37d24d52bd3860e7f4c8f4e9e64/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQW40Q2FRTENBUT09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--d2f49c48bed249cccffdad6fb8c42b2cf3f09e38/IMG_0731.jpg">
-                            </picture>
-                          </div>
-                        </div>
-                        <div class="swiper-slide" data-swiper-slide-index="2" style="width: 600px;">
-                          <div class="swiper-slide-inner">
-                            <picture>
-                              <source data-srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMW92R2c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--40c8a67b09d55266059d9dd28b13c246da96cde8/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZmRHOWZabWxzYkZzSGFRSitBbWtDd2dFPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--21feff8f4e30afa72363cc6a64a1496fd38b34b8/LCS02979.jpg" srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMW92R2c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--40c8a67b09d55266059d9dd28b13c246da96cde8/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZmRHOWZabWxzYkZzSGFRSitBbWtDd2dFPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--21feff8f4e30afa72363cc6a64a1496fd38b34b8/LCS02979.jpg">
-                              <img data-controller="lazyload" data-src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMW92R2c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--40c8a67b09d55266059d9dd28b13c246da96cde8/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQW40Q2FRTENBUT09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--d2f49c48bed249cccffdad6fb8c42b2cf3f09e38/LCS02979.jpg" class=" lazyloaded" src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMW92R2c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--40c8a67b09d55266059d9dd28b13c246da96cde8/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQW40Q2FRTENBUT09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--d2f49c48bed249cccffdad6fb8c42b2cf3f09e38/LCS02979.jpg">
-                            </picture>
-                          </div>
-                        </div>
-                        <div class="swiper-slide" data-swiper-slide-index="3" style="width: 600px;">
-                          <div class="swiper-slide-inner">
-                            <picture>
-                              <source data-srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMXN2R2c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--3dff33edf05e6761a697b55d6261d5bbc187b34a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZmRHOWZabWxzYkZzSGFRSitBbWtDd2dFPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--21feff8f4e30afa72363cc6a64a1496fd38b34b8/LCS03359.jpg" srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMXN2R2c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--3dff33edf05e6761a697b55d6261d5bbc187b34a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZmRHOWZabWxzYkZzSGFRSitBbWtDd2dFPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--21feff8f4e30afa72363cc6a64a1496fd38b34b8/LCS03359.jpg">
-                              <img data-controller="lazyload" data-src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMXN2R2c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--3dff33edf05e6761a697b55d6261d5bbc187b34a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQW40Q2FRTENBUT09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--d2f49c48bed249cccffdad6fb8c42b2cf3f09e38/LCS03359.jpg" class=" lazyloaded" src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMXN2R2c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--3dff33edf05e6761a697b55d6261d5bbc187b34a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQW40Q2FRTENBUT09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--d2f49c48bed249cccffdad6fb8c42b2cf3f09e38/LCS03359.jpg">
-                            </picture>
-                          </div>
-                        </div>
-                        <div class="swiper-slide swiper-slide-duplicate-prev" data-swiper-slide-index="4" style="width: 600px;">
-                          <div class="swiper-slide-inner">
-                            <picture>
-                              <source data-srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBeDd1R2c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--282249f36d983b45ff0b1c1778b7a40d97b1933c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oTnlaWE5wZW1WZmRHOWZabWxzYkZzSGFRSitBbWtDd2dFPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--21feff8f4e30afa72363cc6a64a1496fd38b34b8/12.JPG">
-                              <img data-controller="lazyload" data-src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBeDd1R2c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--282249f36d983b45ff0b1c1778b7a40d97b1933c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJU2xCSEJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQW40Q2FRTENBUT09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--5d13e9a1a84a110ea50d2e9a05cea95c0c842b91/12.JPG" class="lazyload">
-                            </picture>
-                          </div>
-                        </div>
-                        <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="0" style="width: 600px;">
-                          <div class="swiper-slide-inner">
-                            <picture>
-                              <source data-srcset="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNXliREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2aa03ec5afa5ce84d4072909728c050aa032b262/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MWm05eWJXRjBPZ2wzWldKdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--3d60752ba3493d46360bdec171abf26eab331ca7/IMG_0544.jpg">
-                              <img data-controller="lazyload" data-src="https://itviec.com/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNXliREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2aa03ec5afa5ce84d4072909728c050aa032b262/IMG_0544.jpg" class="lazyload">
-                            </picture>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
-                        <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
-                        <span class="swiper-pagination-bullet"></span>
-                        <span class="swiper-pagination-bullet"></span>
-                        <span class="swiper-pagination-bullet"></span>
-                        <span class="swiper-pagination-bullet"></span>
-                      </div>
-                      <div class="swiper-button-prev"></div>
-                      <div class="swiper-button-next"></div>
-                    </div>
-                      <br>
-                      <br>
+                      {{company.advantage}}
                   </div>
-                  <div class="panel-paragraph">
-                    <p>
-                      <strong>Why Join Us?</strong>
-                      <br>
-                        Our philosophy of development is Culture Blending. TSDV is merging (i) Japanese advantage of integration knowledge 
-                        and rigorous quality mindset with (ii) Vietnamese advantage of excellent capability and rapid understanding. As the 
-                        result, we could develop software with breakthrough in Quality and Productivity and we could inherit and accumulate 
-                        Toshiba knowledge.&nbsp;
-                      <br>
-                        Joining TSDV as a software engineer, you have great chances to experience:
-                      <br>
-                      &nbsp;
-                    </p>
-                    <ul>
-                      <li>
-                        <strong>Full-stack software engineer model</strong>
-                      </li>
-                    </ul>
-                    <p>TSDV software engineers should be ready to involve full phase software development process: from requirement analysis, 
-                      design, coding to delivery phase. We target to develop full-stack software engineers who are not only able to implement 
-                      source code, but also have skills of how to correctly catch up customer requirements, how to make good design &amp; 
-                      how to assure the software quality as well. To prepare for that, comprehensive training program will be provided along 
-                      with a member’s career path.
-                      <br>&nbsp;
-                    </p>
-                    <ul>
-                      <li>
-                        <strong>Variety of software development technologies in different software layers &amp; industrial business domains</strong>
-                      </li>
-                    </ul>
-                    <p>Toshiba is a big corporation which has been developing our business in several system domains. In each domain, software is embedded in 
-                      variety of layers in the software stack, from firmware for one microprocessor to cloud solution of integrated systems.
-                      <br>Therefore, if you are a challenge seeker in work, TSDV can provide you many chances (challenges as well) to work and
-                       study in not only different types of software development technologies but also different system domain know-how.
-                       <br>As an in-house company of Toshiba corporate, TSDV can touch into core technologies of Toshiba in different domains. Therefore, you have chances to study and work on cutting-edge technologies to develop new things. This is almost impossible for you to get such chances in an outsourcing company.<br>&nbsp;</p><ul><li><strong>Comprehensive &amp; professional software development process</strong></li></ul><p>TSDV is one of a few software companies in Vietnam who get CMMI Level 5, the highest level of process maturity for software engineering. This promotes continuously improved &amp; quantitative management. To gain such a certification, we have had 10 year non-stopping experiences in building up the unique quality process system and sketch out quality mindset to each TSDV member. In such a working environment, you will not only grow your technical skills but be mature in your professional working style as well, ready for any career path in the future.<br>&nbsp;</p><ul><li><strong>Plentiful chances to work and study abroad</strong></li></ul><p>TSDV has close cooperation with Toshiba Japan in training &amp; exchanging talented engineers. We provide several chances for good potential engineers to work and study abroad:<br>- Long term stay in Japan from 1 to 3 years to capture domain know-how<br>- Attending international conferences in USA, EU and Japan, regarding Open Source Software, LSI and AI<br>- Frequent chance to go business trip to foreign countries, Japan, Taiwan, Korea and India<br>- For leader class, we have been sending our leaders to Toshiba Global Management Training held in Singapore, Japan and USA<br>&nbsp;</p><ul><li><strong>Supportive, friendly &amp; fair working environment in which everyone has equal chances of being developed</strong></li></ul><p>Keeping in mind that “people” are key to the company success, TSDV is continuously improving our working environment in which “people” is considered first in any policy; everyone has equal chances of being developed:<br>- We are proud of our transparent &amp; comprehensive employee performance evaluation system, which is one of key factors to keep members’ satisfaction.<br>- In TSDV, you need not to care about your personal relationship with your boss to survive, but your teamwork spirit. Although roles &amp; responsibilities of member in a team are defined clearly, there is no gap between leaders and members in daily working activities: we work &amp; learn together side by side to overcome difficulties, and willing to support each other whenever we can.<br>-&nbsp;In TSDV, you are encouraged to openly share your opinions to different levels of management, even to the General Director.<br>&nbsp;</p><ul><li><strong>&nbsp;Competitive benefit</strong></li></ul><p>- High Remuneration Package (up to 15 months salary) and Full Social, Medical &amp; Unemployment Insurance<br>- Work in well - equipped and professional IT environment and IT community;<br>- To be trained and/or instructed by Japanese Specialists in Vietnam as well as in Japan and others;<br>- Become member of a giant corporation;<br>- Many opportunity to work/study core technology of Toshiba (including OJT long term in Japan) ;</p>
-                    </div>
-                  </div>
-                </div>
 
-              <!-- <div class="job-details__divider"></div>
-                <h2 class="job-details__second-title">Top 3 Reasons To Join Us</h2>
-                <ul>
-                    <li>Salary up to $3500</li>
-                    <li>13th month of salary</li>
-                    <li>100% salary on probation time</li>
-                </ul>
-                <h2 class="job-details__second-title">Job Description</h2>
-                <p class="job-details__paragraph">
-                    We are seeking great designers to join our dedicated expanding team on great projects. The newcomers will work on existing and new 3D virtual reality games/applications that simulate practice sports. You will be responsible for:
-                </p>
-                <ul>
-                    <li>Design new materials to improve the quality of our existing apps</li>
-                    <li>Design new 3D models for our existing apps</li>
-                    <li>Design new 3D models for our new apps</li>
-                    <li>Design new 3D models for our new apps</li>
-                </ul>
-                <h2 class="job-details__second-title">Your Skills and Experience</h2>
-                <p class="job-details__paragraph">
-                - Tốt nghiệp: Cao đẳng/Đại học chuyên ngành Công nghệ thông tin, hoặc các lĩnh vực liên quan</br>
-                - Kinh nghiệm: 01 – 02 năm.</br>
-                - Có kiến thức về nhiều phương pháp và kỹ thuật test; Có kinh nghiệm sử dụng các công cụ test là một lợi thế.</br>
-                - Thành thạo công cụ quản lý CSDL cho MongoDB, SQL server, Oracle...và mô hình Agile, Scrum.</br>
-                - Tư duy logic tốt, tỉ mỉ, đam mê học hỏi, có tinh thần trách nhiệm và chịu áp lực công việc.</br>
-                </p>
-
-                <h2 class="job-details__second-title">Why You'll Love Working Here</h2>
-                <p class="job-details__paragraph">
-                    + Mức lương cạnh tranh tùy vào năng lực, kinh nghiệm hiện có.</br>
-                    + Cơ hội làm việc lâu dài, môi trường làm việc năng động và nhiều cơ hội phát triển.</br>
-                    + Thưởng cuối năm lương tháng 13, 13+...và thưởng thâm niên.</br>
-                    + Xét tăng lương 02 lần/năm.</br>
-                    + Đảm bảo đầy đủ quyền lợi theo luật BHXH và luật lao động.</br>
-                    + Được tổ chức sinh nhật và tham gia các sự kiện nội bộ, du lịch với Công ty hằng năm.</br>
-                    + Các chế độ khác theo quy chế của Công ty.</br>
-                </p>
-            </div>
-                <div class="job-details__divider"></div>
-                <h2 class="job-details__second-title">More Jobs For You</h2>
-                    <div class="employer-long-overview__jobs">
-                        <div style="width: 250px;" href="#" class="red-btn">Get similar jobs by email</div>
-                    </div>
-                    <div class="column job-card">
-                <div class="dev">
-                  <a href="/profile.html" class="card__body">
-                    <div class="dev__profile">
-                      <img class="avatar avatar--md" src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNnBjSnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--9a72afb934c2fa7cb5587f07c444353e432aec32/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--89a7283b6fdfb4208cdc2b440a36613a6fae974c/avt.jpg" alt="image" />
-                      <div class="dev__meta">
-                        <h3>Senior Java Developer (Spring, J2EE) ~ $2500</h3>
-                        <h5>Sign in to view</h5>
-                      </div>
-                    </div>
-                    <p class="dev__info">
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate, ducimus inventore! Sunt,
-                      veniam veritatis? Veritatis placeat, deleniti iure tempore veniam perspiciatis, soluta cupiditate
-                      animi, exercitationem molestias nam doloremque architecto odit.
-                    </p>
-                    <div class="dev__skills">
-                      <span class="tag tag--pill tag--main">
-                        <small>Java</small>
-                      </span>
-                      <span class="tag tag--pill tag--main">
-                        <small>Spring</small>
-                      </span>
-                      <span class="tag tag--pill tag--main">
-                        <small>J2EE</small>
-                      </span>
-                    </div>
-                  </a>
                 </div>
               </div>
-                    <div class="column job-card">
-                    <div class="dev">
-                      <a href="/profile.html" class="card__body">
-                        <div class="dev__profile">
-                          <img class="avatar avatar--md" src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBei9USnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--fd20e1af8121ff727c9e8bae8b9fbac8c5f97565/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--a9d835d302ad9f096170a85b9d142ff095a42b9d/LogoGS_SLogan_Original%20(1).png" alt="image" />
-                          <div class="dev__meta">
-                            <h3>Data Engineer</h3>
-                            <h5>Sign in to view</h5>
-                          </div>
-                        </div>
-                        <p class="dev__info">
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate, ducimus inventore! Sunt,
-                          veniam veritatis? Veritatis placeat, deleniti iure tempore veniam perspiciatis, soluta cupiditate
-                          animi, exercitationem molestias nam doloremque architecto odit.
-                        </p>
-                        <div class="dev__skills">
-                          <span class="tag tag--pill tag--main">
-                            <small>Elixir</small>
-                          </span>
-                          <span class="tag tag--pill tag--main">
-                            <small>F#</small>
-                          </span>
-                          <span class="tag tag--pill tag--main">
-                            <small>.NET</small>
-                          </span>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                    <div class="column job-card">
-                    <div class="dev">
-                      <a href="/profile.html" class="card__body">
-                        <div class="dev__profile">
-                          <img class="avatar avatar--md" src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMFFwSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--726f9b5711b6cbc5c61b0870034c1c636d45c48d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--a9d835d302ad9f096170a85b9d142ff095a42b9d/logo-square.png" alt="image" />
-                          <div class="dev__meta">
-                            <h3>3D Game/Application Designer (Unity)</h3>
-                            <h5>Sign in to view </h5>
-                          </div>
-                        </div>
-                        <ul>
-                            <li>Salary up to $3500</li>
-                            <li>13th month of salary</li>
-                            <li>100% salary on probation time</li>
-                        </ul>
-                        <div class="dev__skills">
-                          <span class="tag tag--pill tag--main">
-                            <small>Python</small>
-                          </span>
-                          <span class="tag tag--pill tag--main">
-                            <small>Django</small>
-                          </span>
-                          <span class="tag tag--pill tag--main">
-                            <small>Rest API</small>
-                          </span>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                    <div class="column job-card">
-                    <div class="dev">
-                      <a href="/profile.html" class="card__body">
-                        <div class="dev__profile">
-                          <img class="avatar avatar--md" src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOXZRRXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2151040530715a5601da1d00d0ce41a97ad1e641/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjloYm1SZmNHRmtXd2RwUm1sRyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--a9d835d302ad9f096170a85b9d142ff095a42b9d/grapeccity.png" alt="image" />
-                          <div class="dev__meta">
-                            <h3>Tech leader / PM (JavaScript/.NET/Japanese)</h3>
-                            <h5>Sign in to view </h5>
-                          </div>
-                        </div>
-                        <ul>
-                            <li>Enjoyable Team Environment</li>
-                            <li>Engaging and Innovative Work</li>
-                            <li>Tet Bonus on Jan and Performance Bonus on July</li>
-                        </ul>
-                        <div class="dev__skills">
-                          <span class="tag tag--pill tag--main">
-                            <small>JavaScript</small>
-                          </span>
-                          <span class="tag tag--pill tag--main">
-                            <small>React</small>
-                          </span>
-                          <span class="tag tag--pill tag--main">
-                            <small>SCSS</small>
-                          </span>
-                        </div>
-                      </a>
-                    </div>
-                  </div> -->
+              </div>
             </div>
           </div>
           
-          <div class="jd-page__employer-overview">
-                <div class="employer-long-overview__top">
-                    <div class="employer-long-overview__top-left">
-                        <h2 class="employer-long-overview__name">Overall Rating</h2>
-                    </div>
-                </div>
-                <div class="employer-long-overview__main">
-                  <div class="d-flex align-items-center">
-                    <span class="rating-stars-box">
-                      <span class="blue-stars">
-                        <img class="size" src="https://itviec.com/assets/rating-star-white-7e936fe21658ee9a7bf982b9ec56935cc7e20ffb6565217982c371d50c919653.svg" width="40" height="38">
-                        <img class="size" src="https://itviec.com/assets/rating-star-white-7e936fe21658ee9a7bf982b9ec56935cc7e20ffb6565217982c371d50c919653.svg" width="40" height="38">
-                        <img class="size" src="https://itviec.com/assets/rating-star-white-7e936fe21658ee9a7bf982b9ec56935cc7e20ffb6565217982c371d50c919653.svg" width="40" height="38">
-                      </span>
-                      <span class="two-colors-star" style="--blue-width: 50.0%; --grey-width: 50.0%">
-                        <img class="size" src="https://itviec.com/assets/rating-star-white-7e936fe21658ee9a7bf982b9ec56935cc7e20ffb6565217982c371d50c919653.svg" width="40" height="38">
-                      </span>
-                      <span class="grey-stars">
-                        <img class="size" src="https://itviec.com/assets/rating-star-white-7e936fe21658ee9a7bf982b9ec56935cc7e20ffb6565217982c371d50c919653.svg" width="40" height="38">
-                      </span>
-                    </span>
-                    <span class="company-ratings__star-point">3.5</span>
-                    </div>
-                </div>
-                <hr class="divider">
-                <table data-controller="reviews--rating-circle-progress" data-reviews--rating-circle-progress-value-value="79">
-                  <tbody>
-                    <tr>
-                      <td class="chart" data-reviews--rating-circle-progress-target="recommend" id="company-rating__rate">
-                        <canvas width="100" height="100" style="height: 80px; width: 80px;"></canvas>
-                        <strong>79%</strong>
-                      </td>
-                      <td class="pl-10">Recommend working here to a friend</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <hr class="divider">
-                <div class="company-details-ratings">
-                  <div class="company-details-ratings__item">
-                    <div class="company-details-ratings__item-text">Salary &amp; benefits</div>
-                      <div class="company-details-ratings__item-stars">
-                        <span class="rating-bar-box">
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                          </svg>
-                          <span style="width: 64.0%;">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                            </svg>
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                            </svg>
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                            </svg>
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                            </svg>
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                            </svg>
-                          </span>
-                        </span>
-                      </div>
-                    <div class="company-details-ratings__item-rate text-nowrap">3.2</div>
-                  </div>
-
-                  <div class="company-details-ratings__item">
-                    <div class="company-details-ratings__item-text">Training &amp; learning</div>
-                      <div class="company-details-ratings__item-stars"><span class="rating-bar-box">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <span style="width: 68.0%;">
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                        </span>
-                      </span>
-                    </div>
-                    <div class="company-details-ratings__item-rate text-nowrap">3.4</div>
-                  </div>
-
-                  <div class="company-details-ratings__item">
-                    <div class="company-details-ratings__item-text">Management cares about me</div>
-                      <div class="company-details-ratings__item-stars"><span class="rating-bar-box">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <span style="width: 64.0%;">
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                        </span>
-                      </span>
-                    </div>
-                    <div class="company-details-ratings__item-rate text-nowrap">3.2</div>
-                  </div>
-
-                  <div class="company-details-ratings__item">
-                    <div class="company-details-ratings__item-text">Culture &amp; fun</div>
-                      <div class="company-details-ratings__item-stars"><span class="rating-bar-box">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <span style="width: 66.0%;">
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                        </span>
-                      </span>
-                    </div>
-                    <div class="company-details-ratings__item-rate text-nowrap">3.3</div>
-                  </div>
-
-                  <div class="company-details-ratings__item">
-                    <div class="company-details-ratings__item-text">Office &amp; workspace</div>
-                      <div class="company-details-ratings__item-stars"><span class="rating-bar-box">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="#E9E9E9"></path>
-                        </svg>
-                        <span style="width: 64.0%;">
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.24897 0.487005L4.54019 4.10687L0.717021 4.68922C0.0314143 4.79311 -0.243352 5.67621 0.253844 6.182L3.01982 8.99806L2.36562 12.9761C2.24786 13.6951 2.97272 14.2337 3.57982 13.8975L7 12.0192L10.4202 13.8975C11.0273 14.231 11.7521 13.6951 11.6344 12.9761L10.9802 8.99806L13.7462 6.182C14.2434 5.67621 13.9686 4.79311 13.283 4.68922L9.45981 4.10687L7.75103 0.487005C7.44486 -0.158228 6.55776 -0.16643 6.24897 0.487005Z" fill="var(--color-sub-light)"></path>
-                          </svg>
-                        </span>
-                      </span>
-                    </div>
-                    <div class="company-details-ratings__item-rate text-nowrap">3.2</div>
-                  </div>
-
-                  <div class="mt-20">
-                    <a class="button ibutton full-width ibutton-red" href="/companies/toshiba-software-development-viet-nam-co-ltd/review">See all ratings and reviews</a>
-                  </div>
-                </div>
-            
-          </div>
 
         </div>
       
       </div>
     </section>
-</main>
-
-    <div class="pagination">
-      <ul class="container">
-      </ul>
-    </div>
-  </main>
 {% endblock content %}

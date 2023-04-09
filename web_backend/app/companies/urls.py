@@ -13,4 +13,5 @@ urlpatterns = [
     path(
         "<uuid:company_id>/reviews/", views.company_reviews_view, name="company-reviews"
     ),
+    path("<uuid:company_id>/review_form/", views.review_form_view, name="review-form"),
 ]

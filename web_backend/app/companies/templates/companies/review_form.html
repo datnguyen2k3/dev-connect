@@ -1,0 +1,419 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block style %}
+
+  <style>
+    ul {
+        display: block;
+        list-style-type: disc;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 40px;
+        color: #353535;
+    }
+
+    .filter-jobs-form .search-form {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .filter-jobs-form .filter-form {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .filter-jobs-form .form-group {
+      flex-basis: calc(20.00% - 10px);
+      margin-bottom: 10px;
+    }
+
+    .filter-jobs-form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .filter-jobs-form select {
+      width: 100%;
+      height: 40px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .filter-jobs-form .btn-search {
+      width: 100px;
+      height: 40px;
+      border-radius: 5px;
+      font-size: 16px;
+      background-color: #337ab7;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .filter-jobs-form .btn-search:hover {
+      background-color: #286090;
+    }
+    .search-page__main-content {
+        display: grid;
+        margin: 30px 0 0 -100px;
+        grid-template-columns: 900px 400px;
+        max-width: 1350px;
+        column-gap: 30px;
+        row-gap: 30px;
+    }
+
+    .red-btn {
+        background-color: #fff;
+        color: #ff0000;
+        width: 100%;
+        border: 1px solid #ff0000;
+        margin: 20px 0;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .red-btn:hover {
+        color: #fff;
+        background-color: #ff0000;
+    }
+
+    .search-page__job-preview {
+        padding: 0 30px;
+        border: 3px solid var(--color-light);
+        background-color: #fff;
+    }
+
+    .job-details__paragraph {
+        font-size: 16px;
+        font-weight: normal;
+        color: #353535;
+        margin: 20px 0;
+    }
+
+    .job-details__header {
+        margin-bottom: 20px;
+        padding-top: 20px;
+        position: sticky;
+        z-index: 1;
+        background-color: #fff;
+    }
+
+    .job-details__title {
+        font-size: 30px;
+        font-weight: 500;
+        color: #1b1b1b;
+    }
+
+    .job-details__divider {
+        border-bottom: 1px solid var(--color-light);
+    }
+
+    .job-details__second-title {
+        font-size: 23px;
+        color: #353535;
+        font-weight: 400;
+        margin: 30px 0 0;
+    }
+    .jd-page__employer-overview {
+        border: 3px solid var(--color-light);
+        height: 560px;
+        padding: 20px;
+        background-color: #fff;
+    }
+
+    .br-widget label i.fa-star {
+        color: #ccc;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .br-widget input[type="radio"]:checked + label i.fa-star {
+        color: #FFC107;
+    }
+
+    .yellow-star i.fa-star {
+        color: #FFC107;
+    }
+
+    .br-widget {
+        padding-top: 5px;
+        padding-bottom: 10px;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        appearance: none;
+        border-radius: 0.3rem;
+    }
+
+    .rate-positive, .rate-negative{
+        cursor: pointer;
+    }
+
+    .rate-positive:hover {
+        color: #28a745;
+    }
+
+    .rate-negative:hover {
+        color: #dc3545;
+    }
+
+    .float-end {
+        margin-top: 0.25rem;
+        font-size: 0.875em;
+        color: #6c757d;
+        float: right !important;
+    }
+    .upload-btn {
+        background-color: #fff;
+        color: #337ab7;
+        width: 100%;
+        margin: 20px 0;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        font-size: 16px;
+    }
+    .text-center {
+        text-align: center;
+    }
+    .red-link {
+        color: #ea2635;
+        text-decoration: none;
+        border-bottom: 1px dotted #ea2635;
+        outline: none;
+    }
+    .stars {
+        display: inline-block;
+        position: relative;
+        margin: 0 30px;
+      }
+
+      .star {
+        font-size: 40px;
+        color: gray;
+        cursor: pointer;
+      }
+
+      .selected {
+        color: #FFC107;
+      }
+
+  .ratingstar {
+    display: flex;
+  }
+
+  .ratingstar label {
+    width: 230px;
+  }
+  </style>
+{% endblock style %}
+
+
+{% block content %}
+
+
+
+
+  <!-- Main Section -->
+<main class="main">
+    <section class="devlist">
+      <div class="container">
+        <div class="search search-jobs search-page__main-content">
+            <div class="search-page__job-preview">
+            <div class="job-details__header">
+                <div class="job-details__title" style="font-size: 40px;">Đánh giá</div>
+            
+                <div class="job-details__title">{{company.name}}</div>
+                <div class="job-details__sub-title">IncepIT</div>
+
+          <form action="" method="POST">  
+            {% csrf_token %}
+            <div class="job-details__body">
+                <p class="job-details__paragraph">
+                    Bạn chỉ mất 1 phút để hoàn thành bảng đánh giá này.
+                    Ý kiến của bạn sẽ giúp ích rất nhiều cho cộng đồng Developer đang tìm việc.
+                </p>
+                <h2 class="job-details__second-title">Đánh giá tổng quát:</h2>
+                <div class="br-widget">
+                    <div class="stars" style="margin: 0px">
+                      <span class="star" onclick="setRating(1, '.star', 'rating')"><i class="fa fa-star"></i></span>
+                      <span class="star" onclick="setRating(2, '.star', 'rating')"><i class="fa fa-star"></i></span>
+                      <span class="star" onclick="setRating(3, '.star', 'rating')"><i class="fa fa-star"></i></span>
+                      <span class="star" onclick="setRating(4, '.star', 'rating')"><i class="fa fa-star"></i></span>
+                      <span class="star" onclick="setRating(5, '.star', 'rating')"><i class="fa fa-star"></i></span>
+                    </div>
+                </div>
+
+                <h2 class="job-details__second-title">Tiêu đề: </h2>
+                <label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Tiêu đề: Tóm tắt đánh giá của bạn. Ví dụ: 'Sếp tốt' hoặc 'Nhân viên mới đều được cấp Macbook'" style="width: 100%; margin-bottom: 20px;">
+                </label>
+
+                <h2 class="job-details__second-title">Điều bạn thích: </h2>
+                <label>
+                    <textarea class="form-control" id="positive" name="advantage" placeholder="Điều gì làm công ty này nổi bật? Ví dụ: 'Bãi đậu xe rộng rãi. Văn phòng đẹp tất cả đều được trang bị hàng 'Apple' (Macbook, iMac)'" style="width: 100%; height: 130px;"></textarea>
+                </label>
+                <div class="float-end">
+                    Ghi chú: Giới hạn từ 50 đến 10000 ký tự.
+                </div>
+
+                <h2 class="job-details__second-title">Điều công ty cần cải thiện: </h2>
+                <label>
+                    <textarea class="form-control" id="negative" name="defect" placeholder="Bạn nghĩ công ty cần cải thiện điều gì? Ví dụ: 'Khi có dự án thì OT hơi nhiều, áp lực, nên cần cải thiện khâu estimation. Họp và báo cáo nhiều gây mất thời gian, nên giảm các việc này.'" style="width: 100%; height: 130px;"></textarea>
+                </label>
+                <input type="hidden" name="rating" id="rating">
+                <div class="float-end">
+                    Ghi chú: Giới hạn từ 50 đến 10000 ký tự.
+                </div>
+
+                
+                <h2 class="job-details__second-title">Review chi tiết: </h2>
+
+                <input type="hidden" name="salary_stars" id="rating1">
+                <div class="ratingstar">
+                  
+                  <label for="rating1">Lương thưởng & phúc lợi: </label>
+                  <div class="stars">
+                    <span class="star-1" onclick="setRating(1, '.star-1', 'rating1')"><i class="fa fa-star"></i></span>
+                    <span class="star-1" onclick="setRating(2, '.star-1', 'rating1')"><i class="fa fa-star"></i></span>
+                    <span class="star-1" onclick="setRating(3, '.star-1', 'rating1')"><i class="fa fa-star"></i></span>
+                    <span class="star-1" onclick="setRating(4, '.star-1', 'rating1')"><i class="fa fa-star"></i></span>
+                    <span class="star-1" onclick="setRating(5, '.star-1', 'rating1')"><i class="fa fa-star"></i></span>
+                  </div>
+                </div>
+                
+                <input type="hidden" name="training_stars" id="rating2">
+                <div class="ratingstar">
+                  <label for="rating2">Đào tạo & học hỏi: </label>
+                  
+                  <div class="stars">
+                    <span class="star-2" onclick="setRating(1, '.star-2', 'rating2')"><i class="fa fa-star"></i></span>
+                    <span class="star-2" onclick="setRating(2, '.star-2', 'rating2')"><i class="fa fa-star"></i></span>
+                    <span class="star-2" onclick="setRating(3, '.star-2', 'rating2')"><i class="fa fa-star"></i></span>
+                    <span class="star-2" onclick="setRating(4, '.star-2', 'rating2')"><i class="fa fa-star"></i></span>
+                    <span class="star-2" onclick="setRating(5, '.star-2', 'rating2')"><i class="fa fa-star"></i></span>
+                  </div>
+                </div>
+
+                <input type="hidden" name="employee_attention_stars" id="rating3">
+                <div class="ratingstar">
+                  <label for="rating3">Sự quan tâm đến nhân viên: </label>
+                  
+                  <div class="stars">
+                    <span class="star-3" onclick="setRating(1, '.star-3', 'rating3')"><i class="fa fa-star"></i></span>
+                    <span class="star-3" onclick="setRating(2, '.star-3', 'rating3')"><i class="fa fa-star"></i></span>
+                    <span class="star-3" onclick="setRating(3, '.star-3', 'rating3')"><i class="fa fa-star"></i></span>
+                    <span class="star-3" onclick="setRating(4, '.star-3', 'rating3')"><i class="fa fa-star"></i></span>
+                    <span class="star-3" onclick="setRating(5, '.star-3', 'rating3')"><i class="fa fa-star"></i></span>
+                  </div>
+                </div>
+                
+                <input type="hidden" name="culture_stars" id="rating4">
+                <div class="ratingstar">
+                  <label for="rating4">Văn hóa công ty: </label>
+                  
+                  <div class="stars">
+                    <span class="star-4" onclick="setRating(1, '.star-4', 'rating4')"><i class="fa fa-star"></i></span>
+                    <span class="star-4" onclick="setRating(2, '.star-4', 'rating4')"><i class="fa fa-star"></i></span>
+                    <span class="star-4" onclick="setRating(3, '.star-4', 'rating4')"><i class="fa fa-star"></i></span>
+                    <span class="star-4" onclick="setRating(4, '.star-4', 'rating4')"><i class="fa fa-star"></i></span>
+                    <span class="star-4" onclick="setRating(5, '.star-4', 'rating4')"><i class="fa fa-star"></i></span>
+                  </div>
+                </div>
+
+                <div class="ratingstar">
+                  <label for="rating5">Văn phòng làm việc: </label>
+                  <input type="hidden" name="office_starts" id="rating5">
+                  <div class="stars">
+                    <span class="star-5" onclick="setRating(1, '.star-5', 'rating5')"><i class="fa fa-star"></i></span>
+                    <span class="star-5" onclick="setRating(2, '.star-5', 'rating5')"><i class="fa fa-star"></i></span>
+                    <span class="star-5" onclick="setRating(3, '.star-5', 'rating5')"><i class="fa fa-star"></i></span>
+                    <span class="star-5" onclick="setRating(4, '.star-5', 'rating5')"><i class="fa fa-star"></i></span>
+                    <span class="star-5" onclick="setRating(5, '.star-5', 'rating5')"><i class="fa fa-star"></i></span>
+                  </div>
+                </div>
+
+                <div class="upload-btn">
+                  <!-- button -->
+                  <button class="red-btn" type="submit" name="submit">Đánh giá</button>
+                </div>
+            </div>
+          </form>
+
+            </div>
+
+
+
+
+            </div>
+            <div class="jd-page__employer-overview">
+                <div class="job-details__title">Hướng Dẫn & Điều Kiện Về Đánh Giá</div>
+                <p class="job-details__paragraph">
+                    Mọi đánh giá phải tuân thủ Hướng Dẫn & Điều Kiện về đánh giá để được hiển thị trên website.
+                    </br>
+                    Xin vui lòng:
+                </p>
+                <ul>
+                    <li>Không sử dụng từ ngữ mang ý xúc phạm, miệt thị</li>
+                    <li>Không cung cấp thông tin cá nhân</li>
+                    <li>Không cung cấp thông tin bảo mật, bí mật kinh doanh của công ty</li>
+                </ul>
+                <p class="job-details__paragraph">
+                    Cảm ơn bạn đã đưa ra những đánh giá chân thực nhất. Xem thêm thông tin chi tiết về Hướng Dẫn & Điều Kiện về đánh giá
+                </p>
+                <div class="text-center">
+                    <a href="#" class="red-link">Tại đây</a>
+                </div>
+
+            </div>
+
+        </div>
+      </div>
+    </section>
+</main>
+
+    <div class="pagination">
+      <ul class="container">
+      </ul>
+    </div>
+  </main>
+<script>
+  function setRating(value, id, id2) {
+    for (let i = 0; i < document.querySelectorAll(id).length; i++) {
+      if (i < value) {
+        document.querySelectorAll(id)[i].classList.add("selected");
+      } else {
+        document.querySelectorAll(id)[i].classList.remove("selected");
+      }
+    }
+    document.getElementById(id2).value = value;  
+  }
+</script>
+
+{% endblock content %}
+

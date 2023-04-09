@@ -211,7 +211,7 @@
                 <div class="job-details__title">{{job.title}}</div>
                 {% comment %} <div class="job-details__sub-title">IncepIT</div> {% endcomment %}
                 <div class="job-details__apply">
-                    <a href="#" class="job-details__apply-btn red-btn">Apply Now</a>
+                    <a href="{% url 'jobs:applied-cv-form' job.id %}" class="job-details__apply-btn red-btn">Apply Now</a>
                 </div>
             </div>
 
@@ -394,8 +394,10 @@
             <div class="jd-page__employer-overview">
                 <div class="employer-long-overview__top">
                     <div class="employer-long-overview__logo">
-                        <a href="#">
-                            <img src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOWZHRGc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--d87ed2bc7bf7d2e1db57b99e0ae07d460bf53278/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2wzWldKd09oSnlaWE5wZW1WZmRHOWZabWwwV3dkcEFhb3ciLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--bb0ebae071595ab1791dc0ad640ef70a76504047/bitech-logo.png" alt="employer logo">
+                        
+                        
+                        <a href="{% url 'companies:single-company' job.company.id %}">
+                            <img src="{{job.company.company_img.url}}">
                         </a>
                     </div>
                     <div class="employer-long-overview__top-left">
@@ -414,7 +416,7 @@
                     </ul>
                 </div>
                 <div class="employer-long-overview__jobs">
-                    <div href="{% url 'companies:single-company' job.company.id %}" class="red-btn">View company profile</div>
+                    <a href="{% url 'companies:single-company' job.company.id %}" class="red-btn">View company profile</a>
                 </div>
             </div>
 

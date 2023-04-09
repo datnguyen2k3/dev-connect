@@ -6,7 +6,6 @@ from app.companies.models.Company import Company
 
 job_index = Index('job_index')
 
-
 @job_index.document
 class JobDocument(Document):
     
@@ -17,9 +16,6 @@ class JobDocument(Document):
         'type': fields.TextField(),
         'company_img': fields.TextField(attr='company_img.url'),
     })
-    
-    # def company_img(self, instance):
-    #     return instance.company.company_img.url if instance.image else ''
     
     skills = fields.ObjectField(properties={
         'name': fields.TextField(),
@@ -39,19 +35,7 @@ class JobDocument(Document):
     class Django:
         model = Job
         
-        fields = [
-            # 'company',
-            # 'skills',
-            # 'levels',
-            'id',
-            'is_active',
-            'working_model',
-            'title',
-            'advantage',
-            'description',
-            'qualification',
-            'benefit',
-        ]
+        fields = ['id','title','advantage','description','qualification','benefit']
         
 
 

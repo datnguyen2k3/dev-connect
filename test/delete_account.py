@@ -10,7 +10,7 @@ response_token = requests.post(
     token_url,
     data={
         'username':"thanhdatuet2003",
-        'password':"fuckyoubitch1"
+        'password':"fuckyoubitch"
     }    
 )
 
@@ -18,7 +18,7 @@ token = response_token.json()['access']
 
 headers = {"Authorization": "Bearer " + token}
 
-for id in range(10, 20):
+for id in range(100, 1000):
     curr_username = username + str(id)
 
     data = {

@@ -45,6 +45,42 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def average_salary_stars(self):
+        total = 0
+        for review in self.companyreview_set.all():
+            total += review.salary_stars
+        return total / len(self.companyreview_set.all())
+    
+    def average_training_stars(self):
+        total = 0
+        for review in self.companyreview_set.all():
+            total += review.training_stars
+        return total / len(self.companyreview_set.all())
+
+    def average_employee_attention_stars(self):
+        total = 0
+        for review in self.companyreview_set.all():
+            total += review.employee_attention_stars
+        return total / len(self.companyreview_set.all())
+
+    def average_culture_stars(self):
+        total = 0
+        for review in self.companyreview_set.all():
+            total += review.culture_stars
+        return total / len(self.companyreview_set.all())
+    
+    def average_office_starts(self):
+        total = 0
+        for review in self.companyreview_set.all():
+            total += review.office_starts
+        return total / len(self.companyreview_set.all())
+
+    def average_stars(self):
+        total = 0
+        for review in self.companyreview_set.all():
+            total += review.stars
+        return total / len(self.companyreview_set.all())
 
     class Meta:
         ordering = ["-id"]
