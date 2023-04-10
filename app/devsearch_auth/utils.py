@@ -104,5 +104,5 @@ def get_user_from_request(request) -> User:
             user = User.objects.get(email=username)
         except User.DoesNotExist:
             return None
-
+    
     return user

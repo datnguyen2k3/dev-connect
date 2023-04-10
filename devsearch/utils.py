@@ -28,5 +28,4 @@ class CustomPaginator(Paginator):
         paginator = CustomPaginator(query_set)
         page_range = paginator.get_page_range(page_number)
         current_page = paginator.page(page_number)
-        
         return (current_page, page_range)

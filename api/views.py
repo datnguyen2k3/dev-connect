@@ -56,13 +56,15 @@ def get_reviews_view(request, project_id):
     return Response(serializer.data)
 
 
+
 @api_view(["DELETE"])
 @permission_classes([IsAuthenticated])
 def delete_review_view(request, project_id, review_id):
     review = Review.objects.get(pk=review_id)
-    
+
     if review.owner != request.user.profile:
         return Response("You are not the owner of this review")
 
     review.delete()
     return Response("Review deleted")
+

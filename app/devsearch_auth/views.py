@@ -38,7 +38,7 @@ def reset_password_view(request, uidb64, token):
             user.set_password(new_password)
             user.save()
             return redirect("devsearch_auth:reset_password_complete")
-
+        
     return render(request, "devsearch_auth/reset_password.html", {})
 
 
