@@ -16,7 +16,7 @@
           <li class="header__menuItem"><a href="{% url 'projects:projects' %}">Projects</a></li>
           {% comment %} <li class="header__menuItem"><a href="l">Inbox</a></li> {% endcomment %}
           <li class="header__menuItem"><a href="{% url 'users:account' %}">Account</a></li>
-          
+          <li class="header__menuItem"><a href="/dev-connect/app/users/templates/users/company.html">Company</a></li>
           {% if request.user.is_authenticated %}
             <li class="header__menuItem">
               <a href="{% url 'devsearch_auth:logout' %}" class="btn btn--sub">Logout</a>
