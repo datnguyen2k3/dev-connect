@@ -5,6 +5,8 @@ from .forms import AppliedCVForm
 from .utils import search_jobs
 from rest_framework.response import Response
 from rest_framework import status
+from django.db.models import Q
+from .models.AppliedCV import AppliedCV
 
 
 # Create your views here.
@@ -51,9 +53,9 @@ def applied_cv_form_view(request, job_id):
         form = AppliedCVForm(request.POST, request.FILES)
         if not form.is_valid():
             return render(request, "jobs/cv_form.html", {"form": form})
-
-        if AppliedCVForm.objects.filter(owner=user, job=job).exists():
-            delete_cv = AppliedCVForm.objects.filter(owner=user, job=job)
+        
+        if AppliedCV.objects.filter(Q(owner=user) & Q(job=job)).exists():
+            delete_cv = AppliedCV.objects.filter(Q(owner=user) & Q(job=job))
             delete_cv.delete()
 
         new_cv = form.save(commit=False)
