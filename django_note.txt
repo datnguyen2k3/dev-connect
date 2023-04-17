@@ -129,8 +129,7 @@ REST:
 	+ code on demand (optional): server can send code to client
 
 
-
-
 ELASTICSEARCH:
-	+ "python manage.py search_index --rebuild"
+	+ "python manage.py search_index --rebuild" 
+	
 
