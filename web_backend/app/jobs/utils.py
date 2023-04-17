@@ -43,7 +43,7 @@ def search_jobs(query=None):
     match_job_title = {
         "span_near": {
             "clauses": job_title_clauses,
-            "slop": 0,
+            "slop": 5,
             "in_order": False
         }  
     }
@@ -59,7 +59,7 @@ def search_jobs(query=None):
     match_company_name = {
         "span_near": {
             "clauses": company_name_clauses,
-            "slop": 0,
+            "slop": 5,
             "in_order": False
         }  
     }
@@ -97,7 +97,7 @@ def search_jobs(query=None):
         {
             "multi_match": {
                 'query': word,
-                'fuzziness': '2',
+                'fuzziness': '1',
                 "slop": 1,
                 "fields": ["skills.name", "levels.level"],
                 

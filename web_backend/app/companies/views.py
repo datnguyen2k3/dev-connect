@@ -3,6 +3,7 @@ from .models.Company import Company
 from .models.CompanyReview import CompanyReview
 from .forms import CompanyReviewForm
 from .utils import search_companies
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -54,6 +55,7 @@ def company_reviews_view(request, company_id):
     
     return render(request, 'companies/single-company-reviews.html', context=context)
 
+@login_required(login_url='users:login')
 def review_form_view(request, company_id):
     user = request.user.profile
     company = Company.objects.get(id=company_id)
