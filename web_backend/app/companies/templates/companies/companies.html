@@ -1,0 +1,246 @@
+{% extends 'main.html' %}
+
+{% block style %}
+
+
+
+  <style>
+
+    ul {
+        display: block;
+        list-style-type: disc;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 40px;
+        color: #353535;
+    }
+
+    .checked {
+      color: orange;
+    }
+
+    .btn-form {
+        margin-top: 29px;
+        margin-left: 10px;
+    }
+
+    .form-control {
+        width: 100%;
+        height: 40px;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .filter-jobs-form {
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .filter-jobs-form .search-form {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .filter-jobs-form {
+      flex-grow: 1;
+      margin-right: 10px;
+    }
+
+    .filter-jobs-form .filter-form {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .filter-jobs-form .form-group {
+      flex-basis: calc(30.00% - 10px);
+      margin-bottom: 10px;
+    }
+
+    .filter-jobs-form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .filter-jobs-form select {
+      width: 100%;
+      height: 40px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .filter-jobs-form .btn-search {
+      width: 100px;
+      height: 40px;
+      border-radius: 5px;
+      font-size: 16px;
+      background-color: #337ab7;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .filter-jobs-form .btn-search:hover {
+      background-color: #286090;
+    }
+    .search-page__main-content {
+        display: block;
+        margin: 30px 0 0 -100px;
+        max-width: 1350px;
+        row-gap: 0px;
+    }
+    .search-page {
+    }
+    .search-result {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        color: #1b1b1b;
+    }
+    .company-overview {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--color-text);
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-inline-end: 99px;
+        padding-inline-start: 15px;
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+
+    .text-end {
+        text-align: right;
+    }
+
+    .company-footer {
+        display: block;
+        font-size: 1.2rem;
+        font-weight: 300;
+        padding-bottom: 10px;
+    }
+
+    .action-link {
+        color: #337ab7;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .rating {
+        margin-left: 24px;
+    }
+  </style>
+{% endblock style %}
+
+{% block content %}
+
+  {% comment %} Search {% endcomment %}
+    <form action="" method="GET">
+      <section class="hero-section text-center">
+      <div class="container container--narrow">
+        <div class="hero-section__box">
+          <h2>Search for <span>Companies</span></h2>
+        </div>
+
+        <div class="hero-section__search">
+          <div class="form search-form">
+            <div class="form__field">
+              <label for="formInput#search">Search By Company </label>
+              <input class="input input--text" id="formInput#search" type="text" name="search_query"
+                value="{{search_query}}" placeholder="Search" />
+            </div>
+
+            {% comment %} <input class="btn btn--sub btn--lg" type="submit" value="Search" /> {% endcomment %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  <!-- Main Section -->
+
+    <div class="filter-jobs-form">
+  <div class="filter-form">
+
+    <div class="form-group">
+        <label for="company-type">Company Type</label>
+        <select class="form-control" id="company_type" name="company_type">
+          <option value="">Company Type</option>
+          <option value="outsourcing">Outsourcing</option>
+          <option value="product">Product</option>
+        </select>
+
+    </div>
+
+      <button type="submit" class="btn btn-primary btn-search btn-form">Search</button>
+  </div>
+  
+</div>
+</form>
+    <section class="devlist">
+      <div class="container">
+        <div class="search search-jobs search-page__main-content">
+          <div class="search-page">
+              <div class="search-result">Found {{number_companies}} companies</div>
+
+              {% for company in companies %}
+              
+
+                <div class="column job-card">
+                    <div class="dev">
+                        <a href="{% url 'companies:company-jobs' company.id %}" class="card__body">
+                            <div class="dev__profile">
+                                <img class="avatar avatar--md" src="{{company.company_img}}" alt="image" />
+                                <div class="dev__meta">
+                                    <h3>{{company.name}}</h3>
+                                    <ul class="company-overview">
+                                        <li>{{company.type}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="company-footer">
+                          <div class="dev__skills">
+                          {% for skill in company.skills %}
+                            <span class="tag tag--pill tag--main">
+                              <small>{{skill.name}}</small>
+                            </span>
+                          {% endfor %}
+                          </div>
+                        </div>
+
+                        <p class="text-end">
+                            <span class="action-link"><a href="{% url 'companies:review-form' company.id %}">Đánh giá</a></span> | <span class="action-link"><a href="{% url 'companies:company-jobs' company.id %}">Tuyển dụng</a></span>
+                        </p>
+                    </div>
+
+                </div>
+
+              {% endfor %}
+              
+          </div>
+
+        </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  {% endblock content %}

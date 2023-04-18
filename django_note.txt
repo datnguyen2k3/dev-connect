@@ -127,3 +127,9 @@ REST:
 	+ uniform interface: client and server have same interface
 	+ layer system: client and server can be separated
 	+ code on demand (optional): server can send code to client
+
+
+ELASTICSEARCH:
+	+ "python manage.py search_index --rebuild" 
+	
+
