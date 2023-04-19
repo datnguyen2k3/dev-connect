@@ -1,4 +1,5 @@
 venv
+devconnect
 .idea/
 staticfiles/
 /_pycache_/

@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.shortcuts import render
 from devsearch import settings
+from celery import shared_task
 from django.core.mail import send_mail
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
@@ -9,6 +10,11 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 import uuid
 from django.contrib.auth import authenticate, login
 from app.devsearch_auth.forms import RegisterForm
+
+
+@shared_task
+def send_email_task(subject, message, from_email, recipient_list):
+    send_mail(subject, message, from_email, recipient_list)
 
 
 def get_user_by_email_request(request) -> User:
@@ -35,7 +41,7 @@ def send_forget_password_email(request, user, email) -> bool:
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
 
-    send_mail(subject, message, email_from, recipient_list)
+    send_email_task.delay(subject, message, email_from, recipient_list)
     return True
 
 
@@ -104,5 +110,5 @@ def get_user_from_request(request) -> User:
             user = User.objects.get(email=username)
         except User.DoesNotExist:
             return None
-    
+
     return user
