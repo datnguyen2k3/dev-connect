@@ -127,13 +127,11 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "devconnect",
         "USER": "postgres",
-        "PASSWORD": "samoy",
+        "PASSWORD": "postgres",
         "HOST": "localhost",
-        "PORT": "5432"
+        "PORT": "5432",
     }
 }
-
-
 
 
 # Password validation
