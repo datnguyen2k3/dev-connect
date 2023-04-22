@@ -24,7 +24,7 @@ class CustomPaginator(Paginator):
 def get_elasticsearch_client() -> Elasticsearch:
         
     ELASTICSEARCH_USERNAME = 'elastic'
-    ELASTICSEARCH_PASSWORD = 'i+xMpJfDp_ZW4wHvsApE'
+    ELASTICSEARCH_PASSWORD = 'l7K-OV9lfEdBS6O=c3w+'
     ELASTICSEARCH_HOSTS = [{'host': 'localhost', 'port': 9200}]
 
     client = Elasticsearch(

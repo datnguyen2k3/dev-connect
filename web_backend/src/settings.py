@@ -110,7 +110,7 @@ SESSION_CACHE_ALIAS = "default"
 ELASTICSEARCH_DSL = {
     "default": {
         "hosts": "localhost:9200",
-        "http_auth": ("elastic", "i+xMpJfDp_ZW4wHvsApE"),
+        "http_auth": ("elastic", "l7K-OV9lfEdBS6O=c3w+"),
     },
 }
 
