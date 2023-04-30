@@ -3,5 +3,5 @@ env
 .idea/
 staticfiles/
 __pycache__/
-db.sqlite3
+web_backend/db.sqlite3
 staticfiles
