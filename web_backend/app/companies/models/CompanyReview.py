@@ -12,43 +12,33 @@ class CompanyReview(models.Model):
 
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200, blank=True, null=True)
+    title = models.CharField(max_length=200,default="")
 
     advantage = models.TextField(blank=True, null=True)
     defect = models.TextField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
 
     salary_stars = models.IntegerField(
-        blank=True,
-        null=True,
         default=5,
         validators=[MinValueValidator(1), MaxValueValidator(5)],
     )
 
     training_stars = models.IntegerField(
-        blank=True,
-        null=True,
         default=5,
         validators=[MinValueValidator(1), MaxValueValidator(5)],
     )
 
     employee_attention_stars = models.IntegerField(
-        blank=True,
-        null=True,
         default=5,
         validators=[MinValueValidator(1), MaxValueValidator(5)],
     )
 
     culture_stars = models.IntegerField(
-        blank=True,
-        null=True,
         default=5,
         validators=[MinValueValidator(1), MaxValueValidator(5)],
     )
 
     office_starts = models.IntegerField(
-        blank=True,
-        null=True,
         default=5,
         validators=[MinValueValidator(1), MaxValueValidator(5)],
     )
@@ -64,7 +54,7 @@ class CompanyReview(models.Model):
         ) // 5
 
     def __str__(self):
-        return self.company.name + " " + self.title
+        return ""
 
     class Meta:
         ordering = ["-created"]

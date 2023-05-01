@@ -2,15 +2,16 @@ from django.db import models
 import uuid
 from app.projects.models.SkillTag import SkillTag
 
+
 class Company(models.Model):
     COMPANY_TYPE = (
-        ("outsourcing", "Outsourcing"),
-        ("product", "Product"),
+        ("Outsourcing", "Outsourcing"),
+        ("Product", "Product"),
     )
 
     WORKING_TIME = (
-        ("t2_t6", "Monday - Friday"),
-        ("t2_t7", "Monday - Saturday"),
+        ("Monday - Friday", "Monday - Friday"),
+        ("Monday - Saturday", "Monday - Saturday"),
     )
 
     NUMBER_EMPLOYEES = (
@@ -27,9 +28,19 @@ class Company(models.Model):
     )
     name = models.CharField(max_length=200, blank=True, null=True)
     full_name = models.CharField(max_length=200, blank=True, null=True)
-    type = models.CharField(max_length=200, choices=COMPANY_TYPE, blank=True, null=True)
+    type = models.CharField(
+        max_length=200,
+        choices=COMPANY_TYPE,
+        blank=True,
+        null=True,
+        default="Outsourcing",
+    )
     working_time = models.CharField(
-        max_length=200, choices=WORKING_TIME, blank=True, null=True
+        max_length=200,
+        choices=WORKING_TIME,
+        blank=True,
+        null=True,
+        default="Monday - Friday",
     )
     number_employees = models.CharField(
         max_length=200, choices=NUMBER_EMPLOYEES, blank=True, null=True
@@ -45,13 +56,11 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     def average_salary_stars(self):
-        total = 0
-        for review in self.companyreview_set.all():
-            total += review.salary_stars
+        total = sum([review.salary_stars for review in self.companyreview_set.all()])
         return total / len(self.companyreview_set.all())
-    
+
     def average_training_stars(self):
         total = 0
         for review in self.companyreview_set.all():
@@ -69,7 +78,7 @@ class Company(models.Model):
         for review in self.companyreview_set.all():
             total += review.culture_stars
         return total / len(self.companyreview_set.all())
-    
+
     def average_office_starts(self):
         total = 0
         for review in self.companyreview_set.all():

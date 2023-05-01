@@ -1,0 +1,17 @@
+
+
+elasticsearch:
+tk: elastic
+pass: i+xMpJfDp_ZW4wHvsApE
+
+
+kibana:
+tk: kibana_system
+pass: Gm8FaILW4Ovge0q+BRx5
+
+
+logstash -f .\config\learn.conf --config.reload.automatic
+
+elasticsearch-reset-password -u elastic
+	
+elasticsearch-reset-password -u kibana_system
