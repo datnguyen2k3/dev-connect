@@ -397,7 +397,7 @@
       <a href="{% url 'companies:company-jobs' company.id %}">
         <div class="companyall">
         {% if company.name == 'Coc Coc' %}
-            <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 15vw; padding: 15px;"> </div>
+            <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 18vw; padding: 15px;"> </div>
           {% elif company.name == 'Teko Vietnam' %}
           <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 13vw; padding: 5px 5px 15px 5px;"> </div>
           {% elif company.name == 'Techcombank' %}
@@ -405,7 +405,15 @@
           {% elif company.name == 'ANTADA' %}
           <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 13vw; padding: 15px"> </div>
           {% elif company.name == 'Flinters' %}
-          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 13vw;"> </div>
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 7vw;"> </div>
+          {% elif company.name == 'Travala' %}
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 10vw;padding: 7vh 0"> </div>
+          {% elif company.name == 'Scandinavian Software Park' %}
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 17vw"> </div>
+          {% elif company.name == 'Pops Worldwide' %}
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 10vw; padding: 5vh 0;"> </div>
+          {% elif company.name == 'NEXLAB TECHNOLOGY' %}
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 10vw; padding: 5vh 0;"> </div>
           {% else %}
           <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 10vw;"> </div>
            {% endif %} 
