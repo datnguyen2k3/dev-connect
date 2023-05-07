@@ -52,7 +52,7 @@ class Company(models.Model):
         null=True, blank=True, default="companies/default.jpg", upload_to="companies/"
     )
     # base_country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    # cities = models.ManyToManyField(City, blank=True)
+    cities = models.CharField(max_length=200, default="", null=True, blank=True)
 
     def __str__(self):
         return self.name
