@@ -389,6 +389,8 @@
     .job-details__overview {
         border-top: 3px solid var(--color-light);
         /* background: #fff1e1 !important; */
+        justify-content: center;
+        align-items: center;
         display: flex;
         z-index: 3;
         position: relative;
@@ -844,7 +846,7 @@
 <div class="overall">
     <div class="introduction">
         <div id="img">
-            <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Big Logo" data-controller="lazyload"
+            <img style="height:100%; PADDING: 30PX;" alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Big Logo" data-controller="lazyload"
                 height="152" width="170" class=" lazyloaded" src="{{company.company_img.url}}">
 
         </div>
@@ -934,7 +936,7 @@
                                                     href="{% url 'jobs:single-job' job.id %}">
                                                     <picture>
 
-                                                        <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo"
+                                                        <img  style="width: 9vw;" alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo"
                                                             data-controller="lazyload" size="65x65" class=" lazyloaded"
                                                             src="{{company.company_img.url}}">
                                                     </picture>

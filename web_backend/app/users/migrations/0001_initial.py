@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ('email', models.EmailField(blank=True, max_length=500, null=True)),
                 ('short_intro', models.CharField(blank=True, max_length=200, null=True)),
                 ('bio', models.TextField(blank=True, null=True)),
-                ('profile_img', models.ImageField(blank=True, default='profiles/user-default.jpg', null=True, upload_to='profiles/')),
+                ('profile_img', models.ImageField(blank=True, default='profiles/user-default.png', null=True, upload_to='profiles/')),
                 ('social_github', models.CharField(blank=True, max_length=200, null=True)),
                 ('social_twitter', models.CharField(blank=True, max_length=200, null=True)),
                 ('social_linkedin', models.CharField(blank=True, max_length=200, null=True)),

@@ -33,8 +33,8 @@
             
                 <div class="column">
                     <div class="card project">
-                    <a href="{% url 'projects:single-project' project.id %}" class="project">
-                        <img class="project__thumbnail" src="{{ project.featured_img.url }}" alt="project thumbnail" />
+                    <a href="{% url 'projects:single-project' project.id %}" class="project" style="width: 100%">
+                        <img class="project__thumbnail" src="{{ project.featured_img.url }}" alt="project thumbnail"  />
                         <div class="card__body">
                             <h3 class="project__title"> {{ project.title }} </h3>
                             <p><a class="project__author" href="{% url 'users:single-profile' project.owner.id %}">By {{ project.owner.name }} </a></p>

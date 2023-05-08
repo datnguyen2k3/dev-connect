@@ -19,7 +19,7 @@ class Profile(models.Model):
         null=True,
         blank=True,
         upload_to="profiles/",
-        default="profiles/user-default.jpg",
+        default="profiles/user-default.png",
     )
     social_github = models.CharField(max_length=200, blank=True, null=True)
     social_twitter = models.CharField(max_length=200, blank=True, null=True)
