@@ -907,11 +907,9 @@
                     <h3 class="panel-title">Overall Rating     {{company.average_stars}}</h3>
                     <div class="star0">
 
+                        {% for i in "12345" %}
                         <span class="star" id="star1" onclick="setRating(1)" style="font-size: 50px;">&#9733;</span>
-                        <span class="star" id="star2" onclick="setRating(2)" style="font-size: 50px;">&#9733;</span>
-                        <span class="star" id="star3" onclick="setRating(3)" style="font-size: 50px;">&#9733;</span>
-                        <span class="star" id="star4" onclick="setRating(4)" style="font-size: 50px;">&#9733;</span>
-                        <span class="star" id="star5" onclick="setRating(5)" style="font-size: 50px;">&#9733;</span>
+                        {% endfor %}
                     </div>
                 </div>
 
@@ -926,14 +924,15 @@
                 {% for review in company.companyreview_set.all %}
                 <hr style="margin: 3% 3%;">
                 <div class="eachcomment">
-                    <div class="user">Name user</div>
+                    <div class="user" style="width: 8vw">
+                        <img style="width: 100%" src="/static/images/profiles/user-default.png" alt="">
+                    </div>
                     <div class="comment">
                         <div class="star0 small">
+                            {% for i in "12345" %}
                             <span class="star" id="star1" onclick="setRating(1)" style="font-size: 25px;">&#9733;</span>
-                            <span class="star" id="star2" onclick="setRating(2)" style="font-size: 25px;">&#9733;</span>
-                            <span class="star" id="star3" onclick="setRating(3)" style="font-size: 25px;">&#9733;</span>
-                            <span class="star" id="star4" onclick="setRating(4)" style="font-size: 25px;">&#9733;</span>
-                            <span class="star" id="star5" onclick="setRating(5)" style="font-size: 25px;">&#9733;</span>
+                            {% endfor %}
+                      
                         </div>
                         <span class="title">{{review.title}}</span>
                         <div class="details-review" data-controller="reviews--highlight-ot">
@@ -980,6 +979,7 @@
 
 </div>
 <script>
+   
     function setRating(rating) {
         for (var i = 1; i <= 5; i++) {
             var star = document.getElementById("star" + i);
