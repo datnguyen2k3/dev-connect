@@ -187,20 +187,21 @@
     display: flex;
     align-items: center;
   }
-
-  .job.des .circleImage {
-
-    width: 9vw;
-    height: 9vw;
-
+  .jobs.des #logo_img{
+    margin: 2% 5%;
+    width: 10vw;
+    height: 10vw;
+    border: 1px solid #8d99ae;
+    border-radius: 50%;
   }
 
   .jobs.des img {
-    margin: 2% 5%;
-    width: 9vw;
-    height: 9vw;
-    border: 1px solid #8d99ae;
-    border-radius: 50%;
+  border-radius: 0;
+  object-fit: contain;
+  border: none;
+  width: 9vw;
+  height: 9.5vw;
+  margin-left:0.5vw;
   }
 
   .jobs.tag0 {
@@ -337,9 +338,11 @@
           <a href="{% url 'jobs:single-job' job.id %}" style="display:block;">
             <div class="jobs sections">
               <div class="jobs des">
-
-                <img class="avatar avatar--md" src="{{job.company.company_img}}" alt="image"
+                <div id="logo_img">
+                  <img class="avatar avatar--md" src="{{job.company.company_img}}" alt="image"
                   href="{% url 'companies:single-company' job.company.id %}" />
+                </div>
+               
                 <div class="jobs name">
                   <h2 style="color: #000;font-size: 23px;">{{job.title}}</h2>
                   <span style="color: #000;">{{job.company.name}}</span>

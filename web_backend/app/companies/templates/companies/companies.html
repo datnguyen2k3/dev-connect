@@ -105,7 +105,7 @@
     margin: 10vh;
     display: flex; /* Set the display property to flex */
   flex-wrap: wrap; /* Wrap the child elements to the next line if there is not enough space */
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 .bottom a{
     width: 33%;
@@ -126,6 +126,7 @@
 }
 .companyall #img{
     width: 20vw;
+    height: 15vh;
     border: 1px solid #ccc;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
@@ -133,6 +134,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 .companyall .info{
     background-color: #fff;
@@ -397,33 +399,36 @@
       <a href="{% url 'companies:company-jobs' company.id %}">
         <div class="companyall">
         {% if company.name == 'Coc Coc' %}
-            <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 18vw; padding: 15px;"> </div>
+            <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 80%;height: 70%;"> </div>
           {% elif company.name == 'Teko Vietnam' %}
-          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 13vw; padding: 5px 5px 15px 5px;"> </div>
-          {% elif company.name == 'Techcombank' %}
-          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 13vw; padding: 15px;"> </div>
-          {% elif company.name == 'ANTADA' %}
-          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 13vw; padding: 15px"> </div>
-          {% elif company.name == 'Flinters' %}
-          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 7vw;"> </div>
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 60%;height: 70%;"> </div>
+          {% elif company.name == 'Teko Vietnam' %}
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 60%;height: 70%;"> </div>
           {% elif company.name == 'Travala' %}
-          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 10vw;padding: 7vh 0"> </div>
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 80%;height: 60%;"> </div>
+          {% elif company.name == 'Absolute Software' %}
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 70%;height: 100%;"> </div>
+          {% elif company.name == 'ANTADA' %}
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 80%;height: 80%;"> </div>
+          {% elif company.name == 'Flinters' %}
+          <div id="img" ><img src="{{company.company_img}}" alt=""style="width: 60%;height: 150%;"> </div>
+          {% elif company.name == 'Travala' %}
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 80%;height: 80%;"> </div>
           {% elif company.name == 'Scandinavian Software Park' %}
-          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 17vw"> </div>
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 80%;height: 80%;"> </div>
           {% elif company.name == 'Pops Worldwide' %}
-          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 10vw; padding: 5vh 0;"> </div>
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 80%;height: 80%;"> </div>
           {% elif company.name == 'NEXLAB TECHNOLOGY' %}
-          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 10vw; padding: 5vh 0;"> </div>
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 80%;height: 80%;"> </div>
           {% else %}
-          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 10vw;"> </div>
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 75%;height: 100%;"> </div>
            {% endif %} 
           <div class="info">
                 <h2 >{{company.name}}</h2>
                 <span><i class="fa fa-map-marker" aria-hidden="true"
-                        style="margin-right: 10px;;color: #5aa5b9"></i>Ho Chi Minh, Ha
-                    Noi, Da Nang,...</span><br>
+                        style="margin-right: 10px;;color: #5aa5b9"></i>Ha Noi, Ho Chi Minh</span><br>
                 <span><i class="fa fa-circle" aria-hidden="true"
-                        style="margin-right: 10px;font-size: 10px;color: #5aa5b9"></i>Product</span>
+                        style="margin-right: 10px;font-size: 10px;color: #5aa5b9"></i>{{company.type}}</span>
             </div>
 
         </div>
