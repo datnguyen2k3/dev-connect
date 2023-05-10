@@ -270,7 +270,7 @@
     }
 
     .eachcomment .user {
-        margin-right: 10%;
+        margin-right: 5%;
     }
 
     /* JOBS CSS */
@@ -904,12 +904,42 @@
 
             <div class="rating">
                 <div id="overallRate">
-                    <h3 class="panel-title">Overall Rating     {{company.average_stars}}</h3>
-                    <div class="star0">
-
-                        {% for i in "12345" %}
-                        <span class="star" id="star1" onclick="setRating(1)" style="font-size: 50px;">&#9733;</span>
+                    <h3 class="panel-title">Overall Rating     </h3>
+                    <div class="star0"> 
+                        {% if company.average_stars == 1.0 %}
+                        {% for i in "1" %}
+                        <span class="star" id="star1" style="font-size: 50px;color: #FFC107;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
                         {% endfor %}
+                        {% for i in "1234" %}
+                        <span class="star" id="star1" style="font-size: 50px;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% elif company.average_stars == 2.0 %}
+                        {% for i in "12" %}
+                        <span class="star" id="star1" style="font-size: 50px;color: #FFC107;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% for i in "123" %}
+                        <span class="star" id="star1" style="font-size: 50px;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% elif company.average_stars == 3.0 %}
+                        {% for i in "123" %}
+                        <span class="star" id="star1" style="font-size: 50px;color: #FFC107; margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% for i in "12" %}
+                        <span class="star" id="star1" style="font-size: 50px;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% elif company.average_stars == 4.0 %}
+                        {% for i in "1234" %}
+                        <span  class="star" id="star1" style="font-size: 50px;color: #FFC107; margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% for i in "1" %}
+                        <span class="star" id="star1" style="font-size: 50px;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% elif company.average_stars == 5.0 %}
+                        {% for i in "12345" %}
+                        <span class="star" id="star1" style="font-size: 50px;color: #FFC107; margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% endif %}
+                        
                     </div>
                 </div>
 
@@ -929,9 +959,40 @@
                     </div>
                     <div class="comment">
                         <div class="star0 small">
-                            {% for i in "12345" %}
-                            <span class="star" id="star1" onclick="setRating(1)" style="font-size: 25px;">&#9733;</span>
-                            {% endfor %}
+                            {% if review.stars == 1.0 %}
+                        {% for i in "1" %}
+                        <span class="star" id="star1" style="font-size: 25px;color: #FFC107; margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% for i in "1234" %}
+                        <span class="star" id="star1" style="font-size: 25px;margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% elif review.stars == 2.0 %}
+                        {% for i in "12" %}
+                        <span class="star" id="star1" style="font-size: 25px;color: #FFC107; margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% for i in "123" %}
+                        <span class="star" id="star1" style="font-size: 25px;margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% elif review.stars == 3.0 %}
+                        {% for i in "123" %}
+                        <span class="star" id="star1" style="font-size: 25px;color: #FFC107; margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% for i in "12" %}
+                        <span class="star" id="star1" style="font-size: 25px;margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% elif review.stars == 4.0 %}
+                        {% for i in "1234" %}
+                        <span  class="star" id="star1" style="font-size: 25px;color: #FFC107; margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% for i in "1" %}
+                        <span class="star" id="star1" style="font-size:25px;margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% elif review.stars == 5.0 %}
+                        {% for i in "12345" %}
+                        <span class="star" id="star1" style="font-size: 25px;color: #FFC107;margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% endif %}
+                     
                       
                         </div>
                         <span class="title">{{review.title}}</span>
@@ -965,7 +1026,7 @@
                             <div class="panel-body">
                                 <div class="panel-paragraph mb-20" style="font-size: 22px;">Review {{company.name}} now
                                 </div>
-                                <a class="button ibutton full-width big ibutton-red" rel="nofollow"
+                                <a style="margin-top: 2%;" class="button ibutton full-width big ibutton-red" rel="nofollow"
                                     href="{% url 'companies:review-form' company.id %}">Write review</a>
                             </div>
                         </div>
