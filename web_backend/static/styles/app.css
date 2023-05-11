@@ -604,8 +604,8 @@ body{
 .settings__table {
   margin-top: 3rem;
   margin-bottom: 5rem;
-  padding: 0 3rem;
-  background: var(--color-white);
+  
+  /* background: var(--color-white); */
 }
 
 .settings__table tr {
@@ -626,14 +626,15 @@ body{
 }
 
 .settings__thumbnail img {
-  padding-right: 3rem;
-  height: 15rem;
+  margin-right: 2vw;
+  width: 17vw;
   object-fit: contain;
+  border-radius: 5px;
 }
 
-.settings__tableInfo{
-  width: 100%;
-}
+/* .settings__tableInfo{
+  width: 90%;
+} */
 
 .settings__tableInfo h4,
 .settings__tableInfo a {

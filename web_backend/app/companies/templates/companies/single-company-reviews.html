@@ -861,6 +861,12 @@
         padding: 10px 20px;
         border-radius: 7px;
     }
+    .star0 img{
+        width: 35%;
+       
+        margin-top: 2%;
+    }
+
 </style>
 {% endblock style %}
 
@@ -905,15 +911,20 @@
 
             <div class="rating">
                 <div id="overallRate">
-                    <h3 class="panel-title">Overall Rating     </h3>
+                    <h3 class="panel-title">Overall Rating   </h3>
+                   
                     <div class="star0"> 
+                        <span style="font-size: 55px; color: #000; height: 54px; padding-right: 15px;">{{company.average_stars}}</span>
                         {% if company.average_stars == 1.0 %}
                         {% for i in "1" %}
                         <span class="star" id="star1" style="font-size: 50px;color: #FFC107;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
                         {% endfor %}
+                        
                         {% for i in "1234" %}
                         <span class="star" id="star1" style="font-size: 50px;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
                         {% endfor %}
+                        {% elif company.average_stars > 1.0 and company.average_stars < 2.0 %}
+                        <img  src="/static/images/companies/1.5.png" alt="">
                         {% elif company.average_stars == 2.0 %}
                         {% for i in "12" %}
                         <span class="star" id="star1" style="font-size: 50px;color: #FFC107;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
@@ -921,6 +932,8 @@
                         {% for i in "123" %}
                         <span class="star" id="star1" style="font-size: 50px;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
                         {% endfor %}
+                        {% elif company.average_stars > 2.0 and company.average_stars < 3.0 %}
+                        <img src="/static/images/companies/2.5.png" alt="">
                         {% elif company.average_stars == 3.0 %}
                         {% for i in "123" %}
                         <span class="star" id="star1" style="font-size: 50px;color: #FFC107; margin-right: 0.8%;"><i class="fa fa-star"></i></span>
@@ -928,6 +941,8 @@
                         {% for i in "12" %}
                         <span class="star" id="star1" style="font-size: 50px;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
                         {% endfor %}
+                        {% elif company.average_stars > 3.0 and company.average_stars < 4.0 %}
+                        <img src="/static/images/companies/3.5.png" alt="">
                         {% elif company.average_stars == 4.0 %}
                         {% for i in "1234" %}
                         <span  class="star" id="star1" style="font-size: 50px;color: #FFC107; margin-right: 0.8%;"><i class="fa fa-star"></i></span>
@@ -935,6 +950,8 @@
                         {% for i in "1" %}
                         <span class="star" id="star1" style="font-size: 50px;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
                         {% endfor %}
+                        {% elif company.average_stars > 4.0 and company.average_stars < 5.0 %}
+                        <img src="/static/images/companies/4.5.png" alt="">
                         {% elif company.average_stars == 5.0 %}
                         {% for i in "12345" %}
                         <span class="star" id="star1" style="font-size: 50px;color: #FFC107; margin-right: 0.8%;"><i class="fa fa-star"></i></span>
@@ -960,7 +977,7 @@
                     </div>
                     <div class="comment">
                         <div class="star0 small">
-                            {% if review.stars == 1.0 %}
+                        {% if review.stars == 1.0 %}
                         {% for i in "1" %}
                         <span class="star" id="star1" style="font-size: 25px;color: #FFC107; margin-right: 0.4%;"><i class="fa fa-star"></i></span>
                         {% endfor %}
