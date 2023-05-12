@@ -131,5 +131,13 @@ REST:
 
 ELASTICSEARCH:
 	+ "python manage.py search_index --rebuild" 
+
+
+RUN:
+install redis, run redis-server
+install elasicsearch, config password, run elasticsearch server
+python manage.py search_index --rebuild
+python -m celery -A src worker
+python manage.py runserver
 	
 

@@ -71,4 +71,6 @@ def register_view(request):
     if request.method == "POST" and utils.register_web(request):
         return redirect("users:edit-profile")
 
-    return render(request, "user_auth/login-register.html", {"page": page, "form": form})
+    return render(
+        request, "user_auth/login-register.html", {"page": page, "form": form}
+    )
