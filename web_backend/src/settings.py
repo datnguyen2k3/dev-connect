@@ -107,7 +107,7 @@ CACHES = {
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
 
-ELASTICSEARCH_AUTH = ("elastic", "l7K-OV9lfEdBS6O=c3w+")
+ELASTICSEARCH_AUTH = ("elastic", "axUektwT8drCjThGAtpv")
 ELASTICSEARCH_DSL = {
     "default": {
         "hosts": "localhost:9200",
@@ -214,8 +214,8 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "thanhdatmu2003@gmail.com"
-EMAIL_HOST_PASSWORD = "jlizaweqzfpypkiu"
+EMAIL_HOST_USER = "spnotssr@gmail.com"
+EMAIL_HOST_PASSWORD = "ofvqdsthmdsooqbr"
 
 
 # Static files (CSS, JavaScript, Images)
