@@ -1,5 +1,6 @@
 from app.users.models.Profile import Profile
 from app.users.models.WorkExperience import WorkExperience
+from app.users.models.Message import Message
 from django import forms
 
 

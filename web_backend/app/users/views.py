@@ -1,9 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from app.users.forms import ProfileForm, WorkExperienceForm
+from app.users.forms import ProfileForm, WorkExperienceForm, MessageForm
 from app.users.models.Profile import Profile
 from app.users.models.WorkExperience import WorkExperience
+from app.users.models.Message import Message
 from app.users.utils import check_profile_is_owner_skill, search_profiles
 from src.utils import CustomPaginator
 
