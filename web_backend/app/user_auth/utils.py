@@ -18,7 +18,7 @@ def get_user_by_email_request(request) -> User:
     try:
         user = User.objects.get(email=email)
     except User.DoesNotExist:
-        messages.error("No user with that email address exists.")
+        messages.error(request, "No user with that email address exists.")
         return None
 
     return user
@@ -37,7 +37,7 @@ def send_forget_password_email(request, user, email) -> bool:
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
 
-    send_email_task.delay(subject, message, email_from, recipient_list)
+    send_email_task.apply_async(args=[subject, message, email_from, recipient_list])
     return True
 
 
