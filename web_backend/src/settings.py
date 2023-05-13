@@ -107,7 +107,7 @@ CACHES = {
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
 
-ELASTICSEARCH_AUTH = ("elastic", "l7K-OV9lfEdBS6O=c3w+")
+ELASTICSEARCH_AUTH = ("elastic", "axUektwT8drCjThGAtpv")
 ELASTICSEARCH_DSL = {
     "default": {
         "hosts": "localhost:9200",
@@ -119,7 +119,7 @@ ELASTICSEARCH_DSL = {
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import connections
 
-connections.create_connection(hosts=['localhost'])
+connections.create_connection(hosts=["localhost"])
 
 
 MIDDLEWARE = [
@@ -233,3 +233,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Celery settings
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
