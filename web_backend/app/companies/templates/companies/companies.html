@@ -5,10 +5,8 @@
 
 
   <style>
-    .header{
-      padding: 0;
-    }
-    ul {
+  
+    /* ul {
         display: block;
         list-style-type: disc;
         margin-block-start: 1em;
@@ -17,11 +15,9 @@
         margin-inline-end: 0px;
         padding-inline-start: 40px;
         color: #353535;
-    }
+    } */
 
-    .checked {
-      color: orange;
-    }
+   
 
     .btn-form {
         margin-top: 29px;
@@ -385,9 +381,7 @@
           <option value="outsourcing">Outsourcing</option>
           <option value="product">Product</option>
         </select>
-
     </div>
-
       <button type="submit" class="btn btn-primary btn-search btn-form">Search</button>
   </div>
   
@@ -401,23 +395,29 @@
         {% if company.name == 'Coc Coc' %}
             <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 80%;height: 70%;"> </div>
           {% elif company.name == 'Teko Vietnam' %}
-          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 60%;height: 70%;"> </div>
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 50%"> </div>
           {% elif company.name == 'Teko Vietnam' %}
           <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 60%;height: 70%;"> </div>
           {% elif company.name == 'Travala' %}
-          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 80%;height: 60%;"> </div>
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 80%"> </div>
           {% elif company.name == 'Absolute Software' %}
-          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 70%;height: 100%;"> </div>
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 63%;height: 100%;"> </div>
           {% elif company.name == 'ANTADA' %}
-          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 80%;height: 80%;"> </div>
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 65%"> </div>
+          {% elif company.name == 'BAEMIN Vietnam (Woowa Bros.)' %}
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 65%"> </div>
+          {% elif company.name == 'NEXLAB TECHNOLOGY' %}
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 65%"> </div>
           {% elif company.name == 'Flinters' %}
           <div id="img" ><img src="{{company.company_img}}" alt=""style="width: 60%;height: 150%;"> </div>
           {% elif company.name == 'Travala' %}
           <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 80%;height: 80%;"> </div>
           {% elif company.name == 'Scandinavian Software Park' %}
-          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 80%;height: 80%;"> </div>
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 60%"> </div>
           {% elif company.name == 'Pops Worldwide' %}
-          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 80%;height: 80%;"> </div>
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 70%;"> </div>
+          {% elif company.name == 'MB Bank' %}
+          <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 60%"> </div>
           {% elif company.name == 'NEXLAB TECHNOLOGY' %}
           <div id="img" ><img src="{{company.company_img}}" alt="" style="width: 80%;height: 80%;"> </div>
           {% else %}

@@ -4,28 +4,15 @@
 
 {% block style %}
 <style>
-  .header{
-      padding: 0;
-    }
-  ul {
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-    color: #353535;
-  }
-
+ 
   .btn-form {
-    margin-top: 29px;
-    margin-left: 10px;
+    margin-top: 10px;
+    
   }
 
   .filter-jobs-form {
     background-color: #f9f9f9;
-    padding: 20px;
+    padding: 10px;
     margin-bottom: 20px;
     border-radius: 5px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
@@ -42,11 +29,13 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin: 0 10%;
   }
 
   .filter-jobs-form .form-group {
     flex-basis: calc(20% - 10px);
     margin-bottom: 10px;
+    
   }
 
   .filter-jobs-form label {
@@ -75,6 +64,8 @@
     color: #fff;
     border: none;
     cursor: pointer;
+    left:50%;
+    transform: translateX(-50%);
   }
 
   .filter-jobs-form .btn-search:hover {
@@ -232,19 +223,19 @@
   }
 
   .container0 {
-    width: 60vw;
+    width: 66vw;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
   }
 
   .jobs.name {
-    width: 60%
+    width:55%
   }
 
   .hot #top {
     background-color: #fb8500;
-    width: 40%;
+    width: 30%;
 
     display: flex;
     justify-content: center;
@@ -253,7 +244,7 @@
   .dev__skills{
     margin: 0% 25% 2% 25%;
   }
-
+  
 </style>
 {% endblock style %}
 
@@ -321,8 +312,10 @@
 
 
 
-      <button type="submit" class="btn btn-primary btn-search btn-form">APPLY</button>
+     
     </div>
+  <button type="submit" class="btn btn-primary btn-search btn-form">APPLY</button>
+
   </div>
 </form>
 
@@ -347,9 +340,9 @@
                   <h2 style="color: #000;font-size: 23px;">{{job.title}}</h2>
                   <span style="color: #000;">{{job.company.name}}</span>
                 </div>
-                <div class="hot" style="margin-left: 2vw;">
+                <div class="hot" style="margin-left: 2vw" >
                   <div id="top" style="color: #fff;">Hot</div>
-                  <span style="color: #a6a8ab">Ho Chi Minh</span>
+                  <span style="color: #a6a8ab">Ho Chi Minh, Ha Noi,...</span>
                 </div>
               </div>
               <div class="dev__skills">
