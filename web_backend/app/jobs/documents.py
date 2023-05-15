@@ -35,7 +35,7 @@ class JobDocument(Document):
     class Django:
         model = Job
         
-        fields = ['id','title','advantage','description','qualification','benefit']
+        fields = ['id','title','advantage','description','qualification','benefit', 'working_model']
         
 
 
