@@ -2,6 +2,7 @@ from django.db.models.query import QuerySet
 from django.core.paginator import Paginator
 from django.core.paginator import Page
 from elasticsearch import Elasticsearch
+from src.settings import ELASTICSEARCH_AUTH
 
 
 class CustomPaginator(Paginator):
@@ -23,13 +24,11 @@ class CustomPaginator(Paginator):
 
 def get_elasticsearch_client() -> Elasticsearch:
         
-    ELASTICSEARCH_USERNAME = 'elastic'
-    ELASTICSEARCH_PASSWORD = 'i+xMpJfDp_ZW4wHvsApE'
     ELASTICSEARCH_HOSTS = [{'host': 'localhost', 'port': 9200}]
 
     client = Elasticsearch(
         hosts=ELASTICSEARCH_HOSTS,
-        http_auth=(ELASTICSEARCH_USERNAME, ELASTICSEARCH_PASSWORD),
+        http_auth=ELASTICSEARCH_AUTH,
     )
     
     return client

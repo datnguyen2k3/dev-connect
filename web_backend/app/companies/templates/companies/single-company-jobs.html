@@ -3,203 +3,318 @@
 
 {% block style %}
 
-  <style>
-
-    /* Headers-div */
-    .headers {
+<style>
+    .overall {
         display: flex;
-        justify-content: space-between;
+        color: #000;
+    }
+
+    .introduction {
+
+        color: #000;
+        height: 30vh;
+        margin-right: 20px;
+        margin-top: 1%;
+        position: relative;
+        width: 25%;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        width: calc(87% + 10px);
-        margin-left: 11rem;
-        min-height: 186px;
+    }
+
+    .container {
+        width: 70%;
+
+
+    }
+
+    .job #navigation {
+
+        margin: 20px 0px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 30vw;
+
+        position: relative;
         background-color: #fff;
-        border: 3px solid var(--color-light);
-        border-radius: 0 0 3px 3px;
+        border-radius: 10px;
     }
 
-    *, *::before, *::after {
-        box-sizing: border-box;
+    #navigation ul {
+        display: flex;
+        list-style: none;
+
     }
 
-    .text-break {
-        word-wrap: break-word !important;
-        word-break: break-word !important;
+    #navigation ul li {
+
+
+        cursor: pointer;
+        width: 50%;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+
     }
 
-    .headers__logo {
-        margin-top: -5px;
-        width: 205px;
+    #navigation ul #jobs {
+        padding: 10px 30px;
+    }
+
+    #navigation ul #reviews {
         display: flex;
         align-items: center;
-        justify-content: center;
+
     }
 
-    .headers__logo__img {
-        width: 168px;
-        height: 160px;
+    a {
+        color: #000;
+    }
+
+    #navigation ul #reviews a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+
+    }
+
+    #navigation ul li a:hover {
+        background-color: #000;
+        color: #fff;
+        border-radius: 10px;
+    }
+
+    .navigation-active {
+        background-color: #000;
+        color: #fff;
+    }
+
+    .body {
+        /* background-color: #fff; */
+        border-radius: 10px;
+    }
+
+    .body .left h2 {
+        padding: 10px 0px 30px 0px;
+    }
+
+    .body .left .particular {
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        height: 100px;
+
+        cursor: pointer;
+
+    }
+
+    .left .particular .middle {
+        width: 75%;
+        margin-left: 20px;
+        font-size: 18px;
+    }
+
+    .body .left .particular:hover {
+        border: 1px solid #ccc;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        color: #ef233c;
+        font-weight: bold;
+    }
+
+    .body .right {
         background-color: #fff;
-        border: 1px solid #d2d2d2;
-        border-radius: 2px;
+        border: 1px solid #ccc;
+        /* width: 30%; */
+        display: none;
+        border-radius: 10px;
+
+    }
+
+    .juding {
+        display: flex;
+        align-items: top;
+        margin: 15px 20px;
+    }
+
+    .juding>span {
+        display: flex;
+        margin-left: 10%;
+    }
+
+    .star0 {
+        font-size: 40px;
+    }
+
+    .star0.small {
+        font-size: 25px;
+    }
+
+    .star {
+        color: #ccc;
+        cursor: pointer;
+        border-radius: 100px;
+    }
+
+    #write_review {
+        background-color: #457b9d;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 5px;
+        width: 150px;
+        height: 50px;
+        border-style: none;
+        cursor: pointer;
+    }
+
+    #write_review:hover {
+        color: #000;
+    }
+
+    .container #left {
+        width: 100%;
+    }
+
+    .left .particular img {
+        width: 70px;
+    }
+
+    .body .left .particular {
         display: flex;
         align-items: center;
+    }
+
+    .threepart {
+        margin-bottom: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 10px 10px 20px 10px;
+        border-radius: 10px;
+    }
+
+    .hot #top {
+        background-color: #fb8500;
+        width: 40%;
+
+        display: flex;
         justify-content: center;
-        padding: 5px;
-    }
-
-    img.lazyloaded[data-controller~=lazyload] {
-        opacity: 1;
-        transition: opacity 200ms;
-    }
-
-    .headers__logo__img img {
-        max-width: 100%;
-        object-fit: contain;
-    }
-
-    img[data-controller~=lazyload], img.lazyloading[data-controller~=lazyload] {
-        opacity: 0;
-    }
-
-    img, svg {
-        vertical-align: middle;
-    }
-
-    canvas {
-        height: 152px;
-        aspect-ratio: auto 170 / 152;
-        width: 170px;
-    }
-
-    canvas {
-        overflow-clip-margin: content-box;
-        overflow: clip;
-    }
-
-    .headers__info {
-        padding-bottom: 10px;
-        margin-bottom: 10px;
-        flex: 1;
-    }
-
-    .headers__info__name {
-        color: #353535;
-        line-height: 35.2px;
-        font-size: 32px;
-        margin-top: 20px;
         margin-bottom: 20px;
     }
 
-    h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
-        /* margin-top: 0;
-        margin-bottom: .5rem; */
-        font-weight: normal;
-        /* line-height: 1.2; */
+    .skills {
+        padding: 2px 7px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 0 10px;
     }
 
-    h1 {
+    .skills:hover {
+        border: 1px solid #ef233c;
+        color: #ef233c;
+    }
+
+    #overallRate {
+        /* display: flex;
+    align-items: center; */
+        padding: 10px 15px;
+    }
+
+    #overallRate .star0 {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 50px;
+    }
+
+    .top-reviews {
+        margin: 20px;
+    }
+
+    /* .comment{
+    margin: 30px 10px ;
+} */
+    .comment {
         display: block;
-        /* font-size: 2em; */
-        margin-block-start: 0.67em;
-        margin-block-end: 0.67em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        /* font-weight: bold; */
     }
 
-    .headers__info__item {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-row-gap: 5px;
+    .comment .title {
+        font-size: 25px;
     }
 
-    .headers__info__item-location {
-        grid-column: 1/-1;
+    .eachcomment {
+        display: flex;
+        align-items: center;
+
+
+        margin: 40px 10px;
     }
 
-    .svg-icon {
+    .eachcomment .user {
+        margin-right: 10%;
+    }
+
+    /* JOBS CSS */
+
+    .jobs.des {
         display: flex;
         align-items: center;
     }
 
-    .svg-icon__icon, .svg-icon__icon a {
-        fill: currentColor;
-        width: 14px;
-        height: 14px;
-        color: #7a7a7a;
-        flex-shrink: 0;
+    .job.des .circleImage {
+
+        width: 9vw;
+        height: 9vw;
+
     }
 
-    .city_and_posted_date {
-        font-size: 13px;
-        display: inline-block;
-        margin-right: 20px;
-        margin-left: 10px;
-        text-align: right;
+    .jobs.des img {
+        margin: 2% 5%;
+        width: 9vw;
+        height: 9vw;
+        border: 1px solid #8d99ae;
+        border-radius: 50%;
+    }
+
+    .jobs.tag {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-width: 100px;
+        margin: 0% 25% 2% 25%;
     }
 
-    svg:not(:root) {
-        overflow-clip-margin: content-box;
-        overflow: hidden;
+    .jobs.tag .tagName {
+
+        background-color: #8da9c4;
+        border-radius: 5px;
+        margin: 0px 10px;
+        padding: 6px 12px;
     }
 
-    :not(svg) {
-        transform-origin: 0px 0px;
+    .jobs.sections {
+
+        margin: 20px 0;
+        border-bottom: 1px solid #adb5bd;
+        cursor: pointer;
     }
 
-    .svg-icon__text {
-        margin-left: 10px;
-    }
-    
-    .svg-icon, .svg-icon__text {
-        display: flex;
-        align-items: center;
-        margin-left: 0;
+    .jobs.sections:hover {
+        border: 1px solid #ccc;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+
+
     }
 
-    .svg-icon__text a {
-        fill: currentColor;
-        color: #7a7a7a;
-        flex-shrink: 0;
-    }
-
-    .ilink, .ilink:visited {
-        text-decoration: none;
-        outline: none;
-        color: var(--link-color);
-    }
-
-    .ilink--dotted {
-        border-bottom: 1px dotted;
-    }
-
-    .ilink--grey {
-        --link-color: #57595b;
-    }
-
-    .ilink--direction::after {
-        content: "";
-        display: inline-block;
+    .container0 {
+        width: 60vw;
         position: relative;
-        border-left: solid 5px var(--link-color);
-        border-top: solid 5px transparent;
-        border-bottom: solid 5px transparent;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .d-none {
-        display: none !important;
-    }
-
-    symbol {
-        overflow: hidden;
-    }
-
-    .headers__info__item-ot {
-        grid-column: 2/-1;
+    .jobs.name {
+        width: 60%
     }
 
     .headers__actions {
@@ -215,257 +330,25 @@
         text-decoration: none;
     }
 
-    .full-width.ibutton {
-        width: 100%;
-    }
-
-    button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled) {
-        cursor: pointer;
-    }
-
-    .ibutton-red {
-        color: #fff;
-        border: 0;
-        background-color: var(--color-sub-light);
-    }
-
-    .ibutton {
-        position: relative;
-        font-family: "Roboto",sans-serif;
-        font-weight: 400 !important;
-        /* padding: 0 20px; */
-        height: 45px;
-        line-height: 45px;
-        border-radius: 4px;
-        font-size: 19px;
-        white-space: nowrap;
-        -webkit-font-smoothing: antialiased;
-        /* outline: 0; */
-        display: inline-block;
-        text-align: center;
-        /* color: #fff; */
-    }
-
-    .ibutton-follow {
-        border: 1px solid var(--color-sub-light);
-        color: var(--color-sub-light);
-        background-color: #fff;
-        /* width: 150px; */
-        height: 43px;
-        line-height: 45px;
-        padding: 0;
-        outline: 0;
-        text-decoration: none;
-    }
-
-    button, select {
-        text-transform: none;
-    }
-
-    input, button, select, optgroup, textarea {
-        margin: 0;
-        font-family: inherit;
-        font-size: inherit;
-        line-height: inherit;
-    }
-
-    input[type="hidden" i] {
-        appearance: none;
-        background-color: initial;
-        cursor: default;
-        display: none !important;
-        padding: initial;
-        border: initial;
-        border-color: initial;
-        border-radius: initial;
-    }
-
-    a:-webkit-any-link {
-        /* color: -webkit-link; */
-        cursor: pointer;
-        /* text-decoration: underline; */
-    }
-
-    form {
-        display: block;
-        margin-top: 0em;
-    }
-
-    /* nav bg-white */
-    .bg-white {
-        --bs-white-rgb: 255, 255, 255;
-        --bs-bg-opacity: 1;
-        background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
-    }
-
-    .pt-1 {
-        padding-top: 1rem !important;
-    }
-
-    .mt-3 {
-        width: calc(87% + 10px);
-        margin: 2rem 0 0 11rem !important;
-    }
-
-    .p-md-0 {
-        padding: 0 !important;
-    }
-
-    .m-0 {
-        margin: 0 !important;
-    }
-
-    li {
-        display: list-item;
-        text-align: -webkit-match-parent;
-    }
-
-    .nav {
+    .svg-icon {
         display: flex;
-        flex-wrap: wrap;
-        padding-left: 0;
-        margin-bottom: 0;
-        list-style: none;
-        border: 3px solid var(--color-light);
-        border-radius: 3px;
+        align-items: center;
     }
 
-    .nav li .nav-link.active {
-        color: var(--color-sub-light);
-        border-bottom: 3px solid var(--color-sub-light);
-    }
-
-    .nav li .nav-link {
-        border-radius: 0;
-        text-align: center;
-        width: 160px;
-        border-width: 0;
-        font-size: 17px;
-        cursor: pointer;
-        color: #5c5a5b;
-        font-weight: 500;
-        border-bottom: 3px solid transparent;
-    }
-
-    .nav-link {
-        line-height: 1.25rem;
-        padding: 10px;
-        /* font-size: 15px; */
-    }
-
-    .me-3 {
-        margin-right: 1rem !important;
-    }
-
-    .nav-link {
-        display: block;
-        /* padding: .5rem 1rem;
-        color: var(--color-sub-light); */
-        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
-    }
-
-    /* Container */
-    ul {
-        /* display: block;
-        list-style-type: disc; */
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        padding-inline-start: 40px;
-        color: #353535;
-    }
-
-    .filter-jobs-form {
-      background-color: #f9f9f9;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .filter-jobs-form .search-form {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .filter-jobs-form .filter-form {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    .filter-jobs-form .form-group {
-      flex-basis: calc(20.00% - 10px);
-      margin-bottom: 10px;
-    }
-
-    .filter-jobs-form label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: 500;
-    }
-
-    .filter-jobs-form select {
-      width: 100%;
-      height: 40px;
-      padding: 5px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      background-color: #fff;
-      font-size: 16px;
-      color: #333;
-    }
-
-    .filter-jobs-form .btn-search {
-      width: 100px;
-      height: 40px;
-      border-radius: 5px;
-      font-size: 16px;
-      background-color: #337ab7;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-
-    .filter-jobs-form .btn-search:hover {
-      background-color: #286090;
-    }
-    .search-page__main-content {
-        display: grid;
-        margin: 10px 0 0 -100px;
-        grid-template-columns: 900px 400px;
-        max-width: 1350px;
-        column-gap: 30px;
-        row-gap: 30px;
-    }
-
-    .red-btn {
-        background-color: #fff;
-        color: var(--color-sub-light);
-        width: 100%;
-        border: 1px solid var(--color-sub-light);
-        margin: 20px 0;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        text-align: center;
-        font-size: 16px;
-    }
-
-    .red-btn:hover {
-        color: #fff;
-        background-color: var(--color-sub-light);
+    .svg-icon__icon,
+    .svg-icon__icon a {
+        fill: currentColor;
+        width: 14px;
+        height: 14px;
+        color: #7a7a7a;
+        flex-shrink: 0;
     }
 
     .search-page__job-preview {
         padding: 0 30px;
         position: sticky;
         overflow: scroll;
-        height: calc(100vh + 100px);
-        border: 3px solid var(--color-light);
+        min-height: 50vh;
         background-color: #fff;
     }
 
@@ -477,13 +360,15 @@
 
     /* Hide scrollbar for Chrome, Safari and Opera */
     .search-page__job-preview::-webkit-scrollbar {
-      display: none;
+        display: none;
     }
 
     /* Hide scrollbar for IE, Edge and Firefox */
     .search-page__job-preview {
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
     }
 
     .job-details__header {
@@ -504,6 +389,8 @@
     .job-details__overview {
         border-top: 3px solid var(--color-light);
         /* background: #fff1e1 !important; */
+        justify-content: center;
+        align-items: center;
         display: flex;
         z-index: 3;
         position: relative;
@@ -514,32 +401,34 @@
     }
 
     .job-details__overview .logo {
-      margin: 38px 30px 0 25px;
+        margin: 20px 30px 20px 25px;
     }
 
     .job-details__overview .logo img {
-        border: 1px solid #ccc;
+        /* border: 1px solid #ccc; */
         background-color: #fff;
         padding: 10px;
-        width: 70px;
-        height: 70px;
+        
         display: inline-block;
         overflow: hidden;
     }
 
     .job-details__overview__description {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        overflow: hidden;
     }
 
     .job-details__overview__description a {
-      color: #231f20;
-      font-size: 20px;
-      padding-left: 0;;
+        color: #231f20;
+        font-size: 20px;
+        padding-left: 0;
+        ;
     }
-
+    .dev__skills{
+        padding-top: 20px ;
+    }
     .city_and_posted_date {
         display: flex;
         font-size: 13px;
@@ -550,10 +439,10 @@
         justify-content: space-between;
         min-width: 100px;
     }
-    
+
     .city_and_posted_date .feature {
         background: var(--color-sub-light);
-        font-family: "Roboto Condensed",sans-serif;
+        font-family: "Roboto Condensed", sans-serif;
         display: inline-block;
     }
 
@@ -567,7 +456,7 @@
         align-self: flex-end;
     }
 
-   .distance-time-job-posted {
+    .distance-time-job-posted {
         font-size: 13px;
     }
 
@@ -625,7 +514,8 @@
         max-width: 100%;
     }
 
-    img[data-controller~=lazyload], img.lazyloading[data-controller~=lazyload] {
+    img[data-controller~=lazyload],
+    img.lazyloading[data-controller~=lazyload] {
         opacity: 0;
     }
 
@@ -682,12 +572,12 @@
     }
 
     .panel {
-      margin-bottom: 15px;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      box-shadow: 0 1px 1px rgba(0,0,0,.05);
-  }
+        margin-bottom: 15px;
+        background-color: #fff;
+        /* border: 1px solid #ddd; */
+        /* border-radius: 4px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .05); */
+    }
 
     .panel-default>.panel-heading {
         background: #fff;
@@ -696,29 +586,11 @@
         border-top-left-radius: 3px;
     }
 
-    h3, .h3 {
-      margin: 0.5em 0;
-      color: #231F30;
-    }
-
-    .reasons-to-join {
-        list-style-type: none;
-        margin-top: 0;
-    }
-
-    ol, ul, dl {
-        margin-top: 0;
-        margin-bottom: 1rem;
-    }
-
-    /* ol, ul {
-        padding-left: 2rem;
-    } */
-
-    ol, ul {
+    /* ol,
+    ul {
         padding: 0 0 0 20px;
         margin: 1em 0;
-    }
+    } */
 
     .reasons-to-join>.item {
         margin-bottom: 15px;
@@ -866,7 +738,12 @@
         border-color: gray;
     }
 
-    thead, tbody, tfoot, tr, td, th {
+    thead,
+    tbody,
+    tfoot,
+    tr,
+    td,
+    th {
         border-color: inherit;
         border-style: solid;
         border-width: 0;
@@ -887,7 +764,8 @@
         color: var(--color-sub-light);
     }
 
-    b, strong {
+    b,
+    strong {
         font-weight: var(--font-bold);
     }
 
@@ -958,182 +836,196 @@
     .mt-20 {
         margin-top: 20px !important;
     }
-
-  </style>
+</style>
 {% endblock style %}
 
 
 {% block content %}
 
 
-  <!-- Main Section -->
+<!-- Main Section -->
+<div class="overall">
+    <div class="introduction">
+        <div id="img">
+            <img style="height:100%; PADDING: 30PX;" alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Big Logo" data-controller="lazyload"
+                height="152" width="170" class=" lazyloaded" src="{{company.company_img.url}}">
 
-    <section class="devlist">
-      <!-- Header company -->
-      <div class="headers">
-        <div class="headers__logo">
-          <div class="headers__logo__img">
-            <picture>
-              
-              <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Big Logo" data-controller="lazyload"  height="152" width="170" class=" lazyloaded" src="{{company.company_img.url}}">
-            </picture>
-          </div>
         </div>
-        <div class="headers__info">
-          <h1 class="headers__info__name">
-            {{company.name}}
-          </h1>
-          <div class="headers__info__item">
 
+        <div class="info">
+            <h2> {{company.name}}</h2><br>
+            <span style="color: black"><i class="fa fa-map-marker" aria-hidden="true"
+                    style="margin-right: 10px;color: #5aa5b9"></i>Ho Chi Minh, Ha Noi, Da Nang,...</span><br>
+            <span style="color: black"><i class="fa fa-circle" aria-hidden="true"
+                    style="margin-right: 10px;font-size: 10px;color: #5aa5b9"></i>{{company.type}}</span>
             <div class="svg-icon">
-              <svg class="svg-icon__icon">
-                <use xlink:href="#setting_icon"></use>
-              </svg>
-              <div class="svg-icon__text">{{company.type}}</div>
+                <svg class="svg-icon__icon">
+                    <use xlink:href="#calendar_icon"></use>
+                </svg>
+                
             </div>
-            <div class="svg-icon">
-              <svg class="svg-icon__icon">
-                <use xlink:href="#people_icon"></use>
-              </svg>
-              <div class="svg-icon__text">{{company.number_employees}}</div>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-              <symbol id="jp-flag" viewBox="0 0 512 512">
-                <circle style="fill:#F0F0F0;" cx="256" cy="256" r="256"></circle>
-                <circle style="fill:#D80027;" cx="256" cy="256" r="111.304"></circle>
-              </symbol>
-            </svg>
-
-            <div class="svg-icon">
-              <svg class="svg-icon__icon">
-                <use xlink:href="#calendar_icon"></use>
-              </svg>
-              <div class="svg-icon__text">{{company.working_time}}</div>
-            </div>
-          </div>
         </div>
-        <div class="headers__actions">
-          <a class="button ibutton full-width ibutton-red" rel="nofollow" href="{% url 'companies:review-form' company.id %}">Write review</a>
-          <form id="follow-form" data-controller="employers--follow" data-employers--follow-yeah-robby-url-value="https://itviec.com/assets/roby-jrjdyeah-f2374e5dc33afdf35884e55c8e6ac807048f9b5e4e37b365f5558dde5cc9f116.png" data-employers--follow-sad-robby-url-value="https://itviec.com/assets/robby-sad-a1fb55a6e3945a12eff5fb75d5bbf4e34784cea4ae905ac0a90a7c2b76507983.png" data-action="ajax:success->employers--follow#success ajax:error->employers--follow#error" data-confirm-email-for-jr="true" class="button_to" method="post" action="/companies/toshiba-software-development-viet-nam-co-ltd/followings?locale=en" data-remote="true">
-            {% comment %} <button id="follow-button" class="loadable ibutton ibutton-follow full-width" data-disable="true" type="submit">Follow</button> {% endcomment %}
-            <input type="hidden" name="authenticity_token" value="FWMbto_gfe-6gZJNkYUfz_LWS7mGKGtR5oSUOPtLWt6KG15-aheyXO4Nks5L4byQZ4SaL5GyR-tl4r-EN4uVCA" autocomplete="off">
-          </form>
-        </div>
-      </div>
+    </div>
+    <div class="container">
+        <div id="left">
 
-      <!-- navbar: Jobs and 44 reviews -->
-      <ul class="nav bg-white pt-1 mt-3">
-        <li class="nav-item m-0 py-0 px-3 p-md-0">
-          <a data-controller="utm-tracking" class="nav-link me-3 active" href="{% url 'companies:company-jobs' company.id %}"> {{number_jobs}} Jobs</a>
-        </li>
-        <li class="nav-item m-0 py-0 px-3 p-md-0">
-          <a data-controller="utm-tracking" class="nav-link ma-3 review-tab" href="{% url 'companies:company-reviews' company.id %}">{{number_reviews}} Reviews</a>
-        </li>
-      </ul>
-      <div class="container">
-        <div class="search search-jobs search-page__main-content">
-            <div class="search-page__job-preview">
-              
-              <div class="job-details__header">
-                  <div class="job-details__title">{{company.name}}</div>
-
-              </div>
-              
-              {% for job in company.job_set.all %}
-              <div class="job-details__body">
-                  <div class="job-details__overview">
-                    <div class="logo">
-                      <div class="logo-wrapper job-details-link-wrapper" data-action="mouseover->tooltip#showTooltip click->tooltip#disposeTooltip" data-controller="tooltip" title="" data-bs-original-title="A social infrastructure and digital products software company">
-                        <a target="_blank" data-controller="utm-tracking" href="{% url 'jobs:single-job' job.id %}">
-                          <picture>
-                           
-                            <img alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo" data-controller="lazyload" size="65x65" class=" lazyloaded" src="{{company.company_img.url}}">
-                        </picture>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div class="job-details__overview__description">
-                      <h3 class="job-details__overviewp__description-title">
-                        <a target="_blank" data-controller="utm-tracking" href="{% url 'jobs:single-job' job.id %}">
-                          {{job.title}}
-                        </a>
-                      </h3>
-                      <div class="svg-icon">
-                        <div class="svg-icon__text">
-                            {{job.lower_salary}} - {{job.upper_salary}} USD
-                        </div>
-                      </div>
-
-                      <ul>
-                          {{job.advantage}}
-                      </ul>
-                      <div class="dev__skills">
-                        {% for skill in job.skills.all %}
-                        <span class="tag tag--pill tag--main">
-                          <small>{{skill.name}}</small>
-                        </span>
-                        {% endfor %}
-
-
-                      </div>
-                    </div>
-
-                    <div class="city_and_posted_date">
-                      {% comment %} <div class="feature new text">Hot</div> {% endcomment %}
-                      <div class="city">
-                        <div class="address">
-                          {% comment %} <div class="text">Ha Noi</div> {% endcomment %}
-                        </div>
-                      </div>
-                      <div class="distance-time-job-posted">
-                        {% comment %} <span class="distance-time">2d</span> {% endcomment %}
-                      </div>
-                    </div>
-                  </div>
-                    {% endfor %}
-
-
-                  <!-- Overview -->
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                    <h3 class="panel-title">Overview</h3>
-                  </div>
-                  <div class="panel-body">
-                      {{company.overview}}
-                  </div>
-
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                    <h3 class="panel-title">Skills</h3>
-                  </div>
-                  <div class="panel-body">
-
-                        {% for skill in company.skills.all %}
-                        <span class="tag tag--pill tag--main">
-                          <small>{{skill.name}}</small>
-                        </span>
-                        {% endfor %}
-                  </div>
-
-
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                    <h3 class="panel-title">Why You'll Love Working Here</h3>
-                  </div>
-                  <div class="panel-body">
-                      {{company.advantage}}
-                  </div>
-
+            <div class="job">
+                <div id="navigation">
+                    <ul>
+                        <li id="jobs">Jobs</li>
+                        <li id="reviews"> <a data-controller="utm-tracking"
+                                href="{% url 'companies:company-reviews' company.id %}" style="width: 100%">Reviews</a>
+                        </li>
+                    </ul>
                 </div>
-              </div>
-              </div>
+                <div class="body">
+                    <div class="left">
+
+                        <div class="threepart">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Overview</h3>
+                                </div>
+                                <div class="panel-body">
+                                    {{company.overview}}
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Skills</h3>
+                                    </div>
+                                    <div class="panel-body">
+
+                                        {% for skill in company.skills.all %}
+                                        <span class="tag tag--pill tag--main">
+                                            <small>{{skill.name}}</small>
+                                        </span>
+                                        {% endfor %}
+                                    </div>
+
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Why You'll Love Working Here</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            {{company.advantage}}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="threepart" style="min-height: 50vh;">
+                            <div class="search-page__job-preview">
+
+                                <div class="job-details__header">
+                                    <div class="job-details__title">{{company.name}}</div>
+
+                                </div>
+
+                                {% for job in company.job_set.all %}
+                                <div class="job-details__body">
+                                    <div class="job-details__overview">
+                                        <div class="logo">
+                                            <div class="logo-wrapper job-details-link-wrapper"
+                                                data-action="mouseover->tooltip#showTooltip click->tooltip#disposeTooltip"
+                                                data-controller="tooltip" title=""
+                                                data-bs-original-title="A social infrastructure and digital products software company">
+                                                <a target="_blank" data-controller="utm-tracking"
+                                                    href="{% url 'jobs:single-job' job.id %}">
+                                                    <picture>
+
+                                                        <img  style="width: 12vw;" alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Small Logo"
+                                                            data-controller="lazyload" size="65x65" class=" lazyloaded"
+                                                            src="{{company.company_img.url}}">
+                                                    </picture>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="job-details__overview__description">
+                                            <h3 class="job-details__overviewp__description-title">
+                                                <a target="_blank" data-controller="utm-tracking"
+                                                    href="{% url 'jobs:single-job' job.id %}">
+                                                    {{job.title}}
+                                                </a>
+                                            </h3>
+                                            <div class="svg-icon">
+                                                <div class="svg-icon__text">
+                                                    {{job.lower_salary}} - {{job.upper_salary}} USD
+                                                </div>
+                                            </div>
+
+                                            <ul>
+                                                {{job.advantage}}
+                                            </ul>
+                                            <div class="dev__skills">
+                                                {% for skill in job.skills.all %}
+                                                <span class="tag tag--pill tag--main">
+                                                    <small>{{skill.name}}</small>
+                                                </span>
+                                                {% endfor %}
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="city_and_posted_date">
+                                            {% comment %} <div class="feature new text">Hot</div> {% endcomment %}
+                                            <div class="city">
+                                                <div class="address">
+                                                    {% comment %} <div class="text">Ha Noi</div> {% endcomment %}
+                                                </div>
+                                            </div>
+                                            <div class="distance-time-job-posted">
+                                                {% comment %} <span class="distance-time">2d</span> {% endcomment %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+
+                                    <!-- Overview -->
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
-          </div>
-          
 
         </div>
-      
-      </div>
-    </section>
-{% endblock content %}
+
+        <script>
+            function setRating(rating) {
+                for (var i = 1; i <= 5; i++) {
+                    var star = document.getElementById("star" + i);
+                    if (i <= rating) {
+                        star.classList.add("selected");
+                    } else {
+                        star.classList.remove("selected");
+                    }
+                }
+            }
+            document.querySelector('#jobs').classList.add('navigation-active');
+
+
+
+                // document.querySelector('#navigation #jobs').addEventListener('click', () => {
+                //     document.querySelector('#jobs').classList.add('navigation-active')
+                //     document.querySelector('#reviews').classList.remove('navigation-active')
+                //     document.getElementsByClassName('right')[0].style.display = 'none';
+                //     document.getElementsByClassName('left')[0].style.display = 'block';
+                // })
+                // document.querySelector('#navigation #reviews').addEventListener('click', () => {
+                //     document.querySelector('#jobs').classList.remove('navigation-active')
+                //     document.querySelector('#reviews').classList.add('navigation-active')
+                //     document.getElementsByClassName('right')[0].style.display = 'block';
+                //     document.getElementsByClassName('left')[0].style.display = 'none';
+                // })
+        </script>
+        {% endblock content %}

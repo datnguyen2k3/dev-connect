@@ -65,12 +65,8 @@
       background-color: #286090;
     }
     .search-page__main-content {
-        display: grid;
-        margin: 30px 0 0 -100px;
-        grid-template-columns: 900px 400px;
-        max-width: 1350px;
-        column-gap: 30px;
-        row-gap: 30px;
+      display: flex;
+      
     }
 
     .red-btn {
@@ -93,8 +89,11 @@
 
     .search-page__job-preview {
         padding: 0 30px;
+        flex-basis: 0;
+        flex-grow: 2;
         border: 3px solid var(--color-light);
         background-color: #fff;
+        border-radius: 10px;
     }
 
     .job-details__paragraph {
@@ -130,9 +129,13 @@
     }
     .jd-page__employer-overview {
         border: 3px solid var(--color-light);
+        border-radius: 10px;
         height: 560px;
         padding: 20px;
         background-color: #fff;
+        flex-basis: 0;
+        flex-grow: 1;
+        margin-left: 1vw;
     }
 
     .br-widget label i.fa-star {
@@ -384,11 +387,9 @@
                     <li>Không cung cấp thông tin bảo mật, bí mật kinh doanh của công ty</li>
                 </ul>
                 <p class="job-details__paragraph">
-                    Cảm ơn bạn đã đưa ra những đánh giá chân thực nhất. Xem thêm thông tin chi tiết về Hướng Dẫn & Điều Kiện về đánh giá
+                    Cảm ơn bạn đã đưa ra những đánh giá chân thực nhất
                 </p>
-                <div class="text-center">
-                    <a href="#" class="red-link">Tại đây</a>
-                </div>
+              
 
             </div>
 

@@ -1,7 +1,7 @@
 {% load static %}
 
   <header class="header">
-    <div class="container container--narrow">
+    <div class="container container--narrow" style="width: 100%; ">
       <a href="/" class="header__logo">
         <img src="{% static 'images/logo.svg' %}" alt="DevSearch Logo" />
       </a>
@@ -20,7 +20,13 @@
           <li class="header__menuItem"><a href="{% url 'projects:projects' %}">Projects</a></li>
           {% comment %} <li class="header__menuItem"><a href="l">Inbox</a></li> {% endcomment %}
           <li class="header__menuItem"><a href="{% url 'users:account' %}">Account</a></li>
-          
+          {% if request.user.is_authenticated %}
+                <li class="header__menuItem">
+                    <a href="{% url 'users:inbox' %}" class="btn btn--sub"
+                        >Inbox</a
+                    >
+                </li>
+           {% endif %}     
           {% if request.user.is_authenticated %}
             <li class="header__menuItem">
               <a href="{% url 'user_auth:logout' %}" class="btn btn--sub">Logout</a>

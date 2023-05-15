@@ -13,7 +13,7 @@
 {% if page == 'register' %}
     <div class="auth">
       <div class="card">
-        <div class="auth__header text-center">
+        <div class="auth__header text-center" style="background-color: #fff; margin-top: 280px">
           <a href="/">
             <img src="{% static 'images/icon.svg' %}" alt="icon" />
           </a>
@@ -56,7 +56,7 @@
 {% else %}
     <div class="auth">
       <div class="card">
-        <div class="auth__header text-center">
+        <div class="auth__header text-center" style="background-color: #fff">
           <a href="{% url 'users:profiles' %}">
             <img src="{% static 'images/icon.svg' %}" alt="icon" />
           </a>

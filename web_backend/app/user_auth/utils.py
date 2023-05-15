@@ -7,6 +7,7 @@ from django.utils.encoding import force_bytes, force_str
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.contrib.auth import authenticate, login
 from app.user_auth.forms import RegisterForm
+from .tasks import send_email_task
 
 
 def get_user_by_email_request(request) -> User:
@@ -17,7 +18,7 @@ def get_user_by_email_request(request) -> User:
     try:
         user = User.objects.get(email=email)
     except User.DoesNotExist:
-        messages.error("No user with that email address exists.")
+        messages.error(request, "No user with that email address exists.")
         return None
 
     return user
@@ -36,7 +37,7 @@ def send_forget_password_email(request, user, email) -> bool:
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
 
-    send_mail(subject, message, email_from, recipient_list)
+    send_email_task.apply_async(args=[subject, message, email_from, recipient_list])
     return True
 
 

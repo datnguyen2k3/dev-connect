@@ -129,7 +129,16 @@ REST:
 	+ code on demand (optional): server can send code to client
 
 
-
-
 ELASTICSEARCH:
-	+ "python manage.py search_index --rebuild"
+	+ "python manage.py search_index --rebuild" 
+
+
+RUN:
+pip install -r requirements.txt
+run redis-server
+run elasticsearch server
+python manage.py search_index --rebuild (first time)
+python -m celery -A src worker -l info -P gevent    
+python manage.py runserver
+	
+
